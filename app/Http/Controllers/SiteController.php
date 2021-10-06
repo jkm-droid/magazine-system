@@ -13,12 +13,13 @@ class SiteController extends Controller
         $feature_article = Article::with('categories')->where('status',1)->inRandomOrder()->limit(1)->get();
         $more_articles = Article::with('categories')->where('status',1)->inRandomOrder()->limit(3)->get();
         $articles = Article::with('categories')->where('status',1)->latest()->paginate(5);
-
+//dd($this->get_one_category());
         return view('site.home', compact('articles'))
         ->with('i', (request()->input('page', 1) - 1) * 5)
             ->with('feature_article', $feature_article)
             ->with('more_articles', $more_articles)
-            ->with('categories', $this->get_categories());
+            ->with('categories', $this->get_categories())
+            ->with('one_category', $this->get_one_category());
     }
 
     //render a full article based on its slug
@@ -26,14 +27,38 @@ class SiteController extends Controller
         $article = Article::with('categories')->where('slug', $slug)->get();
 
         return view('site.full_article', compact('article'))
-            ->with('categories', $this->get_categories());
+            ->with('categories', $this->get_categories())
+            ->with('one_category', $this->get_one_category());
     }
 
-    //get the categories
+    /**
+     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+     * Get the categories
+     */
     public function get_categories(){
-        return Category::with('articles')->inRandomOrder()->limit(7)->get();
+        return Category::with('articles')->inRandomOrder()->take(7)->get();
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\HigherOrderBuilderProxy|mixed|string
+     * Get one category
+     */
+    public function get_one_category(){
+        $categories = Category::with('articles')->inRandomOrder()->take(1)->get();
+
+        $cat_articles = '';
+        foreach ($categories as $category){
+            $cat_articles = $category->articles;
+        }
+
+        return $cat_articles;
+    }
+
+    /**
+     * @param $category_id
+     * @return \Illuminate\Http\JsonResponse
+     * Get the articles belonging to a certain category
+     */
     public function get_category_articles($category_id){
         $categories = Category::with('articles')->where('id', $category_id)->get();
         $art_title = '';

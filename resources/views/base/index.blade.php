@@ -26,6 +26,7 @@
 </head>
 <body>
 <div class="container col-md-6">
+    <h1 class="text-center text-uppercase display-4">Industrialising Africa</h1>
     @include('includes.site_navbar')
 
     @yield('content')
@@ -42,60 +43,6 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 -->
-
-<script type="text/javascript">
-    //funtion for filtering articles based on category
-    function getData() {
-
-        $.ajax({
-            url: '{{ url('/category/article') }}/' + category_id,
-            type: 'GET',
-            data: {
-                "_token": "{{ csrf_token() }}",
-                'category_id': category_id,
-            },
-            success: function (response) {
-                console.log(response);
-                let content = '';
-                for (var i = 0; i < response.length; i++) {
-                    content += '<div class="row row-cols-1 row-cols-md-3 g-4">';
-                    console.log(response[i].id);
-                    console.log(response[i].title);
-                    // $.each(response[i].articles, function (a,article){
-                    for (var a = 0; a < 3; a++) {
-                        content += '<div class="col">';
-                        content += ' <div class="card h-100" style="border:none; background-color: black;">';
-                        // content += '<a href="'+article.slug +'">';
-                        content += '<img src=" ' + "/article_covers/" + response[i].articles[a].image + ' " class="card-img-top" alt="..." height="200" style="width: 100%;">';
-                        content += '<div class="card-body">';
-                        console.log(response[i].articles[a].title);
-                        content += '<h4 class="card-title"><a class="text-warning" href="">' + response[i].articles[a].title + '</a></h4>';
-                        // content += '<p class="card-text">'+ article.body + '</p>';
-
-                        content += '</div>';
-
-                        content += '<div class="card-footer" style="border:none;">';
-                        content += '<small>' + response[i].articles[a].created_at + '</small>';
-                        content += '</div>';
-
-                        content += '</a>';
-                        content += '</div>';
-                        content += '</div>';
-                    }
-
-                    content += '</div>';
-
-                    $("#myTabContent").append(content);
-                }
-                // $(this).tab('show');
-            },
-
-            failure: function (response) {
-                console.log("something went wrong");
-            }
-        });
-    }
-</script>
 
 <script>
     $(document).ready(function(){
@@ -115,28 +62,30 @@
                     console.log(response);
                     let content = '';
                     content += '<div class="row row-cols-1 row-cols-md-3 g-4">';
+                    if (response.length > 0){
+                        for (var a = 0; a < 3; a++) {
+                            content += '<div class="col">';
+                            content += ' <div class="card h-100" style="border:none; background-color: black;">';
+                            // content += '<a href=" ' + "/article/" + response[a].slug + ' ">';
+                            content += '<img src=" ' + "/article_covers/" + response[a].image + ' " class="card-img-top" alt="..." height="150" style="width: 100%;">';
+                            content += '<div class="card-body">';
 
-                    for (var a = 0; a < 3; a++) {
-                        content += '<div class="col">';
-                        content += ' <div class="card h-100" style="border:none; background-color: black;">';
-                        // content += '<a href=" ' + "/article/" + response[a].slug + ' ">';
-                        content += '<img src=" ' + "/article_covers/" + response[a].image + ' " class="card-img-top" alt="..." height="150" style="width: 100%;">';
-                        content += '<div class="card-body">';
+                            content += '<h4 class="card-title"><a class="text-warning" href=" ' + "/article/" + response[a].slug + ' ">' + response[a].title + '</a></h4>';
+                            content += '<p class="card-text">' + response[a].article_body + '</p>';
 
-                        content += '<h4 class="card-title"><a class="text-warning" href=" ' + "/article/" + response[a].slug + ' ">' + response[a].title + '</a></h4>';
-                        content += '<p class="card-text">'+ response[a].article_body + '</p>';
+                            content += '</div>';
 
-                        content += '</div>';
+                            content += '<div class="card-footer text-center" style="border:none;">';
+                            content += '<small class="text-center">' + response[a].formatted_date + '</small>';
+                            content += '</div>';
 
-                        content += '<div class="card-footer text-center" style="border:none;">';
-                        content += '<small class="text-center">' + response[a].formatted_date + '</small>';
-                        content += '</div>';
-
-                        // content += '</a>';
-                        content += '</div>';
-                        content += '</div>';
+                            // content += '</a>';
+                            content += '</div>';
+                            content += '</div>';
+                        }
+                    }else{
+                        content += '<small class="text-center">' + "No articles for this category" + '</small>';
                     }
-
                     content += '</div>';
 
                     $("#articles-box").html(content);

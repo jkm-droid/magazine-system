@@ -8,7 +8,7 @@
                 <h2 class="text-warning">{{ $feature_article[0]->title }}</h2>
                 <p class="text-dark">
                     {{ date('d-m-Y', strtotime($feature_article[0]->created_at)) }} |
-                    {{ ucfirst($feature_article[0]->author) }} |
+                    {{ \Illuminate\Support\Str::upper($feature_article[0]->author) }} |
                     @foreach($feature_article[0]->categories as $feature_cat)
                         {{ \Illuminate\Support\Str::upper($feature_cat->title) }}
                     @endforeach
