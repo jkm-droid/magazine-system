@@ -70,16 +70,33 @@
                     </div>
                 </div>
 
+                <div class="category-dropdown">
+                    <button class="dropbtn text-uppercase">Categories
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="row">
+                            @foreach($all_categories as $category)
+                                <div  style="padding: 10px; " class="col">
+                                    <a  href="{{ route('category.all.articles.show', $category->slug) }}">{{ \Illuminate\Support\Str::upper($category->title) }}</a>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+
                 <li class="nav-item text-uppercase">
                     <a class="nav-link active text-uppercase" aria-current="page" href="#">About us</a>
                 </li>
+
                 <li class="nav-item text-uppercase">
                     <a class="nav-link active text-uppercase" aria-current="page" href="#">Contacts</a>
                 </li>
 
             </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <form class="d-flex" method="GET" action="{{ route('articles.search') }}">
+                @csrf
+                <input name="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>

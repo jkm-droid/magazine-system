@@ -29,11 +29,17 @@ class Category extends Model
             ->withTimestamps();
     }
 
-    //format the date for use in javascript
+    /**
+     * format the date for use in javascript
+     */
     public function getFormattedDateAttribute()
     {
         return $this->created_at->format('d-m-Y');
     }
 
-    protected $appends = ['formatted_date'];
+    public function getAllCategoriesAttribute(){
+        return Category::get();
+    }
+
+    protected $appends = ['formatted_date', 'all_categories'];
 }

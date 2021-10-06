@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\Route;
 
 //site routes
 Route::get('/', [SiteController::class, 'show_index_page'])->name('home');
-Route::get('/article/{slug}', [SiteController::class, 'show_full_article'])->name('article.full.show');
+Route::get('/article/search', [SiteController::class, 'search_articles'])->name('articles.search');
+Route::get('/article/show/{slug}', [SiteController::class, 'show_full_article'])->name('article.full.show');
+Route::get('/article/category/{slug}', [SiteController::class, 'get_all_articles_per_category'])->name('category.all.articles.show');
 
 //filter articles based on category
 Route::get('category/article/{category_id}', [SiteController::class, 'get_category_articles'])->name('get.category.articles');

@@ -3,37 +3,75 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\ArticleCategory;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SiteController extends Controller
 {
-    //the function displays the homepage content
+    /**
+     * the function displays the homepage content
+     */
     public function show_index_page(){
         $feature_article = Article::with('categories')->where('status',1)->inRandomOrder()->limit(1)->get();
         $more_articles = Article::with('categories')->where('status',1)->inRandomOrder()->limit(3)->get();
         $articles = Article::with('categories')->where('status',1)->latest()->paginate(5);
-//dd($this->get_one_category());
+//dd($this->get_all_categories());
         return view('site.home', compact('articles'))
         ->with('i', (request()->input('page', 1) - 1) * 5)
             ->with('feature_article', $feature_article)
             ->with('more_articles', $more_articles)
             ->with('categories', $this->get_categories())
+            ->with('all_categories', $this->get_all_categories())
             ->with('one_category', $this->get_one_category());
     }
 
-    //render a full article based on its slug
+    /**
+     *  render a full article based on its slug
+     */
     public function show_full_article($slug){
         $article = Article::with('categories')->where('slug', $slug)->get();
 
         return view('site.full_article', compact('article'))
             ->with('categories', $this->get_categories())
+            ->with('all_categories', $this->get_all_categories())
             ->with('one_category', $this->get_one_category());
     }
 
     /**
+     * @param $category_slug
+     * Get all the articles belonging to a particular category
+     */
+    public function get_all_articles_per_category($category_slug){
+        $category_articles = Category::with('articles')->where('slug', $category_slug)->latest()->get();
+        $cat_articles = '';
+        $category_title = '';
+
+        foreach ($category_articles as $category){
+            $cat_articles = $category->articles()->where('status', 1)->latest()->paginate(5);
+            $category_title = $category->title;
+        }
+
+        return view('site.category_articles', compact('cat_articles'))
+            ->with('i', (request()->input('page', 1) - 1) * 5)
+            ->with('categories', $this->get_categories())
+            ->with('all_categories', $this->get_all_categories())
+            ->with('category_title', $category_title)
+            ->with('one_category', $this->get_one_category());
+    }
+
+    /**
+     * @return mixed
+     * Get all the categories for the category drop down menu
+     */
+    public function get_all_categories(){
+        return Category::get();
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
-     * Get the categories
+     * Get seven categories for the mega drop down menu
      */
     public function get_categories(){
         return Category::with('articles')->inRandomOrder()->take(7)->get();
@@ -61,7 +99,7 @@ class SiteController extends Controller
      */
     public function get_category_articles($category_id){
         $categories = Category::with('articles')->where('id', $category_id)->get();
-        $art_title = '';
+
         $cat_articles = '';
         foreach ($categories as $category){
             $cat_articles = $category->articles;
@@ -69,4 +107,18 @@ class SiteController extends Controller
         return response()->json($cat_articles);
     }
 
+    /**
+     * search for articles based on keywords
+     */
+    public function search_articles(Request $request){
+        $search_term = trim($request->search);
+        $results = DB::table('articles')
+            ->where('title', 'LIKE','%'.$search_term.'%')
+            ->orWhere('author', 'LIKE','%'.$search_term.'%')->get();
+
+        return view('site.search_results', compact('results'))
+            ->with('categories', $this->get_categories())
+            ->with('all_categories', $this->get_all_categories())
+            ->with('one_category', $this->get_one_category());
+    }
 }
