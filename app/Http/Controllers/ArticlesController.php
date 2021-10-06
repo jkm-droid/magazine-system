@@ -69,7 +69,7 @@ class ArticlesController extends Controller
         $article->save();
         $article->categories()->attach($article_info['category']);
 
-        return redirect()->route('articles.index')->with('success', 'Article added successfully');
+        return redirect()->route('my_articles.index', $user->id)->with('success', 'Article added successfully');
     }
 
     //show the edit form with an article's content
@@ -121,7 +121,7 @@ class ArticlesController extends Controller
         $article->update();
         $article->categories()->sync([$article_info['category']]);
 
-        return redirect()->route('articles.index')->with('success', 'Article updated Successfully');
+        return redirect()->route('my_articles.index', Auth::user()->id)->with('success', 'Article updated Successfully');
     }
 
     //show the article
@@ -140,7 +140,7 @@ class ArticlesController extends Controller
             return redirect()->route('articles.index')->with('success', 'Article deleted successfully');
         }
 
-        return redirect()->route('articles.index')->with('error', 'You lack permission to delete article');
+        return redirect()->route('my_articles.index')->with('error', 'You lack permission to delete article');
 
     }
 
@@ -176,6 +176,6 @@ class ArticlesController extends Controller
             $message = "Article Drafted successfully";
         }
 
-        return redirect()->route('articles.index')->with('success', $message);
+        return redirect()->route('my_articles.index',Auth::user()->id)->with('success', $message);
     }
 }

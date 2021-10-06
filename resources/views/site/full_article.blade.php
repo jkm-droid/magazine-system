@@ -2,7 +2,7 @@
 
 @section('content')
     @foreach($article[0]->categories as $article_cat)
-    <h4 class="text-secondary">{{ \Illuminate\Support\Str::upper($article_cat->title) }}</h4>
+        <h4 class="text-secondary">{{ \Illuminate\Support\Str::upper($article_cat->title) }}</h4>
     @endforeach
     <h2>{{ $article[0]->title }}</h2>
     <p>
@@ -10,5 +10,41 @@
         Published: {{ date('d-m-Y', strtotime($article[0]->created_at)) }}
     </p>
     <img src="/article_covers/{{ $article[0]->image }}" class="img-fluid col-md-12" alt="">
-    <p class="mt-3 m-2">{!! $article[0]->body !!}</p>
+    <p class="mt-3 mb-3 m-2">{!! $article[0]->body !!}</p>
+
+    @if($author_articles->isEmpty())
+    @else
+        <div class="justify-content-start mt-2 mb-3">
+            <h4 class="mb-2">More Articles from the <strong class="text-bold text-secondary">Author</strong></h4>
+
+            <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
+                @foreach($author_articles as $author_article)
+                    <div class="col">
+                        <div class="card h-100" style="border:none;">
+                            <a href="{{ route('article.full.show', $author_article->slug) }}">
+                                <img src="/article_covers/{{ $author_article->image }}" class="card-img-top" alt="..." height="200">
+                                <div class="card-body">
+                                    @foreach($author_article->categories as $more_cat)
+                                        <div class="text-secondary row">
+                                            <h6>
+                                                {{ \Illuminate\Support\Str::upper($more_cat->title) }}|
+                                                <small style="font-size: 14px;" class="text-dark">{{ \Illuminate\Support\Str::upper(date('d-m-Y', strtotime($author_article->created_at))) }}</small>
+                                            </h6>
+
+                                        </div>
+
+                                    @endforeach
+                                    <h4 class="card-title">
+                                        <a class="text-warning" href="{{ route('article.full.show', $author_article->slug) }}">{{ $author_article->title }}</a>
+                                    </h4>
+                                    <p class="card-text">{!! \Illuminate\Support\Str::limit($author_article->body, 80, $end='...') !!}</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+            </div><br>
+
+        </div>
+    @endif
 @endsection

@@ -3,7 +3,7 @@
 @section('content')
     <br>
     <h3>Articles on <span class="text-secondary"><strong>{{ $category_title }}</strong></span></h3>
-    <br><br>
+    <br>
 
     @if($cat_articles->isEmpty())
         <p class="text-center text-danger">no articles found</p>
@@ -19,13 +19,12 @@
                 <div class="col-sm-8 col-md-8 col-lg-8">
                     <a class="text-warning" href="{{ route('article.full.show', $cat_article->slug) }}">
                         <h4><strong>{{ $cat_article->title }}</strong></h4>
-                    </a><br>
-
-                    <p class="mb-3">{{ date('d-m-Y', strtotime($cat_article->created_at)) }} |
-                    {{ \Illuminate\Support\Str::upper($cat_article->author) }}
-                    </p><br>
-
-                    <p>{!! \Illuminate\Support\Str::limit($cat_article->body, 100, $end='...') !!} </p>
+                    </a>
+                    <p class="mb-3 text-dark">
+                        {{ date('d-m-Y', strtotime($cat_article->created_at)) }} |
+                        {{ \Illuminate\Support\Str::upper($cat_article->author) }}<br>
+                        {!! \Illuminate\Support\Str::limit($cat_article->body, 100, $end='...') !!}
+                    </p>
                 </div>
             </div><br>
         @endforeach

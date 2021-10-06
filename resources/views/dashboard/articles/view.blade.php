@@ -18,7 +18,7 @@
         </div><!-- /.container-fluid -->
     </div>
     <div class="m-2">
-        <a href="{{ route('articles.index') }}"><button class="btn btn-success btn-sm">Back</button></a>
+        <a href="{{ route('my_articles.index', \Illuminate\Support\Facades\Auth::user()->id) }}"><button class="btn btn-success btn-sm">Back</button></a>
     <h4 class="text-secondary">{{ \Illuminate\Support\Str::upper($article->category) }}</h4>
     <p>
         by {{ \Illuminate\Support\Str::upper($article->author) }}

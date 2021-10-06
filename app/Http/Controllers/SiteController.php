@@ -33,7 +33,10 @@ class SiteController extends Controller
     public function show_full_article($slug){
         $article = Article::with('categories')->where('slug', $slug)->get();
 
-        return view('site.full_article', compact('article'))
+        //get articles belonging to the author
+        $author_articles = Article::with('categories')->where('author',$article[0]->author)->get();
+
+        return view('site.full_article', compact('article','author_articles'))
             ->with('categories', $this->get_categories())
             ->with('all_categories', $this->get_all_categories())
             ->with('one_category', $this->get_one_category());
@@ -114,9 +117,10 @@ class SiteController extends Controller
         $search_term = trim($request->search);
         $results = DB::table('articles')
             ->where('title', 'LIKE','%'.$search_term.'%')
-            ->orWhere('author', 'LIKE','%'.$search_term.'%')->get();
+            ->orWhere('author', 'LIKE','%'.$search_term.'%')->latest()->paginate(10);
 
         return view('site.search_results', compact('results'))
+            ->with('i', (request()->input('page', 1) - 1) * 5)
             ->with('categories', $this->get_categories())
             ->with('all_categories', $this->get_all_categories())
             ->with('one_category', $this->get_one_category());

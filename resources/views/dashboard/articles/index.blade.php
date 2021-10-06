@@ -50,8 +50,6 @@
                             <th>Author</th>
                             <th>Creation Date</th>
                             <th>Status</th>
-                            <th></th>
-                            <th>Action</th>
                         </tr>
                         </thead>
 
@@ -72,35 +70,6 @@
                                 @else
                                     <td><i class="text-danger fa fa-times-circle"></i></td>
                                 @endif
-                                <td>
-                                    @if($article->status  == 1)
-                                        <form action="{{ route('article.publish',$article->id) }}" method="post">
-                                            @csrf
-                                            @method('PUT')
-                                            <button type="submit" class="btn btn-warning btn-sm">Draft</button>
-                                        </form>
-                                    @else
-                                        <form action="{{ route('article.publish',$article->id) }}" method="post">
-                                            @csrf
-                                            @method('PUT')
-                                            <button type="submit" class="btn btn-success btn-sm" >Publish</button>
-                                        </form>
-                                    @endif
-
-                                </td>
-                                <td>
-                                    <form action="{{ route('article.delete',$article->id) }}" method="POST">
-
-                                        <a class="btn btn-info btn-sm" href="{{ route('article.show',$article->id) }}">Show</a>
-
-                                        <a class="btn btn-primary btn-sm" href="{{ route('article.edit',$article->id) }}">Edit</a>
-
-                                        @csrf
-                                        @method('PUT')
-
-                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                    </form>
-                                </td>
 
                             </tr>
                         @endforeach

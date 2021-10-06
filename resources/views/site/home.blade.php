@@ -7,19 +7,19 @@
             <a href="{{ route('article.full.show', $feature_article[0]->slug) }}">
                 <h2 class="text-warning">{{ $feature_article[0]->title }}</h2>
                 <p class="text-dark">
-                    {{ date('d-m-Y', strtotime($feature_article[0]->created_at)) }} |
                     {{ \Illuminate\Support\Str::upper($feature_article[0]->author) }} |
                     @foreach($feature_article[0]->categories as $feature_cat)
-                        {{ \Illuminate\Support\Str::upper($feature_cat->title) }}
+                        {{ \Illuminate\Support\Str::upper($feature_cat->title) }} |
                     @endforeach
+                    {{ date('d-m-Y', strtotime($feature_article[0]->created_at)) }}
                 </p>
                 <img src="/article_covers/{{ $feature_article[0]->image }}" class="img-fluid col-md-12">
                 <p style="font-size: 20px;" class="text-dark">{!! \Illuminate\Support\Str::limit($feature_article[0]->body, 150, $end='...') !!}</p>
             </a>
         </div>
     @endif
-    <h3>Latest <span class="text-secondary"><strong>Articles</strong></span></h3>
-    <br><br>
+    <br><h3>Latest <span class="text-secondary"><strong>Articles</strong></span></h3>
+    <br>
 
     @if($articles->isEmpty())
         no articles found
@@ -36,11 +36,11 @@
                     <a class="text-warning" href="{{ route('article.full.show', $article->slug) }}">
                         <h4><strong>{{ $article->title }}</strong></h4>
                     </a>
-                    {{ date('d-m-Y', strtotime($article->created_at)) }} |
-                    @foreach($article->categories as $article_cat)
-                        {{ \Illuminate\Support\Str::upper($article_cat->title) }}
-                    @endforeach
-                    <p>{!! \Illuminate\Support\Str::limit($article->body, 100, $end='...') !!} </p>
+                    <p>{{ date('d-m-Y', strtotime($article->created_at)) }} |
+                        @foreach($article->categories as $article_cat)
+                            {{ \Illuminate\Support\Str::upper($article_cat->title) }}
+                        @endforeach<br>
+                        {!! \Illuminate\Support\Str::limit($article->body, 100, $end='...') !!} </p>
                 </div>
             </div><br>
         @endforeach
@@ -56,20 +56,20 @@
             @foreach($more_articles as $more)
                 <div class="col">
                     <div class="card h-100" style="border:none;">
-                        <a href="{{ route('article.full.show', $article->slug) }}">
+                        <a href="{{ route('article.full.show', $more->slug) }}">
                             <img src="/article_covers/{{ $more->image }}" class="card-img-top" alt="..." height="200">
                             <div class="card-body">
                                 @foreach($more->categories as $more_cat)
                                     <div class="text-secondary"><h5>{{ \Illuminate\Support\Str::upper($more_cat->title) }}</h5></div>
                                 @endforeach
                                 <h4 class="card-title">
-                                    <a class="text-warning" href="{{ route('article.full.show', $article->slug) }}">{{ $article->title }}</a>
+                                    <a class="text-warning" href="{{ route('article.full.show', $more->slug) }}">{{ $more->title }}</a>
                                 </h4>
                                 <p class="card-text">{!! \Illuminate\Support\Str::limit($more->body, 80, $end='...') !!}</p>
                             </div>
 
                             <div class="card-footer" style="border:none;">
-                                <small class="">{{ \Illuminate\Support\Str::upper(date('F Y', strtotime($article->created_at))) }}</small>
+                                <small class="">{{ \Illuminate\Support\Str::upper(date('F Y', strtotime($more->created_at))) }}</small>
                             </div>
                         </a>
                     </div>

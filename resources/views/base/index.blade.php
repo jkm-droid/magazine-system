@@ -26,7 +26,10 @@
 </head>
 <body>
 <div class="container col-md-6">
-    <h1 class="text-center text-uppercase display-4">Industrialising Africa</h1>
+    <div class="text-secondary" style="text-decoration: none;">
+        <h1 class="text-center text-uppercase display-4"><a class="text-center text-secondary" href="{{ route('home') }}">Industrialising</a></h1>
+        <h5 class="text-center text-uppercase"><a class="text-center text-secondary" href="{{ route('home') }}">Africa</a></h5>
+    </div>
     @include('includes.site_navbar')
 
     @yield('content')
@@ -65,12 +68,13 @@
                     if (response.length > 0){
                         for (var a = 0; a < 3; a++) {
                             content += '<div class="col">';
-                            content += ' <div class="card h-100" style="border:none; background-color: black;">';
                             // content += '<a href=" ' + "/article/" + response[a].slug + ' ">';
+                            content += ' <div class="card h-100" style="border:none; word-break: break-word;">';
+
                             content += '<img src=" ' + "/article_covers/" + response[a].image + ' " class="card-img-top" alt="..." height="150" style="width: 100%;">';
                             content += '<div class="card-body">';
 
-                            content += '<h4 class="card-title"><a class="text-warning" href=" ' + "/article/" + response[a].slug + ' ">' + response[a].title + '</a></h4>';
+                            content += '<h4 class="card-title"><a class="text-warning" style="word-break: break-word;" ef=" ' + "/article/" + response[a].slug + ' ">' + response[a].title + '</a></h4>';
                             content += '<p class="card-text">' + response[a].article_body + '</p>';
 
                             content += '</div>';
@@ -79,8 +83,8 @@
                             content += '<small class="text-center">' + response[a].formatted_date + '</small>';
                             content += '</div>';
 
-                            // content += '</a>';
                             content += '</div>';
+                            // content += '</a>';
                             content += '</div>';
                         }
                     }else{
