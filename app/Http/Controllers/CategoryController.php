@@ -1,0 +1,75 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Article;
+use App\Models\Category;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class CategoryController extends Controller
+{
+    public function __construct(){
+        $this->middleware('auth:admin');
+    }
+
+    //show all the articles while maintaining pagination
+    public function index(){
+        $categories = Category::latest()->paginate(10);
+
+        return view('dashboard.categories.index', compact('categories'))
+            ->with('i', (request()->input('page', 1) - 1) * 10);
+    }
+
+    //show the category creation form
+    public function create_category(){
+
+        return view('dashboard.categories.create');
+    }
+
+    //add a new category
+    public function save_category(Request $request){
+        $request->validate([
+            'title'=> 'required | unique:categories'
+        ]);
+
+        $data = $request->all();
+        $category = new Category();
+        $category->title = $data['title'];
+        $category->slug = str_replace(" ", "-", strtolower($data['title']));
+        $category->admin_id = Auth::user()->id;
+        $category->author = Auth::user()->name;
+        $category->save();
+
+        return redirect()->route('categories.index')->with('success','Category created successfully');
+    }
+
+    //show the category edit form
+    public function edit_category($category_id){
+        $category = Category::find($category_id);
+
+        return view('dashboard.categories.edit', compact('category'));
+    }
+
+    //update the category
+    public function update_category(Request $request, $category_id){
+        $request->validate([
+            'title'=>'required'
+        ]);
+
+        $data = $request->all();
+        $category = Category::find($category_id);
+        $category->title = $data['title'];
+        //update the category
+        $category->update();
+
+        return redirect()->route('categories.index')->with('success', 'Category updated successfully');
+    }
+
+    //delete a single category
+    public function delete_category($category_id){
+        Category::find($category_id)->delete();
+
+        return redirect()->route('categories.index')->with('success', 'Category delete successfully');
+    }
+}

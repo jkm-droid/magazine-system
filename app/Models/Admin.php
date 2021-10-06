@@ -1,0 +1,41 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class Admin extends Authenticatable
+{
+    use HasFactory;
+
+    use Notifiable;
+    protected $guard = "admin";
+
+    protected $fillable = [
+        'username',
+        'name',
+        'email',
+        'password'
+    ];
+
+    protected $hidden = [
+        'password',
+        'remember_token'
+    ];
+
+    /**
+     * Get the articles owned by the user.
+     */
+    public function article(){
+        return $this->hasMany(Article::class);
+    }
+
+    /**
+     * Get the categories owned by the user.
+     */
+    public function category(){
+        return $this->hasMany(Category::class);
+    }
+}
