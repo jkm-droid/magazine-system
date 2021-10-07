@@ -50,7 +50,7 @@
     </div>
 
     <div class="justify-content-start">
-        <h4 class="mb-3">More to Read</h4>
+        <h4 class="mb-3"><strong>More</strong> to <strong>Read</strong></h4>
 
         <div class="row row-cols-1 row-cols-md-3 g-4">
             @foreach($more_articles as $more)

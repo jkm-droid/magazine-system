@@ -15,14 +15,14 @@
     @if($author_articles->isEmpty())
     @else
         <div class="justify-content-start mt-2 mb-3">
-            <h4 class="mb-2">More Articles from the <strong class="text-bold text-secondary">Author</strong></h4>
+            <h4 class="mb-2"><strong class="text-dark">More Articles</strong> from the <strong class="text-bold text-secondary">Author</strong></h4>
 
-            <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
+            <div class="row row-cols-1 row-cols-md-4 g-4 mt-3">
                 @foreach($author_articles as $author_article)
                     <div class="col">
                         <div class="card h-100" style="border:none;">
                             <a href="{{ route('article.full.show', $author_article->slug) }}">
-                                <img src="/article_covers/{{ $author_article->image }}" class="card-img-top" alt="..." height="200">
+                                <img src="/article_covers/{{ $author_article->image }}" class="card-img-top" alt="..." height="150">
                                 <div class="card-body">
                                     @foreach($author_article->categories as $more_cat)
                                         <div class="text-secondary row">
@@ -34,10 +34,10 @@
                                         </div>
 
                                     @endforeach
-                                    <h4 class="card-title">
+                                    <h5 class="card-title">
                                         <a class="text-warning" href="{{ route('article.full.show', $author_article->slug) }}">{{ $author_article->title }}</a>
-                                    </h4>
-                                    <p class="card-text">{!! \Illuminate\Support\Str::limit($author_article->body, 80, $end='...') !!}</p>
+                                    </h5>
+{{--                                    <p class="card-text">{!! \Illuminate\Support\Str::limit($author_article->body, 80, $end='...') !!}</p>--}}
                                 </div>
                             </a>
                         </div>
