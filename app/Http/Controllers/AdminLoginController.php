@@ -16,7 +16,7 @@ class AdminLoginController extends Controller
     use AuthenticatesUsers;
 
     public function __construct(){
-        $this->middleware('guest:admin')->except('logout');
+        $this->middleware('guest:admin')->except('logout', 'admin_logout');
     }
 
     //show the index page

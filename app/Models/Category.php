@@ -25,7 +25,7 @@ class Category extends Model
      * Get the article that belong to the category.
      */
     public function articles(){
-        return $this->belongsToMany(Article::class,'article_category','category_id','article_id', )
+        return $this->belongsToMany(Article::class,'article_category','category_id','article_id' )
             ->withTimestamps();
     }
 

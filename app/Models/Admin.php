@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Permissions\HasPermissionsTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -9,8 +10,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Admin extends Authenticatable
 {
     use HasFactory;
-
+    use HasPermissionsTrait;
     use Notifiable;
+
     protected $guard = "admin";
 
     protected $fillable = [
@@ -37,5 +39,19 @@ class Admin extends Authenticatable
      */
     public function category(){
         return $this->hasMany(Category::class);
+    }
+
+    /**
+     * Get the roles owned by the user.
+     */
+    public function roles(){
+        return $this->hasMany(Role::class);
+    }
+
+    /**
+     * Get the permissions owned by the user.
+     */
+    public function permissions(){
+        return $this->hasMany(Permission::class);
     }
 }

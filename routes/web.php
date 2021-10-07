@@ -19,7 +19,7 @@ Route::get('category/article/{category_id}', [SiteController::class, 'get_catego
 //admin authentication
 Route::get('admin/login', [AdminLoginController::class, 'admin_show_login'])->name('admin.show.login');
 Route::post('admin/login', [AdminLoginController::class, 'admin_login'])->name('admin.login');
-Route::get('admin/logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
+Route::get('admin/logout', [AdminLoginController::class, 'admin_logout'])->name('admin.logout');
 
 //dashboard
 Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
