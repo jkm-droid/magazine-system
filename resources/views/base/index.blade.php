@@ -74,7 +74,7 @@
                             content += '<img src=" ' + "/article_covers/" + response[a].image + ' " class="card-img-top" alt="..." height="150" style="width: 100%;">';
                             content += '<div class="card-body">';
 
-                            content += '<h4 class="card-title"><a class="text-warning" style="word-break: break-word;" ef=" ' + "/article/" + response[a].slug + ' ">' + response[a].title + '</a></h4>';
+                            content += '<h4 class="card-title"><a class="text-warning" style="word-break: break-word;" " ' + "/article/" + response[a].slug + ' ">' + response[a].title + '</a></h4>';
                             content += '<p class="card-text">' + response[a].article_body + '</p>';
 
                             content += '</div>';

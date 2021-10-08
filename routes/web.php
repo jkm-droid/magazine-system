@@ -2,8 +2,11 @@
 
 use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\ArticlesController;
+use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
 
@@ -46,4 +49,27 @@ Route::post('categories/update/{category_id}', [CategoryController::class, 'upda
 Route::get('categories/show/{category_id}', [CategoryController::class, 'show_category'])->name('category.show');
 Route::put('categories/delete/{category_id}', [CategoryController::class, 'delete_category'])->name('category.delete');
 
+//roles
+Route::get('roles', [RoleController::class, 'index'])->name('role.index');
+Route::get('roles/create', [RoleController::class, 'create_role'])->name('role.create');
+Route::post('roles/save', [RoleController::class, 'save_role'])->name('role.save');
+Route::get('roles/edit/{slug}', [RoleController::class, 'edit_role'])->name('role.edit');
+Route::post('roles/update/{role_id}', [RoleController::class, 'update_role'])->name('role.update');
+Route::get('roles/show/{slug}', [RoleController::class, 'show_role'])->name('role.show');
+Route::post('roles/delete/{slug}', [RoleController::class, 'delete_role'])->name('role.delete');
 
+//permissions
+Route::get('permissions', [PermissionController::class, 'index'])->name('permission.index');
+Route::get('permissions/create', [PermissionController::class, 'create_permission'])->name('permission.create');
+Route::post('permissions/save', [PermissionController::class, 'save_permission'])->name('permission.save');
+Route::get('permissions/edit/{slug}', [PermissionController::class, 'edit_permission'])->name('permission.edit');
+Route::post('permissions/update/{slug}', [PermissionController::class, 'update_permission'])->name('permission.update');
+Route::get('permissions/show/{slug}', [PermissionController::class, 'show_permission'])->name('permission.show');
+Route::post('permissions/delete/{slug}', [PermissionController::class, 'delete_permission'])->name('permission.delete');
+
+//authors/admins
+Route::get('authors',[AuthorController::class,'index'])->name('author.index');
+Route::get('authors/create',[AuthorController::class,'create_author'])->name('author.create');
+Route::post('authors/save',[AuthorController::class,'save_author'])->name('author.save');
+Route::get('authors/edit/{author_id}',[AuthorController::class,'edit_author'])->name('author.edit');
+Route::post('authors/update/{author_id}',[AuthorController::class,'update_author'])->name('author.update');
