@@ -45,13 +45,16 @@ class Admin extends Authenticatable
      * Get the roles owned by the user.
      */
     public function roles(){
-        return $this->hasMany(Role::class);
+        return $this->belongsToMany(Role::class,'admin_roles','admin_id','role_id' )
+            ->withTimestamps();
     }
 
     /**
      * Get the permissions owned by the user.
      */
     public function permissions(){
-        return $this->hasMany(Permission::class);
+        return $this->belongsToMany(Permission::class,'admin_permissions','admin_id','permission_id' )
+            ->withTimestamps();
     }
+
 }

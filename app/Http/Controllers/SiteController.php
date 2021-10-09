@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\DB;
 
 class SiteController extends Controller
 {
+    public function __construct(){
+        $this->middleware('guest:admin')->except('logout', 'admin_logout');
+    }
+
     /**
      * the function displays the homepage content
      */

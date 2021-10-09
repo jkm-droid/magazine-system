@@ -41,6 +41,10 @@ class AdminLoginController extends Controller
         return redirect()->route('admin.show.login')->with('error', 'Error, login details are incorrect');
     }
 
+    public function admin_show_register(){
+        return view('admin.register');
+    }
+
     public function register(Request $request){
         $request->validate([
             'username'=>'required',

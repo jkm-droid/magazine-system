@@ -37,39 +37,40 @@ class ArticlesController extends Controller
     //save the article after getting details from the
     //form
     public function save_article(Request $request){
+        if ($request->user('admin')->can('create-article')) {
+            $request->validate([
+                'title' => 'required',
+                'body' => 'required',
+                'image' => 'required|image|file'
+            ]);
 
-        $request->validate([
-            'title'=>'required',
-            'body'=>'required',
-            'image'=>'required|image|file'
-        ]);
+            $article_info = $request->all();
+            //save the image to folder
+            $imageName = str_replace(' ', '_', $article_info['title']) . '.' . $request->image->extension();
+            $request->image->move(public_path('article_covers'), $imageName);
+            $article_info['image'] = $imageName;
 
-        $article_info = $request->all();
-        //save the image to folder
-        $imageName = str_replace(' ','_',$article_info['title']).'.'.$request->image->extension();
-        $request->image->move(public_path('article_covers'), $imageName);
-        $article_info['image'] = $imageName;
+            $article = new Article();
+            $user = Admin::find(Auth::user()->id);
+            $article->author = $user->name;
+            $article->admin_id = $user->id;
+            $article->title = $article_info['title'];
+            $article->slug = str_replace(" ", "-", strtolower($article_info['title']));
+            $article->body = $article_info['body'];
+            $article->image = $imageName;
 
-        $article = new Article();
-        $user = Admin::find(Auth::user()->id);
-        $article->author = $user->name;
-        $article->admin_id = $user->id;
-        $article->title = $article_info['title'];
-        $article->slug = str_replace(" ","-", strtolower($article_info['title']));
-        $article->body = $article_info['body'];
-        $article->image = $imageName;
+            if ($request->has('status')) {
+                $article->status = 0;
+            } else {
+                $article->status = 1;
+            }
 
-        if ($request->has('status')) {
-            $article->status = 0;
-        } else {
-            $article->status = 1;
+            //save the article
+            $article->save();
+            $article->categories()->attach($article_info['category']);
+
+            return redirect()->route('my_articles.index', $user->id)->with('success', 'Article added successfully');
         }
-
-        //save the article
-        $article->save();
-        $article->categories()->attach($article_info['category']);
-
-        return redirect()->route('my_articles.index', $user->id)->with('success', 'Article added successfully');
     }
 
     //show the edit form with an article's content

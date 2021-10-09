@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class RoleMiddleware
 {
@@ -18,13 +19,13 @@ class RoleMiddleware
     {
         if(!$request->user()->hasRole($role)) {
 
-            abort(404);
+            return Redirect::back()->with('error','you lack role to perform the action');
 
         }
 
         if($permission !== null && !$request->user()->can($permission)) {
 
-            abort(404);
+            return Redirect::back()->with('error','you lack permission to perform the action');
         }
 
         return $next($request);

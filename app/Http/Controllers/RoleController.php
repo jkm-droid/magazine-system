@@ -49,10 +49,10 @@ class RoleController extends Controller
         $role->save();
 
         //get a permission or array of permissions
-        $permisions = $request->permission;
+        $permissions = $request->permission;
 
-        for($p = 0;$p < count($permisions);$p++){
-            $role->permissions()->attach($permisions[$p]);
+        for($p = 0;$p < count($permissions);$p++){
+            $role->permissions()->attach($permissions[$p]);
         }
 
         return redirect()->route('role.index')->with('success', 'Role Saved Successfully');

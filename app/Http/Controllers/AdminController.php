@@ -1,0 +1,63 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Admin;
+use App\Models\Role;
+use Illuminate\Http\Request;
+
+class AdminController extends Controller
+{
+    public function __construct(){
+        $this->middleware('auth:admin');
+    }
+
+    //show all the authors and associated roles
+    public function index(){
+        $admins = Admin::with('roles')->latest()->paginate(10);
+
+        return view('dashboard.admins.index', compact('admins'))
+            ->with('i', (request()->input('page', 1) - 1) * 10);
+    }
+
+    //show admin edit form
+    public function edit_admin($admin_id){
+        $admin = Admin::find($admin_id);
+        $roles = Role::get();
+
+        return view('dashboard.admins.edit', compact('roles','admin'));
+    }
+
+    //update admin / assign roles
+    public function update_admin(Request $request, $admin_id){
+        $request->validate([
+            'role'=>'required'
+        ]);
+
+        $admin = Admin::find($admin_id);
+        $role = Role::find($request->role);
+        if ($role->slug == "admin"){
+            $admin->is_admin = 1;
+        }
+
+        $admin->update();
+
+        $admin->roles()->sync([$request->role]);
+
+        return redirect()->route('admin.index')->with('success','Role assigned successfully');
+    }
+
+    //create a new admin
+    public function create_admin(){
+        return view('dashboard.admins.create');
+    }
+
+    //send invitation link
+    public function send_admin_invite_link(Request $request){
+        $request->validate([
+            'email'=>'required|email'
+        ]);
+
+        $email_address = trim($request->email);
+    }
+}

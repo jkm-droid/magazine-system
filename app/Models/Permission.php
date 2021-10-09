@@ -26,7 +26,7 @@ class Permission extends Model
      * Get the roles that belong to the permissions.
      */
     public function roles(){
-        return $this->belongsToMany(Role::class,'admin_roles','permission_id','role_id' )
+        return $this->belongsToMany(Role::class,'role_permissions','permission_id','role_id' )
             ->withTimestamps();
     }
 }

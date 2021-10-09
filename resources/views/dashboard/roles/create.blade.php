@@ -38,19 +38,20 @@
                         </div>
                     </div>
 
-                    <div class="row g-3">
+                    <div class="row-cols-3 row-cols-md-4 g-4">
                         <div class="col-md-6 mt-3">
                             <label for="title" class="form-label">Select Permissions</label>
                             <div class="form-check">
-                                <div class="row">
+{{--                                <div class="row">--}}
                                     @foreach($permissions as $permission)
                                         <div class="col">
                                             <label class="form-check-label" for="flexCheckDefault">
-                                                <input class="form-check-input" type="checkbox" name="permission[]" value="{{ $permission->id }}">{{ $permission->name }}
+                                                <input class="form-check-input" type="checkbox" name="permission[]" value="{{ $permission->id }}">
+                                                {{ $permission->name }}
                                             </label>
                                         </div>
                                     @endforeach
-                                </div>
+{{--                                </div>--}}
                                 @if ($errors->has('permission'))
                                     <div class="text-danger form-text">{{ $errors->first('permission') }}</div>
                                 @endif
