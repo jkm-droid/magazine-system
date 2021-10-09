@@ -22,7 +22,7 @@ class AdminController extends Controller
 
     //show admin edit form
     public function edit_admin($admin_id){
-        $admin = Admin::find($admin_id);
+        $admin = Admin::with('roles')->find($admin_id);
         $roles = Role::get();
 
         return view('dashboard.admins.edit', compact('roles','admin'));
@@ -35,14 +35,11 @@ class AdminController extends Controller
         ]);
 
         $admin = Admin::find($admin_id);
-        $role = Role::find($request->role);
-        if ($role->slug == "admin"){
-            $admin->is_admin = 1;
+
+        $user_roles = $request->role;
+        for ($r = 0;$r < count($user_roles);$r++) {
+            $admin->roles()->sync([$user_roles[$r]]);
         }
-
-        $admin->update();
-
-        $admin->roles()->sync([$request->role]);
 
         return redirect()->route('admin.index')->with('success','Role assigned successfully');
     }

@@ -58,7 +58,12 @@
                     <div class="row g-3">
                         <div class="col-md-4">
                             <label for="role" class="form-label">Admin Role</label>
-                            <select multiple name="role" class="form-select form-control" aria-label="Default select example" autofocus>
+                            <select multiple name="role[]" class="form-select form-control" aria-label="Default select example" autofocus>
+                                @if($admin->roles)
+                                    @foreach($admin->roles as $admin_role)
+                                        <option value="{{ $admin_role->id }}" selected>{{ $admin_role->name }}</option>
+                                    @endforeach
+                                @endif
                                 <option value="" disabled selected>Select Admin Role</option>
                                 @foreach($roles as $role)
                                     <option value="{{ $role->id }}">{{ $role->name }}</option>

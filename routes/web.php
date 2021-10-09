@@ -38,7 +38,7 @@ Route::get('categories', [CategoryController::class, 'index'])->name('categories
 /**
  * only the person with either the admin or author role can access these routes
  * */
-Route::group(['middleware'=>['role:author,admin']], function (){
+Route::group(['middleware'=>['role:author']], function (){
     //articles
     Route::get('articles/create', [ArticlesController::class, 'create_article'])->name('article.create');
     Route::post('articles/save', [ArticlesController::class, 'save_article'])->name('article.save');

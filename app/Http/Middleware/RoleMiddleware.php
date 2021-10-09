@@ -17,7 +17,9 @@ class RoleMiddleware
      */
     public function handle(Request $request, Closure $next, $role, $permission=null)
     {
-        if(!$request->user()->hasRole($role)) {
+        $roles = explode('|',$role);
+//dd($roles);
+        if(!$request->user()->hasRole($roles)) {
 
             return Redirect::back()->with('error','you lack role to perform the action');
 

@@ -50,6 +50,9 @@
                             <th>Author</th>
                             <th>Creation Date</th>
                             <th>Status</th>
+                            @if(\Illuminate\Support\Facades\Auth::user()->is_admin = 1)
+                                <th>Action</th>
+                            @endif
                         </tr>
                         </thead>
 
@@ -69,6 +72,25 @@
                                     <td><i class="text-success fa fa-check-circle"></i></td>
                                 @else
                                     <td><i class="text-danger fa fa-times-circle"></i></td>
+                                @endif
+
+                                @if(\Illuminate\Support\Facades\Auth::user()->is_admin = 1)
+                                    <td>
+                                        @if($article->status  == 1)
+                                            <form action="{{ route('article.publish',$article->id) }}" method="post">
+                                                @csrf
+                                                @method('PUT')
+                                                <button type="submit" class="btn btn-warning btn-sm">Draft</button>
+                                            </form>
+                                        @else
+                                            <form action="{{ route('article.publish',$article->id) }}" method="post">
+                                                @csrf
+                                                @method('PUT')
+                                                <button type="submit" class="btn btn-success btn-sm" >Publish</button>
+                                            </form>
+                                        @endif
+
+                                    </td>
                                 @endif
 
                             </tr>

@@ -177,6 +177,6 @@ class ArticlesController extends Controller
             $message = "Article Drafted successfully";
         }
 
-        return redirect()->route('my_articles.index',Auth::user()->id)->with('success', $message);
+        return redirect()->route('articles.index',Auth::user()->id)->with('success', $message);
     }
 }

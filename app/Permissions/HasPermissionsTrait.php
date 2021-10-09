@@ -2,15 +2,18 @@
 
 namespace App\Permissions;
 
+use App\Models\Admin;
 use App\Models\Permission;
 use App\Models\Role;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 trait HasPermissionsTrait
 {
     public function givePermissionsTo(... $permissions) {
 
         $permissions = $this->getAllPermissions($permissions);
-        dd($permissions);
+//        dd($permissions);
         if($permissions === null) {
             return $this;
         }
@@ -47,19 +50,25 @@ trait HasPermissionsTrait
         return false;
     }
 
-    public function hasRole( ... $roles ) {
-
+    public function hasRole(... $roles) {
+        
         foreach ($roles as $role) {
-            if ($this->roles->contains('slug', $role)) {
-                return true;
+            for ($i = 0;$i < count($role);$i++){
+//                dd($role[$i]);
+//                dd($this->roles->contains('slug', $role[$i]));
+                if ($this->roles->contains('slug', $role[$i])) {
+
+                    return true;
+                }
             }
         }
+
         return false;
     }
 
     public function roles() {
 
-        return $this->belongsToMany(Role::class,'admin_roles');
+        return $this->belongsToMany(Role::class,'admin_roles','admin_id','role_id' );
 
     }
     public function permissions() {
@@ -76,5 +85,40 @@ trait HasPermissionsTrait
 
         return Permission::whereIn('slug',$permissions)->get();
 
+    }
+
+    /**
+     * check user roles
+     */
+    public function authorizeRoles($roles)
+    {
+        if ($this->hasAnyRole($roles)) {
+            return true;
+        }else
+            return Redirect::back()->with('error','Unauthorized action!');
+    }
+
+    public function hasAnyRole($roles)
+    {
+        if (is_array($roles)) {
+            foreach ($roles as $role) {
+                if ($this->hasRole($role)) {
+                    return true;
+                }
+            }
+        } else {
+            if ($this->hasRole($roles)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function hassRole($role)
+    {
+        if ($this->roles()->where('slug', $role)->first()) {
+            return true;
+        }
+        return false;
     }
 }
