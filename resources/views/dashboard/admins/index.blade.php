@@ -47,6 +47,7 @@
                         <tr>
                             <th>#</th>
                             <th>Name</th>
+                            <th>Username</th>
                             <th>Email</th>
                             <th>Role</th>
                             <th>Creation Date</th>
@@ -59,6 +60,7 @@
                             <tr>
                                 <td>{{ ++$i }}</td>
                                 <td><a href="{{ route('admin.show', $admin->id) }}">{{ $admin->name }}</a></td>
+                                <td>{{ $admin->username }}</td>
                                 <td>{{ $admin->email }}</td>
                                 <td>
                                     @foreach($admin->roles as $admin_role)

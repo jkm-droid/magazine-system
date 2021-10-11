@@ -30,15 +30,10 @@ Route::get('auth_admin/logout', [AdminLoginController::class, 'admin_logout'])->
 Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
 /**
- * everyone (admin / author) can view all the articles, categories
- */
-Route::get('articles', [ArticlesController::class, 'index'])->name('articles.index');
-Route::get('categories', [CategoryController::class, 'index'])->name('categories.index');
-
-/**
- * only the person with either the admin or author role can access these routes
+ * only the person with either the admin or author or both roles can access these routes
  * */
-Route::group(['middleware'=>['role:author']], function (){
+Route::group(['middleware'=>['role:author|admin']], function (){
+
     //articles
     Route::get('articles/create', [ArticlesController::class, 'create_article'])->name('article.create');
     Route::post('articles/save', [ArticlesController::class, 'save_article'])->name('article.save');
@@ -46,6 +41,10 @@ Route::group(['middleware'=>['role:author']], function (){
     Route::put('articles/update/{article_id}', [ArticlesController::class, 'update_article'])->name('article.update');
     Route::get('articles/show/{article_id}', [ArticlesController::class, 'show_article'])->name('article.show');
     Route::put('articles/delete/{article_id}', [ArticlesController::class, 'delete_article'])->name('article.delete');
+    /**
+     * individual articles for an admin or author
+     */
+    Route::get('articles/{author_id}', [ArticlesController::class, 'my_articles'])->name('my_articles.index');
 
     //categories
     Route::get('categories/create', [CategoryController::class, 'create_category'])->name('category.create');
@@ -58,14 +57,11 @@ Route::group(['middleware'=>['role:author']], function (){
 
 
 /**
- * individual articles for an admin or author
- */
-Route::get('articles/{author_id}', [ArticlesController::class, 'my_articles'])->name('my_articles.index');
-
-/**
  * These routes are strictly accessible by the person with admin role only
  */
 Route::group(['middleware'=>'role:admin'], function (){
+    Route::get('articles', [ArticlesController::class, 'index'])->name('articles.index');
+    Route::get('categories', [CategoryController::class, 'index'])->name('categories.index');
     //only the admin can publish or un-publish an article
     Route::put('articles/publish/{article_id}', [ArticlesController::class, 'publish_draft_article'])->name('article.publish');
 

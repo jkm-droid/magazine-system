@@ -18,9 +18,10 @@ class DashboardController extends Controller
         $total_articles = Article::count();
         $total_categories = Category::count();
         $total_admins = Admin::count();
-//$user = Auth::user();
+$user = Auth::user();
 //dd($user->hasRole('author'));
-        return view('dashboard.admin')
+//        dd($user->can('publish-article'));
+        return view('dashboard.dashboard')
             ->with('total_articles', $total_articles)
             ->with('total_categories', $total_categories)
             ->with('total_admins', $total_admins);

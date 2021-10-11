@@ -5,12 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use App\Models\Article;
 use App\Models\Category;
-use Carbon\Carbon;
-use Faker\Factory as Faker;
-use http\Client\Curl\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use App\Permissions\HasPermissionsTrait;
+use Illuminate\Support\Facades\Redirect;
 
 class ArticlesController extends Controller
 {
@@ -27,17 +26,21 @@ class ArticlesController extends Controller
     }
 
     //show the edit form / create new article
-    public function create_article(){
-        //get all the categories
-        $categories = Category::get();
+    public function create_article(Request $request){
+        if ($request->user('admin')->can('create-article')) {
+            //get all the categories
+            $categories = Category::get();
 
-        return view('dashboard.articles.create', compact('categories'));
+            return view('dashboard.articles.create', compact('categories'));
+        }
+
+        return Redirect::back()->with('error', 'You lack permission to perform the action');
     }
 
     //save the article after getting details from the
     //form
     public function save_article(Request $request){
-        if ($request->user('admin')->can('create-article')) {
+
             $request->validate([
                 'title' => 'required',
                 'body' => 'required',
@@ -70,21 +73,17 @@ class ArticlesController extends Controller
             $article->categories()->attach($article_info['category']);
 
             return redirect()->route('my_articles.index', $user->id)->with('success', 'Article added successfully');
-        }
     }
 
     //show the edit form with an article's content
     public function edit_article($article_id){
-        if ($this->check_author($article_id)) {
-            $article = Article::find($article_id);
-            //get all the categories
-            $categories = Category::get();
 
-            return view('dashboard.articles.edit', compact('article'))
-                ->with('categories', $categories);
-        }
+        $article = Article::find($article_id);
+        //get all the categories
+        $categories = Category::get();
 
-        return redirect()->route('articles.index')->with('error', 'You lack permission to edit article');
+        return view('dashboard.articles.edit', compact('article'))
+            ->with('categories', $categories);
     }
 
     //update the article
@@ -135,48 +134,41 @@ class ArticlesController extends Controller
 
     //delete an article
     public function delete_article($article_id){
-        //only the article's author can delete an article
-        if ($this->check_author($article_id)) {
-            Article::find($article_id)->delete();
-            return redirect()->route('articles.index')->with('success', 'Article deleted successfully');
-        }
 
-        return redirect()->route('my_articles.index')->with('error', 'You lack permission to delete article');
+        $author_id = Auth::user()->id;
 
-    }
+        Article::find($article_id)->delete();
 
-    //check if the logged user is an article's author
-    public function check_author($article_id){
-        $user = Admin::find(Auth::user()->id);
-        $article = Article::find($article_id);
-        if ($user->id == $article->admin_id){
-            return true;
-        }else{
-            return false;
-        }
+        return redirect()->route('my_articles.index',$author_id)->with('success', 'Article deleted successfully');
+
     }
 
     //find articles for a specific author
     public function my_articles($author_id){
+
         $articles = Article::with('categories')->where('admin_id', $author_id)->latest()->paginate(10);
 
         return view('dashboard.articles.my_articles', compact('articles'))
             ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
-    public function publish_draft_article($article_id){
+    public function publish_draft_article(Request $request,$article_id){
 
-        $article = Article::find($article_id);
-        if ($article->status == 0){
-            $article->status = 1;
-            $article->update();
-            $message = "Article Published successfully";
-        }else{
-            $article->status = 0;
-            $article->update();
-            $message = "Article Drafted successfully";
+        if ($request->user('admin')->can('publish-article')) {
+            $article = Article::find($article_id);
+            if ($article->status == 0) {
+                $article->status = 1;
+                $article->update();
+                $message = "Article Published successfully";
+            } else {
+                $article->status = 0;
+                $article->update();
+                $message = "Article Drafted successfully";
+            }
+
+            return redirect()->route('articles.index', Auth::user()->id)->with('success', $message);
         }
 
-        return redirect()->route('articles.index',Auth::user()->id)->with('success', $message);
+        return Redirect::back()->with('error', 'You lack permission to perform the action');
     }
 }

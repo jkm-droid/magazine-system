@@ -42,7 +42,7 @@
                         <div class="col-md-6 mt-3">
                             <label for="title" class="form-label">Current Permissions  <span class="text-info">Check to remove</span></label>
                             <div class="form-check">
-                                <div class="row">
+{{--                                <div class="row">--}}
                                     @foreach($role->permissions as $permission)
                                         <div class="col">
                                             <label class="form-check-label" for="flexCheckDefault">
@@ -51,7 +51,7 @@
                                             </label>
                                         </div>
                                     @endforeach
-                                </div>
+{{--                                </div>--}}
 
                                 @if ($errors->has('permission'))
                                     <div class="text-danger form-text">{{ $errors->first('permission') }}</div>
@@ -60,20 +60,20 @@
                         </div>
                     </div>
                     <div class="row g-3">
-                        <div class="col-md-3 mt-3">
+                        <div class="col-md-6 mt-3">
                             <label for="title" class="form-label">Add New Permissions <span class="text-info">Check to add</span></label>
                             <div class="form-check">
-                                <div class="row">
+{{--                                <div class="row">--}}
 
                                     @for($np = 0; $np < count($new_permissions); $np++)
                                         <div class="col-4">
-                                            <label class="form-check-label m-2" for="flexCheckDefault">
+                                            <label class="form-check-label" for="flexCheckDefault">
                                                 <input class="form-check-input" type="checkbox" name="permission[]" value="{{ $new_permissions[$np] }}">
                                                 {{ $new_permissions[$np] }}
                                             </label>
                                         </div>
                                     @endfor
-                                </div>
+{{--                                </div>--}}
 
                                 @if ($errors->has('permission'))
                                     <div class="text-danger form-text">{{ $errors->first('permission') }}</div>

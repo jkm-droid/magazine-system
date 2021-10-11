@@ -50,17 +50,18 @@ trait HasPermissionsTrait
         return false;
     }
 
-    public function hasRole(... $roles) {
-        
+    public function hasRole($roles) {
+
         foreach ($roles as $role) {
-            for ($i = 0;$i < count($role);$i++){
+//            dd($role);
+//            for ($i = 0;$i < count($role);$i++){
 //                dd($role[$i]);
 //                dd($this->roles->contains('slug', $role[$i]));
-                if ($this->roles->contains('slug', $role[$i])) {
+                if ($this->roles->contains('slug', $role)) {
 
                     return true;
                 }
-            }
+//            }
         }
 
         return false;
