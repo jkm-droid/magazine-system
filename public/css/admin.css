@@ -1,0 +1,7 @@
+.notification-button1, .notification-button2{
+    display: none;
+}
+
+.notification:hover{
+    background-color: whitesmoke;
+}

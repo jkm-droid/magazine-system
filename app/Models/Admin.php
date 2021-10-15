@@ -57,4 +57,9 @@ class Admin extends Authenticatable
             ->withTimestamps();
     }
 
+    public function getAllNotificationsAttribute(){
+        return count(auth()->user()->unreadNotifications);
+    }
+
+    protected $appends = ['all_notifications'];
 }

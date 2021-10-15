@@ -26,7 +26,7 @@ a ,p{
 }
 
 .navbar .nav-link>a:hover, .mega-dropdown:hover .dropbtn {
-   background-color: red;
+    background-color: red;
 }
 
 .mega-dropdown-content {
@@ -64,7 +64,7 @@ a ,p{
 }
 
 .nav-item > a:hover{
-   color: lightgrey;
+    color: lightgrey;
 }
 
 /*
@@ -134,3 +134,53 @@ style for the category drop down
     display: table;
     clear: both;
 }
+
+/*carousel styling*/
+
+@media (max-width: 767px) {
+    .carousel-inner .carousel-item > div {
+        display: none;
+    }
+    .carousel-inner .carousel-item > div:first-child {
+        display: block;
+    }
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+    display: flex;
+}
+
+/* medium and up screens */
+@media (min-width: 768px) {
+
+    .carousel-inner .carousel-item-end.active,
+    .carousel-inner .carousel-item-next {
+        transform: translateX(25%);
+    }
+
+    .carousel-inner .carousel-item-start.active,
+    .carousel-inner .carousel-item-prev {
+        transform: translateX(-25%);
+    }
+}
+
+.carousel-inner .carousel-item-end,
+.carousel-inner .carousel-item-start {
+    transform: translateX(0);
+}
+
+.multi-item-carousel img{
+    height: 250px;
+    opacity: 0.8;
+}
+.multi-item-carousel .card-img-overlay{
+   color: red;
+}
+
+/*red color style*/
+.put-red{
+    color: red;
+}
+

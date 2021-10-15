@@ -21,7 +21,7 @@
     <div class="col-12">
         <div class="card card-outline card-danger">
             <div class="card-header">
-                <h3 class="card-title">Responsive Hover Table</h3>
+                <h3 class="card-title"><a class="btn btn-success btn-sm" href="{{ route('articles.index') }}">Back</a></h3>
             </div>
             <!-- /.card-header -->
 
@@ -69,12 +69,12 @@
                         @endif
                     </div>
 
-                    <div class="check-primary mt-2">
-                        <input type="checkbox" name="status" id="status">
-                        <label for="status">
-                            Draft
-                        </label>
-                    </div>
+{{--                    <div class="check-primary mt-2">--}}
+{{--                        <input type="checkbox" name="status" id="status">--}}
+{{--                        <label for="status">--}}
+{{--                            Draft--}}
+{{--                        </label>--}}
+{{--                    </div>--}}
                 </div>
 
                 <div class="card-footer">

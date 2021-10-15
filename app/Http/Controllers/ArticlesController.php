@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use App\Models\Article;
 use App\Models\Category;
+use App\Notifications\PublishPostNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use App\Permissions\HasPermissionsTrait;
@@ -42,7 +44,8 @@ class ArticlesController extends Controller
     public function save_article(Request $request){
 
             $request->validate([
-                'title' => 'required',
+                'title' => 'required|unique:articles',
+                'category'=> 'required',
                 'body' => 'required',
                 'image' => 'required|image|file'
             ]);
@@ -61,18 +64,23 @@ class ArticlesController extends Controller
             $article->slug = str_replace(" ", "-", strtolower($article_info['title']));
             $article->body = $article_info['body'];
             $article->image = $imageName;
-
-            if ($request->has('status')) {
-                $article->status = 0;
-            } else {
-                $article->status = 1;
-            }
+            $article->status = 0;
 
             //save the article
             $article->save();
+
             $article->categories()->attach($article_info['category']);
+            //send notification to admin
+            $this->send_notification($article);
 
             return redirect()->route('my_articles.index', $user->id)->with('success', 'Article added successfully');
+    }
+
+    //send the notification to admin to publish the article
+    public function send_notification($article){
+
+        $admins = Admin::where('is_admin',1)->get();
+        Notification::send($admins, new PublishPostNotification($article));
     }
 
     //show the edit form with an article's content

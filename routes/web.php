@@ -5,16 +5,18 @@ use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\NotificationsController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
 
 //site routes
-Route::get('/', [SiteController::class, 'show_index_page'])->name('home');
-Route::get('/article/search', [SiteController::class, 'search_articles'])->name('articles.search');
-Route::get('/article/show/{slug}', [SiteController::class, 'show_full_article'])->name('article.full.show');
-Route::get('/article/category/{slug}', [SiteController::class, 'get_all_articles_per_category'])->name('category.all.articles.show');
+Route::get('/', [SiteController::class, 'show_index_page'])->name('site.home');
+Route::get('/industrialising-africa', [SiteController::class, 'show_articles_page'])->name('site.articles.show');
+Route::get('/industrialising-africa/search', [SiteController::class, 'search_articles'])->name('site.articles.search');
+Route::get('/industrialising-africa/show/{slug}', [SiteController::class, 'show_full_article'])->name('site.article.full.show');
+Route::get('/industrialising-africa/category/{slug}', [SiteController::class, 'get_all_articles_per_category'])->name('site.category.all.articles.show');
 
 //filter articles based on category
 Route::get('category/article/{category_id}', [SiteController::class, 'get_category_articles'])->name('get.category.articles');
@@ -55,6 +57,7 @@ Route::group(['middleware'=>['role:author|admin']], function (){
     Route::put('categories/delete/{category_id}', [CategoryController::class, 'delete_category'])->name('category.delete');
 });
 
+Route::post('notifications/publish/ajax/{article_id}', [NotificationsController::class, 'publish_article'])->name('article.ajax.publish');
 
 /**
  * These routes are strictly accessible by the person with admin role only
@@ -91,4 +94,9 @@ Route::group(['middleware'=>'role:admin'], function (){
     Route::post('admins/update/{admin_id}',[AdminController::class,'update_admin'])->name('admin.update');
     Route::get('admins/show/{admin_id}',[AdminController::class,'show_admin'])->name('admin.show');
     Route::post('admins/delete/{admin_id}',[AdminController::class,'delete_admin'])->name('admin.delete');
+
+    //notifications
+    Route::get('notifications', [NotificationsController::class,'show_all_notifications'])->name('notifications.all.show');
+    Route::post('notifications/mark_as_read/{notification_id}', [NotificationsController::class,'mark_as_read'])->name('notification.mark.as.read');
+
 });

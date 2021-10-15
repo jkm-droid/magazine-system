@@ -6,6 +6,7 @@ use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class CategoryController extends Controller
 {
@@ -30,15 +31,22 @@ class CategoryController extends Controller
     //add a new category
     public function save_category(Request $request){
         $request->validate([
-            'title'=> 'required | unique:categories'
+            'title'=> 'required | unique:categories',
+            'image' => 'required|image|file'
         ]);
 
         $data = $request->all();
+        //save the image to folder
+        $imageName = str_replace(' ', '_', $data['title']) . '.' . $request->image->extension();
+        $request->image->move(public_path('category_covers'), $imageName);
+        $data['image'] = $imageName;
+
         $category = new Category();
-        $category->title = $data['title'];
+        $category->title = ucfirst($data['title']);
         $category->slug = str_replace(" ", "-", strtolower($data['title']));
         $category->admin_id = Auth::user()->id;
         $category->author = Auth::user()->name;
+        $category->image = $imageName;
         $category->save();
 
         return redirect()->route('categories.index')->with('success','Category created successfully');
@@ -59,7 +67,18 @@ class CategoryController extends Controller
 
         $data = $request->all();
         $category = Category::find($category_id);
-        $category->title = $data['title'];
+
+        if ($request->hasFile('image')){
+            $imageName = str_replace(' ','_',$data['title']).'.'.$request->image->extension();
+            $request->image->move(public_path('category_covers'), $imageName);
+//            File::delete($data->image);
+
+            $data['image'] = $imageName;
+            $category->image = $imageName;
+        }
+
+        $category->title = ucfirst($data['title']);
+        $category->slug = str_replace(" ", "-", strtolower($data['title']));
         //update the category
         $category->update();
 

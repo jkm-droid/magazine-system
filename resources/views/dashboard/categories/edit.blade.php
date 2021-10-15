@@ -37,6 +37,11 @@
                             @endif
                         </div>
 
+                        <div class="col-md-6">
+                            <label for="image" class="form-label">Article Cover Image</label>
+                            <input type="file" name="image" class="form-control" placeholder="enter article image" id="image">
+                        </div>
+
                     </div>
                 </div>
 

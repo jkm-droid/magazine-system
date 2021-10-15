@@ -37,6 +37,14 @@
                             @endif
                         </div>
 
+                        <div class="col-md-6">
+                            <label for="image" class="form-label">Category Cover Image</label>
+                            <input type="file" name="image" class="form-control" placeholder="enter article image" id="image">
+                            @if ($errors->has('image'))
+                                <div class="text-danger form-text">{{ $errors->first('image') }}</div>
+                            @endif
+                        </div>
+
                     </div>
                 </div>
 

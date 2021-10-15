@@ -34,7 +34,7 @@ class AdminLoginController extends Controller
         $info = $request->all();
 
         $credentials = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
-        if(Auth::guard('admin')->attempt(array($credentials=>$info['username'], 'password'=>$info['password'], 'is_admin'=>1))){
+        if(Auth::guard('admin')->attempt(array($credentials=>$info['username'], 'password'=>$info['password']))){
             return redirect()->intended('dashboard')->with('success', 'logged in successfully');
         }
 

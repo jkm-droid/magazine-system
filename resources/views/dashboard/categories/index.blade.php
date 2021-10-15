@@ -46,6 +46,7 @@
                         <tr>
                             <th>Title</th>
                             <th>Author</th>
+                            <th>Image</th>
                             <th>Creation Date</th>
                             <th>Action</th>
                         </tr>
@@ -56,6 +57,7 @@
                             <tr>
                                 <td><a href="{{ route('category.show', $category->id) }}">{{ $category->title }}</a></td>
                                 <td>{{ $category->author }}</td>
+                                <td><img src="category_covers/{{$category->image }}" alt="" class="img-fluid" style="height: 30px; width: 40px;"></td>
                                 <td>{{ $category->created_at }}</td>
 
                                 <td>

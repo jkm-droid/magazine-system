@@ -11,13 +11,13 @@
         @foreach($cat_articles as $cat_article)
             <div class="row justify-content-start">
                 <div class="col-sm-2 col-md-2 col-lg-2">
-                    <a class="text-secondary" href="{{ route('article.full.show', $cat_article->slug) }}">
+                    <a class="text-secondary" href="{{ route('site.article.full.show', $cat_article->slug) }}">
                         <img class="float-start card-img-top" src="/article_covers/{{ $cat_article->image }}"  width="150" height="130" alt="">
                     </a>
                 </div>
 
                 <div class="col-sm-8 col-md-8 col-lg-8">
-                    <a class="text-warning" href="{{ route('article.full.show', $cat_article->slug) }}">
+                    <a class="text-warning" href="{{ route('site.article.full.show', $cat_article->slug) }}">
                         <h4><strong>{{ $cat_article->title }}</strong></h4>
                     </a>
                     <p class="mb-3 text-dark">

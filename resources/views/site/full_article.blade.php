@@ -21,7 +21,7 @@
                 @foreach($author_articles as $author_article)
                     <div class="col">
                         <div class="card h-100" style="border:none;">
-                            <a href="{{ route('article.full.show', $author_article->slug) }}">
+                            <a href="{{ route('site.article.full.show', $author_article->slug) }}">
                                 <img src="/article_covers/{{ $author_article->image }}" class="card-img-top" alt="..." height="150">
                                 <div class="card-body">
                                     @foreach($author_article->categories as $more_cat)
@@ -35,7 +35,7 @@
 
                                     @endforeach
                                     <h5 class="card-title">
-                                        <a class="text-warning" href="{{ route('article.full.show', $author_article->slug) }}">{{ $author_article->title }}</a>
+                                        <a class="text-warning" href="{{ route('site.article.full.show', $author_article->slug) }}">{{ $author_article->title }}</a>
                                     </h5>
 {{--                                    <p class="card-text">{!! \Illuminate\Support\Str::limit($author_article->body, 80, $end='...') !!}</p>--}}
                                 </div>

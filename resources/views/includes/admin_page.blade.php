@@ -57,4 +57,14 @@
             </p>
         </a>
     </li>
+
+    <li class="nav-item">
+        <a href="{{ route('notifications.all.show') }}" class="nav-link">
+            <i class="nav-icon fa fa-bell"></i>
+            <p>
+                Notifications
+                <span class="badge badge-danger right">{{ \Illuminate\Support\Facades\Auth::user()->all_notifications }}</span>
+            </p>
+        </a>
+    </li>
 @endif

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Indu Africa | Dashboard</title>
 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
@@ -25,6 +26,10 @@
     <link rel="stylesheet" href="{{ asset('admin-lte/plugins/daterangepicker/daterangepicker.css') }}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('admin-lte/plugins/summernote/summernote-bs4.min.css') }}">
+
+    <!--- admin panel css section---->
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}" />
+    <!--- edn admin panel section---->
 
     <!--- toast section---->
     <!-- Core Stylesheet -->
@@ -97,6 +102,8 @@
     $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Bootstrap 4 -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 <script src="{{ asset('admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- ChartJS -->
 <script src="{{ asset('admin-lte/plugins/chart.js/Chart.min.js') }}"></script>
@@ -120,6 +127,38 @@
 <script src="{{ asset('admin-lte/dist/js/adminlte.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('admin-lte/dist/js/demo.js') }}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function (){
+
+        $('.notification').hover(function (){
+
+            if(!$(this).hasClass('hoverd')){
+
+                $(this).addClass('hoverd');
+                $(this).find('.notification-button1').show();
+                $(this).find('.notification-button2').show();
+            }
+        }, function (){
+            $(this).removeClass('hoverd');
+        });
+    });
+
+    $(document).on("click", 'button[data-id]', function (){
+       $(this).attr('data-id').hide();
+        $(this).removeClass('hoverd');
+        $('.notification-button2').hide();
+
+    });
+
+    $('.notification-button2').on("click",'span[data-id]', function (){
+        var button_two = $(this).attr('data-id');
+        $(this).removeClass('hoverd');
+        $('.notification-button2').hide();
+
+    });
+
+</script>
 
 <script type="text/javascript">
     @if(Session::has('success'))

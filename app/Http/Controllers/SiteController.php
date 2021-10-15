@@ -14,15 +14,22 @@ class SiteController extends Controller
         $this->middleware('guest:admin')->except('logout', 'admin_logout');
     }
 
+    public function show_index_page(){
+        return view('site.home')
+            ->with('categories', $this->get_categories())
+            ->with('all_categories', $this->get_all_categories())
+            ->with('one_category', $this->get_one_category());
+    }
+
     /**
      * the function displays the homepage content
      */
-    public function show_index_page(){
+    public function show_articles_page(){
         $feature_article = Article::with('categories')->where('status',1)->inRandomOrder()->limit(1)->get();
         $more_articles = Article::with('categories')->where('status',1)->inRandomOrder()->limit(3)->get();
         $articles = Article::with('categories')->where('status',1)->latest()->paginate(5);
 //dd($this->get_all_categories());
-        return view('site.home', compact('articles'))
+        return view('site.articles', compact('articles'))
         ->with('i', (request()->input('page', 1) - 1) * 5)
             ->with('feature_article', $feature_article)
             ->with('more_articles', $more_articles)
