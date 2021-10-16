@@ -14,12 +14,39 @@ class SiteController extends Controller
         $this->middleware('guest:admin')->except('logout', 'admin_logout');
     }
 
+    /**
+     * show the home page
+     */
     public function show_index_page(){
+
         return view('site.home')
             ->with('categories', $this->get_categories())
             ->with('all_categories', $this->get_all_categories())
             ->with('one_category', $this->get_one_category());
     }
+
+    /**
+     * show the about us page
+     */
+    public function show_about_page(){
+
+        return view('site.about')
+            ->with('categories', $this->get_categories())
+            ->with('all_categories', $this->get_all_categories())
+            ->with('one_category', $this->get_one_category());
+    }
+
+    /**
+     * show the about us page
+     */
+    public function show_faqs_page(){
+
+        return view('site.faqs')
+            ->with('categories', $this->get_categories())
+            ->with('all_categories', $this->get_all_categories())
+            ->with('one_category', $this->get_one_category());
+    }
+
 
     /**
      * the function displays the homepage content

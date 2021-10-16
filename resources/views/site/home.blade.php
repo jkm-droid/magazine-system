@@ -151,11 +151,11 @@
 
                 <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                     <div class="portfolio-wrap">
-                        <img src="{{ asset('/site_images/magazine_cover.jpg') }}" class="img-fluid" alt="">
+                        <img src="{{ asset('/site_images/magazine_cover.jpg') }}" loading="lazy" class="img-fluid" alt="">
                         <div class="portfolio-info">
                             <h4>Magazine Cover</h4>
                             <div class="portfolio-links">
-                                <a href="{{ asset('/site_images/magazine_cover.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1">
+                                <a href="{{ asset('/site_images/magazine_cover.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="">
                                     <i class="bx bx-plus"></i></a>
                             </div>
                         </div>
@@ -164,11 +164,12 @@
 
                 <div class="col-lg-4 col-md-6 portfolio-item filter-web">
                     <div class="portfolio-wrap">
-                        <img src="{{ asset('/site_images/magazine_cover_3.jpg') }}" class="img-fluid" alt="">
+                        <img src="{{ asset('/site_images/magazine_cover_3.jpg') }}" loading="lazy" class="img-fluid" alt="">
                         <div class="portfolio-info">
                             <h4>Magazine</h4>
                             <div class="portfolio-links">
-                                <a href="{{ asset('/site_images/magazine_cover_3.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
+                                <a href="{{ asset('/site_images/magazine_cover_3.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="">
+                                    <i class="bx bx-plus"></i></a>
                             </div>
                         </div>
                     </div>
@@ -180,7 +181,7 @@
                         <div class="portfolio-info">
                             <h4>Magazine</h4>
                             <div class="portfolio-links">
-                                <a href="{{ asset('/site_images/social_media_flyer.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2">
+                                <a href="{{ asset('/site_images/social_media_flyer.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="">
                                     <i class="bx bx-plus"></i></a>
                                 <!-- <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a> -->
                             </div>
@@ -190,11 +191,11 @@
 
                 <div class="col-lg-4 col-md-6 portfolio-item filter-web">
                     <div class="portfolio-wrap">
-                        <img src="{{ asset('/site_images/green.jpg') }}" class="img-fluid" alt="">
+                        <img src="{{ asset('/site_images/assembly.jpg') }}" class="img-fluid" alt="">
                         <div class="portfolio-info">
-                            <h4>Green Energy</h4>
+                            <h4>Assembly Line</h4>
                             <div class="portfolio-links">
-                                <a href="{{ asset('/site_images/green.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2">
+                                <a href="{{ asset('/site_images/assembly.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="">
                                     <i class="bx bx-plus"></i></a>
                                 <!-- <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a> -->
                             </div>
@@ -208,7 +209,7 @@
                         <div class="portfolio-info">
                             <h4>Manufacturing</h4>
                             <div class="portfolio-links">
-                                <a href="{{ asset('/site_images/factory.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
+                                <a href="{{ asset('/site_images/factory.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title=""><i class="bx bx-plus"></i></a>
                                 <!-- <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a> -->
                             </div>
                         </div>
@@ -221,7 +222,7 @@
                         <div class="portfolio-info">
                             <h4>Logistics</h4>
                             <div class="portfolio-links">
-                                <a href="{{ asset('/site_images/logistics0.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
+                                <a href="{{ asset('/site_images/logistics0.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title=""><i class="bx bx-plus"></i></a>
                                 <!-- <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a> -->
                             </div>
                         </div>
@@ -657,7 +658,6 @@
             </div>
         </div>
     </section>
-
     <!---- end frequently asked questions section ---->
 
 @endsection

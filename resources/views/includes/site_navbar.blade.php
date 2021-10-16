@@ -22,7 +22,8 @@
                         @endforeach
                     </ul>
                 </li>
-                <li><a class="nav-link scrollto" href="#about">About Us</a></li>
+                <li><a class="nav-link scrollto" href="{{ route('site.faqs.show') }}">FAQS</a></li>
+                <li><a class="nav-link scrollto" href="{{ route('site.about.show') }}">About Us</a></li>
 
                 <li><a class="nav-link scrollto" href="#footer">Contacts</a></li>
             </ul>

@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 //site routes
 Route::get('/', [SiteController::class, 'show_index_page'])->name('site.home');
 Route::get('/industrialising-africa', [SiteController::class, 'show_articles_page'])->name('site.articles.show');
+Route::get('/industrialising-africa/about', [SiteController::class, 'show_about_page'])->name('site.about.show');
+Route::get('/industrialising-africa/faqs', [SiteController::class, 'show_faqs_page'])->name('site.faqs.show');
 Route::get('/industrialising-africa/search', [SiteController::class, 'search_articles'])->name('site.articles.search');
 Route::get('/industrialising-africa/show/{slug}', [SiteController::class, 'show_full_article'])->name('site.article.full.show');
 Route::get('/industrialising-africa/category/{slug}', [SiteController::class, 'get_all_articles_per_category'])->name('site.category.all.articles.show');

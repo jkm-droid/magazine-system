@@ -58,9 +58,13 @@
                         @foreach($articles as $article)
                             <tr>
                                 <td><a href="{{ route('article.show', $article->id) }}">{{ $article->title }}</a></td>
-                                @foreach($article->categories as $category)
-                                    <td>{{ $category->title }}</td>
-                                @endforeach
+                                @if($article->categories->isEmpty())
+                                    <td></td>
+                                @else
+                                    @foreach($article->categories as $category)
+                                        <td>{{ $category->title }}</td>
+                                    @endforeach
+                                @endif
                                 <td>
                                     <img src="/article_covers/{{ $article->image }}" alt="" height="40" width="50">
                                 </td>
