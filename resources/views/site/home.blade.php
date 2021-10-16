@@ -2,13 +2,24 @@
 
 @section('content')
     <!--    welcome area--->
-    <section id="hero" class="d-flex align-items-center"  style="margin-bottom: 5px;">
+    <section id="hero" class="d-flex align-items-center"  >
         <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
             <div class="row justify-content-center">
+                {{--                <div class="col-xl-7 col-lg-9 ">--}}
+                {{--                    <h2 class="text-dark">Welcome to</h2>--}}
+                {{--                </div>--}}
+
                 <div class="col-xl-7 col-lg-9 text-center">
-                    <h1 class="text-dark">Welcome to Industrialising Africa Magazine</h1>
-                    <h3 class="text-danger quote-danger" style="font-style: italic;"> <strong>"Ensuring a dynamic information aggregation and information platform for
-                            investors, manufacturers, processors and suppliers for the continent of Africa"</strong></h3>
+                    <h1 class="text-dark">Industrialising <span style="color: red;">Africa</span> Magazine</h1>
+                    <h3 class="text-danger quote-danger" style="font-style: italic;">
+                        <strong>
+                            "Ensuring a dynamic information aggregation and information platform for
+                            investors, manufacturers, processors and suppliers for the continent of Africa"
+                        </strong>
+                    </h3>
+                    <h2 class="text-dark" id="text"></h2>
+                    <div id="cursor"></div>
+
                 </div>
             </div>
             <div class="text-center mt-2">
@@ -20,7 +31,8 @@
                     <div class="icon-box bg-warning">
                         <div class="icon text-center"><i class="bx bxs-factory"></i><i class="bx bxs-car-mechanic bx-lg"></i></div>
                         <h4 class="title"><a href="">Manufacturing & Assembly</a></h4>
-                        <p class="description">Get unique and beautiful android apps created using a simplified and accelerated development process.</p>
+                        <p class="description">Manufacturing activities are known to boost the overall value generated in a given
+                            economy by catalysing more activity along value chains, from the raw materials to the finished products. </p>
                     </div>
                 </div>
 
@@ -28,7 +40,8 @@
                     <div class="icon-box bg-warning">
                         <div class="icon"><i class="bx bxs-ev-station"></i><i class="bx bxs-chip"></i></div>
                         <h4 class="title"><a href="">Energy & Technology</a></h4>
-                        <p class="description">Get organized and cleaned from your target web URL scraped with with Python and Beautiful Soup.</p>
+                        <p class="description">Energy is a critical component in the industrialisation process.
+                            As Africa boosts its energy potential as a key driver for the industrialisation agenda.</p>
                     </div>
                 </div>
 
@@ -36,7 +49,7 @@
                     <div class="icon-box bg-warning">
                         <div class="icon"><i class="bx bxs-truck"></i><i class="bx bxs-plane-alt"></i></div>
                         <h4 class="title"><a href="">Logistics and Transport</a></h4>
-                        <p class="description">Get unique and beautiful web apps developed through django rapid development,clean and pragmatic design.</p>
+                        <p class="description">The modernisation of African logistics is one of the most important areas of development on the continent today. </p>
                     </div>
                 </div>
 
@@ -44,7 +57,8 @@
                     <div class="icon-box bg-warning">
                         <div class="icon"><i class="bx bxs-coin-stack"></i><i class="bx bxs-business"></i></div>
                         <h4 class="title"><a href="">Corporate Finance & SME's</a></h4>
-                        <p class="description">Keep your website well maintained and attractive through our rapid maintenace and elegance process. </p>
+                        <p class="description">The Bank’s ambition is to help double the industrial GDP by 2025,
+                            and by so doing help increase its industrial GDP to US $1.72 trillion.  </p>
                     </div>
                 </div>
 
@@ -52,7 +66,175 @@
         </div>
     </section>
     <!---end welcome area--->
+    <script type="text/javascript">
+
+        // List of sentences
+        const _CONTENT = [
+            "Welcome to Industrialising Africa Magazine.",
+            "Explore...",
+            "Technology,",
+            " Assembly,",
+            "Logistics,",
+            "Manufacturing,",
+            "Transport,",
+            "Green Energy,",
+            "Corporate Finance",
+            "and",
+            "Small & Medium Enterprises."
+        ];
+
+        // Current sentence being processed
+        let _PART = 0;
+
+        // Character number of the current sentence being processed
+        let _PART_INDEX = 0;
+
+        // Holds the handle returned from setInterval
+        var _INTERVAL_VAL;
+
+        // Element that holds the text
+        var _ELEMENT = document.querySelector("#text");
+
+        // Implements typing effect
+        function Type() {
+            var text =  _CONTENT[_PART].substring(0, _PART_INDEX + 1);
+            _ELEMENT.innerHTML = text;
+            _PART_INDEX++;
+
+            // If full sentence has been displayed then start to delete the sentence after some time
+            if(text === _CONTENT[_PART]) {
+                clearInterval(_INTERVAL_VAL);
+                setTimeout(function() {
+                    _INTERVAL_VAL = setInterval(Delete, 50);
+                }, 1000);
+            }
+        }
+
+        // Implements deleting effect
+        function Delete() {
+            var text =  _CONTENT[_PART].substring(0, _PART_INDEX - 1);
+            _ELEMENT.innerHTML = text;
+            _PART_INDEX--;
+
+            // If sentence has been deleted then start to display the next sentence
+            if(text === '') {
+                clearInterval(_INTERVAL_VAL);
+
+                // If last sentence then display the first one, else move to the next
+                if(_PART == (_CONTENT.length - 1))
+                    _PART = 0;
+                else
+                    _PART++;
+                _PART_INDEX = 0;
+
+                // Start to display the next sentence after some time
+                setTimeout(function() {
+                    _INTERVAL_VAL = setInterval(Type, 100);
+                }, 200);
+            }
+        }
+
+        // Start the typing effect on load
+        _INTERVAL_VAL = setInterval(Type, 100);
+
+    </script>
     <br>
+    <!----magazine images section------>
+    <section id="portfolio" class="portfolio">
+        <div class="container" data-aos="fade-up">
+
+            <div class="text-center">
+                <h1 class="mt-0 mb-4" style="color: red;">Magazine</h1>
+
+            </div>
+            <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="300">
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                    <div class="portfolio-wrap">
+                        <img src="{{ asset('/site_images/magazine_cover.jpg') }}" class="img-fluid" alt="">
+                        <div class="portfolio-info">
+                            <h4>Magazine Cover</h4>
+                            <div class="portfolio-links">
+                                <a href="{{ asset('/site_images/magazine_cover.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1">
+                                    <i class="bx bx-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+                    <div class="portfolio-wrap">
+                        <img src="{{ asset('/site_images/magazine_cover_3.jpg') }}" class="img-fluid" alt="">
+                        <div class="portfolio-info">
+                            <h4>Magazine</h4>
+                            <div class="portfolio-links">
+                                <a href="{{ asset('/site_images/magazine_cover_3.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                    <div class="portfolio-wrap">
+                        <img src="{{ asset('/site_images/social_media_flyer.jpg') }}" class="img-fluid" alt="">
+                        <div class="portfolio-info">
+                            <h4>Magazine</h4>
+                            <div class="portfolio-links">
+                                <a href="{{ asset('/site_images/social_media_flyer.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2">
+                                    <i class="bx bx-plus"></i></a>
+                                <!-- <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+                    <div class="portfolio-wrap">
+                        <img src="{{ asset('/site_images/green.jpg') }}" class="img-fluid" alt="">
+                        <div class="portfolio-info">
+                            <h4>Green Energy</h4>
+                            <div class="portfolio-links">
+                                <a href="{{ asset('/site_images/green.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2">
+                                    <i class="bx bx-plus"></i></a>
+                                <!-- <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+                    <div class="portfolio-wrap">
+                        <img src="{{ asset('/site_images/factory.jpg') }}" class="img-fluid" alt="">
+                        <div class="portfolio-info">
+                            <h4>Manufacturing</h4>
+                            <div class="portfolio-links">
+                                <a href="{{ asset('/site_images/factory.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
+                                <!-- <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+                    <div class="portfolio-wrap">
+                        <img src="{{ asset('/site_images/logistics0.jpg') }}" class="img-fluid" alt="">
+                        <div class="portfolio-info">
+                            <h4>Logistics</h4>
+                            <div class="portfolio-links">
+                                <a href="{{ asset('/site_images/logistics0.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
+                                <!-- <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-----end magazine images section------>
+
     <!----multi item carousel--->
     <div class="container text-center mt-4" data-aos="fade-up">
         <h2 class="font-weight-light">
@@ -178,7 +360,7 @@
         @endif
         <h5 class="mt-2 fw-light">Industrialising Africa Magazine</h5>
     </div>
-    <!----end multi item carousel--->
+    <!----end multi item carousel---->
 
     <script>
         let items = document.querySelectorAll('.carousel .carousel-item')
@@ -199,7 +381,7 @@
 
     </script>
 
-    <!----About Section--->
+    <!----About Section----->
     <section id="about" class="about">
         <div class="container" data-aos="fade-up">
             <div class="section-title">
@@ -240,14 +422,14 @@
             </ul>
         </div>
     </section>
-    <!-- end about section -->
+    <!--- end about section---->
 
 
-    <!---Frequently Asked Questions Section-->
+    <!----Frequently Asked Questions Section---->
     <section id="faq" class="faq section-bg">
         <div class="container" data-aos="fade-up">
 
-            <div class="section-title">
+            <div class="text-center mb-4">
                 <h2 class="text-danger">Frequently Asked Questions - FAQ</h2>
             </div>
 
@@ -460,7 +642,7 @@
                             15. Where do you intend to see this initiative five years from now?
                             <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                         <div id="faq-list-15" class="collapse" data-bs-parent=".faq-list">
-                            <p>
+
                             <ul>
                                 <li>A robust FirstCode Information Management and Dissemination Centre for Africa.</li>
                                 <li>Triple the circulation of the hard copies of the magazine.</li>
@@ -468,7 +650,6 @@
                                 <li> Regional offices in North, West, Central and Southern Africa.</li>
                             </ul>
 
-                            </p>
                         </div>
                     </li>
 
@@ -476,5 +657,7 @@
             </div>
         </div>
     </section>
-    <!-- end frequently asked questions section -->
+
+    <!---- end frequently asked questions section ---->
+
 @endsection

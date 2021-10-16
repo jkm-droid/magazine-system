@@ -17,16 +17,17 @@
     <!-- Vendor CSS Files -->
     <link href="{{ asset( 'assets/vendor/aos/aos.css')}}" rel="stylesheet">
 {{--    <link href="{{ asset( 'assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">--}}
-{{--    <link href="{{ asset( 'assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">--}}
+    <link href="{{ asset( 'assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
     <link href="{{ asset( 'assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
-{{--    <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">--}}
-{{--    <link href="{{ asset('assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">--}}
+    <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
     <!--base css--->
     <link href="{{ asset('css/site_style.css') }}" rel="stylesheet">
 
     <!-- Template Main CSS File -->
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+
     <title>Industrialising Africa</title>
     <style>
         .container a{
@@ -36,23 +37,21 @@
 </head>
 <body>
 <div class="container col-md-10">
-    {{--    <div class="text-secondary" style="text-decoration: none;">--}}
-    {{--        <h1 class="text-center text-uppercase display-4"><a class="text-center text-secondary" href="{{ route('site.home') }}">Industrialising</a></h1>--}}
-    {{--        <h5 class="text-center text-uppercase"><a class="text-center text-secondary" href="{{ route('site.home') }}">Africa</a></h5>--}}
-    {{--    </div>--}}
+
     @include('includes.site_navbar')
 
     @yield('content')
 
-    @include('includes.site_footer')
+
 </div>
+@include('includes.site_footer')
 <div id="preloader"></div>
 <a href="#" class="back-to-top d-flex align-items-center bg-warning justify-content-center text-danger"><strong>TOP</strong></a>
 <!-- Vendor JS Files -->
 <script src="{{ asset('assets/vendor/aos/aos.js') }}"></script>
-<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
+<script src="{{ asset('assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
 <script src="{{ asset('assets/vendor/purecounter/purecounter.js') }}"></script>
 <script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
 

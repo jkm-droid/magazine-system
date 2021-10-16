@@ -11,6 +11,7 @@
 body {
     font-family: "Open Sans", sans-serif;
     color: #444444;
+    background-color: #efeeee;
 }
 
 a {
@@ -121,7 +122,7 @@ h1, h2, h3, h4, h5, h6 {
 --------------------------------------------------------------*/
 #header {
     transition: all 0.5s;
-    background: #fff;
+    background: #d5d3d3;
     z-index: 997;
     padding: 15px 0;
     border-bottom: 1px solid #e6f2fb;
@@ -147,7 +148,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #header .logo img {
-    max-height: 40px;
+    max-height: 60px;
+    max-width: 300px;
 }
 
 @media (max-width: 992px) {
@@ -184,7 +186,7 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: space-between;
     padding: 10px 0 10px 30px;
     font-size: 14px;
-    color: #16507b;
+    color: #0c0d0e;
     white-space: nowrap;
     transition: 0.3s;
 }
@@ -195,8 +197,13 @@ h1, h2, h3, h4, h5, h6 {
     margin-left: 5px;
 }
 
-.navbar a:hover, .navbar .active, .navbar li:hover > a {
-    color: #2487ce;
+.navbar a:hover, .navbar .active {
+    color: #0d0e0e;
+}
+
+.navbar li:hover > a{
+    color: red;
+    font-weight: bolder;
 }
 
 .navbar .getstarted {
@@ -242,7 +249,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar .dropdown ul a:hover, .navbar .dropdown ul .active:hover, .navbar .dropdown ul li:hover > a {
-    color: #2487ce;
+    color: red;
 }
 
 .navbar .dropdown:hover > ul {
@@ -277,7 +284,7 @@ h1, h2, h3, h4, h5, h6 {
 * Mobile Navigation
 */
 .mobile-nav-toggle {
-    color: #124265;
+    color: red;
     font-size: 28px;
     cursor: pointer;
     display: none;
@@ -332,7 +339,7 @@ h1, h2, h3, h4, h5, h6 {
 .navbar-mobile a {
     padding: 10px 20px;
     font-size: 15px;
-    color: #124265;
+    color: red;
 }
 
 .navbar-mobile a:hover, .navbar-mobile .active, .navbar-mobile li:hover > a {
@@ -378,7 +385,7 @@ h1, h2, h3, h4, h5, h6 {
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
-#hero {
+#hero{
     width: 100%;
     height: 100vh;
     position: relative;
@@ -389,7 +396,7 @@ h1, h2, h3, h4, h5, h6 {
 #hero:before {
     content: "";
     background: rgba(255, 255, 255, 0.8);
-    opacity: 0.7;
+    opacity: 0.5;
     position: absolute;
     bottom: 0;
     top: 0;
@@ -515,7 +522,7 @@ h1, h2, h3, h4, h5, h6 {
 # Sections General
 --------------------------------------------------------------*/
 section {
-    padding: 80px 0;
+    padding: 50px 0;
     overflow: hidden;
 }
 
@@ -602,6 +609,29 @@ section {
     background: #2487ce;
     color: #fff;
     text-decoration: none;
+}
+#faqs{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background: url("../img/magazine_cover.jpg") top center;
+    background-size: cover;
+}
+
+#faqs:before {
+    content: "";
+    background: rgba(255, 255, 255, 0.8);
+    opacity: 0.9;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+@media (min-width: 1024px) {
+    #faqs {
+        background-attachment: fixed;
+    }
 }
 
 /*--------------------------------------------------------------
@@ -1301,7 +1331,7 @@ section {
 
 .team .member .social a {
     transition: color 0.3s;
-    color: #124265;
+    color: red;
     margin: 0 10px;
     display: inline-block;
 }
@@ -1455,8 +1485,11 @@ section {
 /*--------------------------------------------------------------
 # Frequently Asked Questions
 --------------------------------------------------------------*/
+.faq{
+    background-color: #e7e6e6;
+}
 .faq .faq-list {
-    padding: 0 100px;
+    padding: 0 10px;
 }
 
 .faq .faq-list ul {
@@ -1470,7 +1503,7 @@ section {
 
 .faq .faq-list li {
     padding: 20px;
-    background: #fff;
+    background: gold;
     border-radius: 4px;
     position: relative;
 }
@@ -1739,13 +1772,13 @@ section {
 #footer {
     color: #444444;
     font-size: 14px;
-    background: #f8fbfe;
+    background: gold;
     box-shadow: 0px 2px 15px rgba(18, 66, 101, 0.08);
 }
 
 #footer .footer-top {
     padding: 60px 0 30px 0;
-    background: #fff;
+    background: #d5d3d3;
 }
 
 #footer .footer-top .footer-contact {
@@ -1771,7 +1804,7 @@ section {
 #footer .footer-top h4 {
     font-size: 16px;
     font-weight: bold;
-    color: #124265;
+    color: red;
     position: relative;
     padding-bottom: 12px;
 }
@@ -1812,7 +1845,8 @@ section {
 
 #footer .footer-top .footer-links ul a:hover {
     text-decoration: none;
-    color: #2487ce;
+    color: red;
+    font-weight: bolder;
 }
 
 #footer .footer-newsletter {
@@ -1872,7 +1906,7 @@ section {
 #footer .social-links a {
     font-size: 18px;
     display: inline-block;
-    background: #2487ce;
+    background: red;
     color: #fff;
     line-height: 1;
     padding: 8px 0;

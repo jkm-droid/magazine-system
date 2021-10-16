@@ -1,27 +1,56 @@
+<!-- ======= Footer ======= -->
 <footer id="footer">
+
     <div class="footer-top">
         <div class="container">
             <div class="row">
 
-                <div class="col-lg-6 col-md-6 footer-contact">
-                    <h3>Industrialising Africa</h3>
+                <div class="col-lg-3 col-md-6 footer-contact">
+                    <a href="/" class="logo"><img src="{{ asset('site_images/firstcodeLogo.png') }}" alt="" class="img-fluid"></a>
                     <p>
-                        Nairobi<br>
-                        Kenya <br><br>
-                        <strong>Phone:</strong> +254-738-801-655<br>
-                        <strong>Email:</strong> info@induafrica.co.ke<br>
+                        <strong>Phone:</strong> +254-722-666-747<br>
+                        Nairobi, Kenya <br>
+                        <strong>Phone:</strong> +1(360)-669-4407<br>
+                        New York, USA<br>
+                        <strong>Phone:</strong> +86-1367-1830-746<br>
+                        Shanghai,China<br>
+
+                        <strong>Emails:</strong><br> info@firstcodecorporation.com<br>
+                        info@industrialisingafrica.com
                     </p>
                 </div>
 
-                <div class="col-lg-6 col-md-6 footer-links">
+                <div class="col-lg-2 col-md-6 footer-links">
                     <h4>Useful Links</h4>
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About us</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Terms of service</a></li>
-                        <li><a href="#">Privacy policy</a></li>
+                        <li><i class="bx bx-chevron-right text-danger"></i> <a href="#hero">Home</a></li>
+                        <li><i class="bx bx-chevron-right text-danger"></i> <a href="/industrialising-africa">Articles</a></li>
+                        <li><i class="bx bx-chevron-right text-danger"></i> <a href="#">Categories</a></li>
+                        <li><i class="bx bx-chevron-right text-danger"></i> <a href="#about">About us</a></li>
+                        <li><i class="bx bx-chevron-right text-danger"></i> <a href="#contact">Contacts</a></li>
                     </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Categories</h4>
+                    <ul>
+                        @foreach($all_categories as $category)
+                            <li>
+                                <i class="bx bx-chevron-right text-danger"></i>
+                                <a  href="{{ route('site.category.all.articles.show', $category->slug) }}">
+                                    {{ \Illuminate\Support\Str::upper($category->title) }}
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-6 footer-newsletter">
+                    <h4 class="put-red" style="color: red;">Join Our Newsletter</h4>
+                    <p>Get the latest updates from our team</p>
+                    <form action="" method="post">
+                        <input type="email" name="email"><input style="background-color: red;" type="submit" value="Subscribe">
+                    </form>
                 </div>
 
             </div>
@@ -32,7 +61,7 @@
 
         <div class="me-md-auto text-center text-md-start">
             <div class="copyright">
-                &copy; Copyright <strong><span>Industrialising Africa</span></strong>. All Rights Reserved
+                &copy; Copyright <strong style="color: red;"><span>Industrialising Africa</span></strong>. All Rights Reserved
             </div>
         </div>
         <div class="social-links text-center text-md-right pt-3 pt-md-0">
@@ -43,4 +72,4 @@
             <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
         </div>
     </div>
-</footer>
+</footer><!-- End Footer -->

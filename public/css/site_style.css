@@ -88,7 +88,7 @@ style for the category drop down
 }
 
 .navbar a:hover, .category-dropdown:hover .dropbtn {
-    background-color: red;
+    /*background-color: red;*/
 }
 
 .category-dropdown .dropdown-content {
@@ -184,3 +184,28 @@ style for the category drop down
     color: red;
 }
 
+/*typewriter effect*/
+#text {
+    display: inline-block;
+    vertical-align: middle;
+    color: orange;
+    letter-spacing: 2px;
+}
+
+#cursor {
+    display: inline-block;
+    vertical-align: middle;
+    width: 3px;
+    height: 50px;
+    background-color: red;
+    animation: blink .75s step-end infinite;
+}
+
+@keyframes blink {
+    from, to {
+        background-color: transparent
+    }
+    50% {
+        background-color: red;
+    }
+}
