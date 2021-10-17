@@ -3,19 +3,19 @@
 @section('content')
     <!--    welcome area--->
     <section id="hero" class="d-flex align-items-center"  >
-        <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+        <div class="container position-relative" data-aos="fade-up">
             <div class="row justify-content-center">
-                {{--                <div class="col-xl-7 col-lg-9 ">--}}
-                {{--                    <h2 class="text-dark">Welcome to</h2>--}}
-                {{--                </div>--}}
+{{--                                <div class="col-xl-7 col-lg-9 ">--}}
+{{--                                    <h2 class="text-dark">Welcome to</h2>--}}
+{{--                                </div>--}}
 
-                <div class="col-xl-7 col-lg-9 text-center">
+                <div class="col-xl-7 col-md-7 col-lg-9 text-center">
                     <h1 class="text-dark">Industrialising <span style="color: red;">Africa</span> Magazine</h1>
                     <h3 class="text-danger quote-danger" style="font-style: italic;">
-                        <strong>
-                            "Ensuring a dynamic information aggregation and information platform for
-                            investors, manufacturers, processors and suppliers for the continent of Africa"
-                        </strong>
+
+                        "Ensuring a dynamic information aggregation and information platform for
+                        investors, manufacturers, processors and suppliers for the continent of Africa"
+
                     </h3>
                     <h2 class="text-dark" id="text"></h2>
                     <div id="cursor"></div>
@@ -23,42 +23,43 @@
                 </div>
             </div>
             <div class="text-center mt-2">
-                <h3><button class="btn btn-lg btn-warning put-red">Get Insights on:</button></h3>
+                <button class="btn btn-lg btn-warning put-red"><h2>Get Insights on:</h2></button>
             </div>
 
             <div class="row icon-boxes">
-                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="200">
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" >
                     <div class="icon-box bg-warning">
                         <div class="icon text-center"><i class="bx bxs-factory"></i><i class="bx bxs-car-mechanic bx-lg"></i></div>
-                        <h4 class="title"><a href="">Manufacturing & Assembly</a></h4>
-                        <p class="description">Manufacturing activities are known to boost the overall value generated in a given
-                            economy by catalysing more activity along value chains, from the raw materials to the finished products. </p>
+                        <h5 class="title"><a href="">Manufacturing & Assembly</a></h5>
+                        <p class="description">Manufacturing activities boost the overall value generated in a given
+                            economy by catalysing more activity along value chains. </p>
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="300">
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" >
                     <div class="icon-box bg-warning">
                         <div class="icon"><i class="bx bxs-ev-station"></i><i class="bx bxs-chip"></i></div>
-                        <h4 class="title"><a href="">Energy & Technology</a></h4>
-                        <p class="description">Energy is a critical component in the industrialisation process.
-                            As Africa boosts its energy potential as a key driver for the industrialisation agenda.</p>
+                        <h5 class="title"><a href="">Energy & Technology</a></h5>
+                        <p class="description">Energy is a critical component in the industrialisation process
+                            a key driver for Africa's industrialisation agenda.</p>
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="400">
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in">
                     <div class="icon-box bg-warning">
                         <div class="icon"><i class="bx bxs-truck"></i><i class="bx bxs-plane-alt"></i></div>
-                        <h4 class="title"><a href="">Logistics and Transport</a></h4>
-                        <p class="description">The modernisation of African logistics is one of the most important areas of development on the continent today. </p>
+                        <h5 class="title"><a href="">Logistics and Transport</a></h5>
+                        <p class="description">The modernisation of African logistics is one of the most important
+                            areas of development on the continent today. </p>
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="500">
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" >
                     <div class="icon-box bg-warning">
                         <div class="icon"><i class="bx bxs-coin-stack"></i><i class="bx bxs-business"></i></div>
-                        <h4 class="title"><a href="">Corporate Finance & SME's</a></h4>
+                        <h5 class="title"><a href="">Corporate Finance & SME's</a></h5>
                         <p class="description">The Bank’s ambition is to help double the industrial GDP by 2025,
-                            and by so doing help increase its industrial GDP to US $1.72 trillion.  </p>
+                            and increase its industrial GDP to US $1.72 trillion.  </p>
                     </div>
                 </div>
 
@@ -259,7 +260,7 @@
                         </div>
                         @foreach($categories as $category)
                             <div class="carousel-item">
-                                <div class="col-md-3">
+                                <div class="col-md-3" >
                                     <a href=" {{ route('site.category.all.articles.show', $category->slug) }}">
                                         <div class="card">
                                             <div class="card-img">
@@ -359,7 +360,7 @@
                 </div>
             </div>
         @endif
-        <h5 class="mt-2 fw-light">Industrialising Africa Magazine</h5>
+        <h5 class="mb-4 fw-light">Industrialising Africa Magazine</h5>
     </div>
     <!----end multi item carousel---->
 

@@ -2,7 +2,7 @@
 
 @section('content')
     <section>
-        <div class="" style="margin-top: 40px;">
+        <div class="container col-md-7" style="margin-top: 40px;">
             @if($feature_article->isEmpty())
             @else
                 <div class="">

@@ -2,7 +2,7 @@
 
 @section('content')
     <section>
-        <div class="" style="margin-top: 40px;">
+        <div class="container col-md-7" style="margin-top: 40px;">
             <br>
             <h3>Articles on <span class="text-secondary"><strong>{{ $category_title }}</strong></span></h3>
             <br>

@@ -2,7 +2,7 @@
 
 @section('content')
     <section>
-        <div class="" style="margin-top: 40px;">
+        <div class="container col-md-7" style="margin-top: 40px;">
             @foreach($article[0]->categories as $article_cat)
                 <h4 class="text-gray-dark">{{ \Illuminate\Support\Str::upper($article_cat->title) }}</h4>
             @endforeach

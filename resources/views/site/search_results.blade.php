@@ -2,7 +2,7 @@
 
 @section('content')
     <section>
-        <div class="" style="margin-top: 40px;">
+        <div class="container col-md-7" style="margin-top: 40px;">
             @if($results->isEmpty())
                 <p>No results found</p>
             @else

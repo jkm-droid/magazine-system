@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+{{--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">--}}
 
     <!--base assets, icons--->
     <link href="{{asset('assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
@@ -16,7 +16,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Vendor CSS Files -->
     <link href="{{ asset( 'assets/vendor/aos/aos.css')}}" rel="stylesheet">
-{{--    <link href="{{ asset( 'assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">--}}
+    <link href="{{ asset( 'assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset( 'assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
     <link href="{{ asset( 'assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
@@ -36,14 +36,14 @@
     </style>
 </head>
 <body>
-<div class="container col-md-10">
+{{--<div class="container col-md-10">--}}
 
     @include('includes.site_navbar')
 
     @yield('content')
 
 
-</div>
+{{--</div>--}}
 @include('includes.site_footer')
 <div id="preloader"></div>
 <a href="#" class="back-to-top d-flex align-items-center bg-warning justify-content-center text-danger"><strong>TOP</strong></a>
