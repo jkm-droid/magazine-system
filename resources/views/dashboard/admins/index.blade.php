@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Admins</h1>
+                    <h1 class="m-0">Admins/Authors</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -17,6 +17,7 @@
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
+
     @if($admins->isEmpty())
         <h4 class="text-center">No Admin found.</h4>
     @else
@@ -50,6 +51,8 @@
                             <th>Username</th>
                             <th>Email</th>
                             <th>Role</th>
+                            <th>Super Admin</th>
+                            <th></th>
                             <th>Creation Date</th>
                             <th>Action</th>
                         </tr>
@@ -57,7 +60,7 @@
 
                         <tbody>
                         @foreach($admins as $admin)
-                            <tr>
+                            <tr class="admin-data-row">
                                 <td>{{ ++$i }}</td>
                                 <td><a href="{{ route('admin.show', $admin->id) }}">{{ $admin->name }}</a></td>
                                 <td>{{ $admin->username }}</td>
@@ -71,21 +74,42 @@
                                         @endif
                                     @endforeach
                                 </td>
+                                <td>
+                                    @if($admin->isSuperAdmin == 1)
+                                        <span class="text-center"><i class="text-success fa fa-check-circle"></i></span>
+                                    @else
+                                        <span><i class="text-danger fa fa-times-circle"></i></span>
+                                    @endif
+                                </td>
+                                <td>
+                                    <form action="{{ route('admin.make.super', $admin->id) }}" method="post" id="admin-make-form" class="admin-make-form">
+                                        @csrf
+                                        <input type="hidden" id="admin-id" value="{{ $admin->id }}">
+                                        @if($admin->isSuperAdmin == 1)
+                                            <button id="make-super-admin" type="submit" data-id="{{ $admin->id }}" class="btn badge badge-danger">Demote</button>
+                                        @else
+                                            <button id="make-super-admin" type="submit" data-id="{{ $admin->id }}" class="btn badge badge-info">Promote</button>
+                                        @endif
+
+                                    </form>
+
+                                </td>
                                 <td>{{ $admin->created_at }}</td>
 
-                                <td>
-                                    <form action="{{ route('admin.delete',$admin->id) }}" method="POST">
+                                @if(\Illuminate\Support\Facades\Auth::user()->id != $admin->id)
+                                    <td>
+                                        <form action="{{ route('admin.delete',$admin->id) }}" method="POST">
 
-                                        <a class="btn btn-primary btn-sm" href="{{ route('admin.show',$admin->id) }}">Show</a>
-                                        <a class="btn btn-primary btn-sm" href="{{ route('admin.edit',$admin->id) }}">Edit</a>
+                                            <a class="btn btn-primary btn-sm" href="{{ route('admin.show',$admin->id) }}">Show</a>
+                                            <a class="btn btn-primary btn-sm" href="{{ route('admin.edit',$admin->id) }}">Edit</a>
 
-                                        @csrf
-                                        @method('PUT')
+                                            @csrf
+                                            @method('PUT')
 
-                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                    </form>
-                                </td>
-
+                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        </form>
+                                    </td>
+                                @endif
                             </tr>
                         @endforeach
                         </tbody>
@@ -95,6 +119,21 @@
             </div>
             <!-- /.card -->
         </div>
+        <script type="text/javascript">
+            $(document).ready(function (){
+
+                $('.admin-data-row').hover(function (){
+
+                    if(!$(this).hasClass('hoverd')){
+
+                        $(this).addClass('hoverd');
+                        $(this).find('.admin-make-form').show();
+                    }
+                }, function (){
+                    $(this).removeClass('hoverd');
+                });
+            });
+        </script>
     @endif
 
     {!! $admins->links() !!}

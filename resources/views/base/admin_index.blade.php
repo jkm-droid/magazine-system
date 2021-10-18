@@ -39,6 +39,9 @@
     <!-- Themes -->
     <link rel="stylesheet" href="{{ asset('/toast/css/theme.css') }}" />
 
+    <!-- admin custom css style -->
+    <link rel="stylesheet" href="{{ asset('/css/admin_style.css') }}" />
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
@@ -109,6 +112,7 @@
 <script src="{{ asset('admin-dashboard/plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script>
 <!-- jQuery Knob Chart -->
 <script src="{{ asset('admin-dashboard/plugins/jquery-knob/jquery.knob.min.js') }}"></script>
+
 <!-- daterangepicker -->
 <script src="{{ asset('admin-dashboard/plugins/moment/moment.min.js') }}"></script>
 <script src="{{ asset('admin-dashboard/plugins/daterangepicker/daterangepicker.js') }}"></script>
@@ -122,6 +126,7 @@
 <!-- AdminLTE App -->
 <script src="{{ asset('admin-dashboard/dist/js/adminlte.js') }}"></script>
 <script src="{{ asset('admin-dashboard/dist/js/pages/dashboard.js') }}"></script>
+
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('admin-dashboard/dist/js/demo.js') }}"></script>
 

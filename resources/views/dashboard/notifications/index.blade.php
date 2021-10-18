@@ -40,7 +40,7 @@
                             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title text-warning" id="staticBackdropLabel">{{ $notification->data['title'] }}</h5>
+                                        <h5 class="modal-title text-danger" id="staticBackdropLabel">{{ $notification->data['title'] }}</h5>
                                         <i data-bs-dismiss="modal" aria-label="Close" class="fa fa-times"></i>
                                     </div>
                                     <input type="hidden" value="{{ $notification->data['article_id'] }}" id="article-id">
@@ -103,7 +103,7 @@
                         console.log(article_id);
 
                         $.ajax({
-                            url: '{{ url('notifications/ajax/publish')}}/'+article_id,
+                            url: '{{ url('notifications/publish/ajax')}}/'+article_id,
                             type: 'POST',
                             data: {
                                 "_token": "{{ csrf_token() }}",
@@ -118,6 +118,7 @@
                                         }
                                     toastr.success("Article published successfully");
                                     $(this).parents('div.notifications').remove();
+                                    window.location.reload();
                                 }else{
                                     toastr.options =
                                         {
@@ -125,6 +126,7 @@
                                             "progressBar" : true
                                         }
                                     toastr.error("Oops! An error occurred");
+
                                 }
                             },
 

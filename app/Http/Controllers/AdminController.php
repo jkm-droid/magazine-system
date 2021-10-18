@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use App\Models\Role;
+use http\Header;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class AdminController extends Controller
 {
@@ -56,5 +59,27 @@ class AdminController extends Controller
         ]);
 
         $email_address = trim($request->email);
+    }
+
+    //change admin status -> super admin or <- normal admin
+    public function make_super_admin($admin_id){
+        $auth_admin_id = Auth::user()->id;
+        $admin = Admin::find($admin_id);
+
+        if ($auth_admin_id == $admin->id){
+            return Redirect::back()->with('error','You cannot perform this operation');
+        }
+        $message = '';
+        if ($admin->isSuperAdmin == 1){
+            $admin->isSuperAdmin = 0;
+            $message = "Demoted Successfully";
+        }elseif($admin->isSuperAdmin == 0){
+            $admin->isSuperAdmin = 1;
+            $message = "Promoted Successfully";
+        }
+
+        $admin->update();
+
+        return Redirect::back()->with('success', $message);
     }
 }

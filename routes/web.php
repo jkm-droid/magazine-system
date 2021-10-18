@@ -59,7 +59,6 @@ Route::group(['middleware'=>['role:author|admin']], function (){
     Route::put('categories/delete/{category_id}', [CategoryController::class, 'delete_category'])->name('category.delete');
 });
 
-Route::post('notifications/publish/ajax/{article_id}', [NotificationsController::class, 'publish_article'])->name('article.ajax.publish');
 
 /**
  * These routes are strictly accessible by the person with admin role only
@@ -94,11 +93,12 @@ Route::group(['middleware'=>'role:admin'], function (){
     Route::post('admins/send',[AdminController::class,'send_admin_invite_link'])->name('admin.send.link');
     Route::get('admins/edit/{admin_id}',[AdminController::class,'edit_admin'])->name('admin.edit');
     Route::post('admins/update/{admin_id}',[AdminController::class,'update_admin'])->name('admin.update');
+    Route::post('admins/make/{admin_id}',[AdminController::class,'make_super_admin'])->name('admin.make.super');
     Route::get('admins/show/{admin_id}',[AdminController::class,'show_admin'])->name('admin.show');
     Route::post('admins/delete/{admin_id}',[AdminController::class,'delete_admin'])->name('admin.delete');
 
     //notifications
     Route::get('notifications', [NotificationsController::class,'show_all_notifications'])->name('notifications.all.show');
     Route::post('notifications/mark_as_read/{notification_id}', [NotificationsController::class,'mark_as_read'])->name('notification.mark.as.read');
-
+    Route::post('notifications/publish/ajax/{article_id}', [NotificationsController::class, 'publish_article'])->name('article.ajax.publish');
 });

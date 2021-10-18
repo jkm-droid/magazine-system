@@ -21,7 +21,7 @@
     <div class="col-12">
         <div class="card card-outline card-danger">
             <div class="card-header">
-                <h3 class="card-title">Responsive Hover Table</h3>
+                <h3 class="card-title">Admin/Author Edit</h3>
             </div>
             <!-- /.card-header -->
 

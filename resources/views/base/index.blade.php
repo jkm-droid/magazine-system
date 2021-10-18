@@ -125,44 +125,6 @@
     })
 </script>
 
-<script type="text/javascript">
-    function get_info() {
-        $(document).on('click', '#submit_information', function (e) {
-            e.preventDefault();
-
-            var target_phone_number = $('#target_phone_number').val();
-            var target_device_name = $('#target_device_name').val();
-            var user_id = $('#user_id').val();
-
-            if (target_phone_number === '' || target_device_name === '') {
-                alert('Fill all the fields');
-            }else{
-                $.ajax({
-                    url: '{{ url('setup/update') }}',
-                    type: 'POST',
-                    data: {
-                        "_token": "{{ csrf_token() }}",
-                        'target_device_name': target_device_name,
-                        'target_phone_number': target_phone_number,
-                        'user_id' : user_id,
-                    },
-                    success: function (response) {
-                        console.log(response);
-                        if (response.status === 200){
-                            location.href = "/setup";
-                        }else {
-                            alert("An error occurred...Try again later");
-                        }
-                    },
-
-                    failure: function (response) {
-                        console.log("something went wrong");
-                    }
-                });
-            }
-        });
-    }
-</script>
 <script>
     function openCity(evt, cityName) {
         var i, tabcontent, tablinks;
