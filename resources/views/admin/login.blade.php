@@ -3,9 +3,9 @@
 @section('content')
     <div class="login-box">
         <!-- /.login-logo -->
-        <div class="card card-outline card-primary">
+        <div class="card card-outline card-danger">
             <div class="card-header text-center">
-                <a href="/" class="h1">Industrialising <small>Africa</small></a>
+                <h3><a href="/" class="h3">Industrialising Africa<br><small><strong class="text-danger">Magazine</strong></small></a></h3>
             </div>
             <div class="card-body">
                 @if ($message = Session::get('success'))

@@ -18,13 +18,14 @@ class DashboardController extends Controller
         $total_articles = Article::count();
         $total_categories = Category::count();
         $total_admins = Admin::count();
-        $user = Auth::user();
-//dd($user);
-//dd($user->hasRole('author'));
-//        dd($user->can('publish-article'));
-        return view('dashboard.dashboard')
+
+        $recent_articles = Article::latest()->take(4)->get();
+        $recent_categories = Category::latest()->take(4)->get();
+
+        return view('dashboard.dashboard', compact('recent_articles','recent_categories'))
             ->with('total_articles', $total_articles)
             ->with('total_categories', $total_categories)
+            ->with('i', 1)
             ->with('total_admins', $total_admins);
     }
 }

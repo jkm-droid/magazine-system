@@ -7,12 +7,14 @@
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('admin-lte/plugins/fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin-dashboard/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- icheck bootstrap -->
-    <link rel="stylesheet" href="{{asset('admin-lte/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('admin-dashboard/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
     <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('admin-lte/dist/css/adminlte.min.css') }}">
-    <title>Cyberdroid</title>
+    <link rel="stylesheet" href="{{ asset('admin-dashboard/dist/css/adminlte.min.css') }}">
+    <!-- Template Main CSS File -->
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+    <title>Industrialising Africa</title>
 </head>
 <body>
 @include('includes/login_navbar')

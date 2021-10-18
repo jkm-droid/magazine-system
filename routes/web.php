@@ -24,11 +24,11 @@ Route::get('/industrialising-africa/category/{slug}', [SiteController::class, 'g
 Route::get('category/article/{category_id}', [SiteController::class, 'get_category_articles'])->name('get.category.articles');
 
 //admin authentication
-Route::get('auth_admin/login', [AdminLoginController::class, 'admin_show_login'])->name('admin.show.login');
-Route::post('auth_admin/login', [AdminLoginController::class, 'admin_login'])->name('admin.login');
-Route::get('auth_admin/register', [AdminLoginController::class, 'admin_show_register'])->name('admin.show.register');
-Route::post('auth_admin/register', [AdminLoginController::class, 'admin_register'])->name('admin.register');
-Route::get('auth_admin/logout', [AdminLoginController::class, 'admin_logout'])->name('admin.logout');
+Route::get('auth-admin/login', [AdminLoginController::class, 'admin_show_login'])->name('admin.show.login');
+Route::post('auth-admin/login', [AdminLoginController::class, 'admin_login'])->name('admin.login');
+Route::get('auth-admin/register', [AdminLoginController::class, 'admin_show_register'])->name('admin.show.register');
+Route::post('auth-admin/register/save', [AdminLoginController::class, 'admin_register'])->name('admin.register');
+Route::get('auth-admin/logout', [AdminLoginController::class, 'admin_logout'])->name('admin.logout');
 
 //dashboard
 Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');

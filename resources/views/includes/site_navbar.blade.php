@@ -27,6 +27,16 @@
 
                 <li><a class="nav-link scrollto" href="#footer">Contacts</a></li>
             </ul>
+            @if( Route::currentRouteName() == 'site.home')
+
+            @else
+                <form class="d-flex col-md-3" method="GET" action="{{ route('site.articles.search') }}">
+                    @csrf
+                    <input style="border: 1px solid red;" name="search" class="form-control me-2" type="search" placeholder="enter keyword" aria-label="Search">
+                    <button class="btn btn-sm btn-outline-danger" type="submit">Search</button>
+                </form>
+
+            @endif
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav>
         <!-- .navbar -->

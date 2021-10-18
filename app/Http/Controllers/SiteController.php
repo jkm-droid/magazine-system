@@ -22,7 +22,8 @@ class SiteController extends Controller
         return view('site.home')
             ->with('categories', $this->get_categories())
             ->with('all_categories', $this->get_all_categories())
-            ->with('one_category', $this->get_one_category());
+            ->with('one_category', $this->get_one_category())
+            ->with('not_search_form', "false");
     }
 
     /**
@@ -152,6 +153,10 @@ class SiteController extends Controller
      * search for articles based on keywords
      */
     public function search_articles(Request $request){
+        $request->validate([
+            'search'=> 'required'
+        ]);
+
         $search_term = trim($request->search);
         $results = DB::table('articles')
             ->where('title', 'LIKE','%'.$search_term.'%')
