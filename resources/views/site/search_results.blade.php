@@ -9,12 +9,12 @@
                 <h3>Found <strong class="text-secondary">Results</strong></h3>
 
                 @foreach($results as $result)
-                    <div style="background-color: gold;">
-                        <a href="{{ route('site.article.full.show', $result->slug) }}" style="font-size: larger; padding: 10px;">
-                            <h4 class="text-danger font-weight-bold">
+                    <div style="background-color: gold;  border-radius: 10px;">
+                        <a href="{{ route('site.article.full.show', $result->slug) }}" style="padding: 10px;">
+                            <h5 class="text-danger font-weight-bold">
                                 {{ ++$i}}. {{ $result->title }}
-                            </h4>
-                            <p style="margin-left: 20px;" class="ml-4">{!! \Illuminate\Support\Str::limit($result->body, 200, $end='...') !!}</p>
+                            </h5>
+                            <p style="margin-left: 20px;" class="ml-4">{!! \Illuminate\Support\Str::limit(strip_tags($result->body), $limit = 100, $end = '...') !!}</p>
                         </a>
                     </div>
                     <br>

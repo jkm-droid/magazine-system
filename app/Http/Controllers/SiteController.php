@@ -73,7 +73,7 @@ class SiteController extends Controller
         $article = Article::with('categories')->where('slug', $slug)->get();
 
         //get articles belonging to the author
-        $author_articles = Article::with('categories')->where('author',$article[0]->author)->get();
+        $author_articles = Article::with('categories')->where('author',$article[0]->author)->where('status',1)->get();
 
         return view('site.full_article', compact('article','author_articles'))
             ->with('categories', $this->get_categories())

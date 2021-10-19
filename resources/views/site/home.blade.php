@@ -5,9 +5,9 @@
     <section id="hero" class="d-flex align-items-center"  >
         <div class="container position-relative" data-aos="fade-up">
             <div class="row justify-content-center">
-{{--                                <div class="col-xl-7 col-lg-9 ">--}}
-{{--                                    <h2 class="text-dark">Welcome to</h2>--}}
-{{--                                </div>--}}
+                {{--                                <div class="col-xl-7 col-lg-9 ">--}}
+                {{--                                    <h2 class="text-dark">Welcome to</h2>--}}
+                {{--                                </div>--}}
 
                 <div class="col-xl-7 col-md-7 col-lg-9 text-center">
                     <h1 class="text-dark">Industrialising <span style="color: red;">Africa</span> Magazine</h1>
@@ -74,7 +74,7 @@
             "Welcome to Industrialising Africa Magazine.",
             "Explore...",
             "Technology,",
-            " Assembly,",
+            "Assembly,",
             "Logistics,",
             "Manufacturing,",
             "Transport,",
@@ -230,8 +230,21 @@
                     </div>
                 </div>
 
-            </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                    <div class="portfolio-wrap">
+                        <img src="{{ asset('/site_images/benefits-of-green.jpg') }}" loading="lazy" class="img-fluid" alt="">
+                        <div class="portfolio-info">
+                            <h4>Green Energy Benefits</h4>
+                            <div class="portfolio-links">
+                                <a href="{{ asset('/site_images/benefits-of-green.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="">
+                                    <i class="bx bx-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
 
+                </div>
+
+            </div>
         </div>
     </section>
 
@@ -305,7 +318,7 @@
                                         <div class="card-img">
                                             <img src="{{ asset('site_images/download.jpeg') }}" class="img-fluid" alt="" >
                                         </div>
-                                        <div class="card-img-overlay">Slide 2</div>
+                                        <div class="card-img-overlay"><h2>Assembly</h2></div>
                                     </div>
                                 </a>
                             </div>
@@ -316,7 +329,7 @@
                                     <div class="card-img">
                                         <img src="{{ asset('site_images/green.jpg') }}" class="img-fluid" alt="" >
                                     </div>
-                                    <div class="card-img-overlay">Slide 3</div>
+                                    <div class="card-img-overlay"><h2>Green Energy</h2></div>
                                 </div>
                             </div>
                         </div>
@@ -326,7 +339,7 @@
                                     <div class="card-img">
                                         <img src="{{ asset('site_images/logistics.jpeg') }}" class="img-fluid" alt="" >
                                     </div>
-                                    <div class="card-img-overlay">Slide 4</div>
+                                    <div class="card-img-overlay"><h2>Logistics</h2></div>
                                 </div>
                             </div>
                         </div>
@@ -334,9 +347,9 @@
                             <div class="col-md-3">
                                 <div class="card">
                                     <div class="card-img">
-                                        <img src="{{ asset('site_images/Port.jpg') }}" class="img-fluid" alt="" >
+                                        <img src="{{ asset('site_images/transport.jpg') }}" class="img-fluid" alt="" >
                                     </div>
-                                    <div class="card-img-overlay">Slide 5</div>
+                                    <div class="card-img-overlay"><h2>Transport</h2></div>
                                 </div>
                             </div>
                         </div>
@@ -346,7 +359,7 @@
                                     <div class="card-img">
                                         <img src="{{ asset('site_images/corporate-finance.jpg') }}" class="img-fluid" alt="" >
                                     </div>
-                                    <div class="card-img-overlay">Slide 6</div>
+                                    <div class="card-img-overlay"><h2>Corporate Finance</h2></div>
                                 </div>
                             </div>
                         </div>

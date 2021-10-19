@@ -209,3 +209,19 @@ style for the category drop down
         background-color: red;
     }
 }
+
+.article-cover-content{
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+    .article-cover-content{
+        margin: 0;
+    }
+}
+
+.article-cover img:hover{
+    transition: all 3s ease-in-out;
+    overflow: hidden;
+}

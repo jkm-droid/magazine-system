@@ -4,9 +4,9 @@
     <section>
         <div class="container col-md-7" style="margin-top: 40px;">
             @foreach($article[0]->categories as $article_cat)
-                <h4 class="text-gray-dark">{{ \Illuminate\Support\Str::upper($article_cat->title) }}</h4>
+                <h6 class="text-gray-dark">{{ \Illuminate\Support\Str::upper($article_cat->title) }}</h6>
             @endforeach
-            <h2>{{ $article[0]->title }}</h2>
+            <h3>{{ $article[0]->title }}</h3>
             <p>
                 by {{ \Illuminate\Support\Str::upper($article[0]->author) }}
                 Published: {{ date('d-m-Y', strtotime($article[0]->created_at)) }}
@@ -39,7 +39,7 @@
                                             <h5 class="card-title">
                                                 <a class="text-warning" href="{{ route('site.article.full.show', $author_article->slug) }}">{{ $author_article->title }}</a>
                                             </h5>
-                                            {{--                                    <p class="card-text">{!! \Illuminate\Support\Str::limit($author_article->body, 80, $end='...') !!}</p>--}}
+{{--                                                                                <p class="card-text">{!! \Illuminate\Support\Str::limit($author_article->body, 80, $end='...') !!}</p>--}}
                                         </div>
                                     </a>
                                 </div>

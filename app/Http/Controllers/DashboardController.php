@@ -19,12 +19,15 @@ class DashboardController extends Controller
         $total_categories = Category::count();
         $total_admins = Admin::count();
 
+        $author_articles = Article::where('author', Auth::user()->name)->count();
+
         $recent_articles = Article::latest()->take(4)->get();
         $recent_categories = Category::latest()->take(4)->get();
 
         return view('dashboard.dashboard', compact('recent_articles','recent_categories'))
             ->with('total_articles', $total_articles)
             ->with('total_categories', $total_categories)
+            ->with('author_articles', $author_articles)
             ->with('i', 1)
             ->with('total_admins', $total_admins);
     }

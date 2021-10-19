@@ -16,10 +16,10 @@
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
     <title>Industrialising Africa</title>
 </head>
-<body>
+<body  style="background-color: #ece9e9;">
 @include('includes/login_navbar')
 
-<div class="hold-transition register-page login-page">
+<div class="hold-transition register-page login-page"  style="background-color: #ece9e9;">
     @yield('content')
 </div>
 

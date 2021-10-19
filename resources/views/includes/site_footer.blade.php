@@ -49,7 +49,8 @@
                     <h4 class="put-red" style="color: red;">Join Our Newsletter</h4>
                     <p>Get the latest updates from our team</p>
                     <form action="" method="post">
-                        <input type="email" name="email"><input style="background-color: red;" type="submit" value="Subscribe">
+                        <input type="email" class="form-control" name="email">
+                        <input style="background-color: red;" type="submit" value="Subscribe">
                     </form>
                 </div>
 

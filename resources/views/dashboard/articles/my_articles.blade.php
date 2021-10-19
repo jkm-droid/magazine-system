@@ -18,6 +18,7 @@
         </div><!-- /.container-fluid -->
     </div>
     @if($articles->isEmpty())
+        <h3 class="text-danger text-center">no articles found!</h3>
     @else
         <div class="col-12">
             <div class="card card-outline card-warning">
