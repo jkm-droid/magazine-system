@@ -37,31 +37,32 @@
                 no articles found
             @else
                 @foreach($articles as $article)
-                    <div class="card border-0" style=" background-color: #efeeee;">
-                        <div class="row no-gutters">
+                        <div class="card border-0" style=" background-color: #efeeee;">
+                            <div class="row no-gutters">
 
-                            <div class="col-md-2">
-                                <a class="text-secondary" href="{{ route('site.article.full.show', $article->slug) }}">
-                                    <img class="float-start card-img-top img-fluid" src="/article_covers/{{ $article->image }}" style="min-width: 150px; min-height: 130px;"   alt="">
-                                </a>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body mt-0">
+                                <div class="col-md-2">
                                     <a class="text-secondary" href="{{ route('site.article.full.show', $article->slug) }}">
-                                        <h5 class="card-title text-dark">{{ $article->title }}</h5>
-
-                                        <p class="card-text">{{ date('d-m-Y', strtotime($article->created_at)) }} |
-                                            @foreach($article->categories as $article_cat)
-                                                {{ \Illuminate\Support\Str::upper($article_cat->title) }}
-                                            @endforeach
-                                        </p>
-                                        <p class="card-text">{!! \Illuminate\Support\Str::limit(strip_tags($article->body), $limit = 100, $end = '...') !!}</p>
+                                        <img class="float-start card-img-top img-fluid" src="/article_covers/{{ $article->image }}" style="min-width: 150px; min-height: 130px;"   alt="">
                                     </a>
                                 </div>
-                            </div>
+                                <div class="col-md-10">
+                                    <div class="card-body mt-0">
+                                        <a class="text-secondary" href="{{ route('site.article.full.show', $article->slug) }}">
+                                            <p class="card-title text-dark">{{ $article->title }}</p>
 
+                                            <p class="card-text">{{ date('d-m-Y', strtotime($article->created_at)) }} |
+                                                @foreach($article->categories as $article_cat)
+                                                    {{ \Illuminate\Support\Str::upper($article_cat->title) }}
+                                                @endforeach
+                                                <br>
+                                                {!! \Illuminate\Support\Str::limit(strip_tags($article->body), $limit = 100, $end = '...') !!}
+                                            </p>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
-                    </div>
                 @endforeach
 
             @endif
@@ -71,7 +72,7 @@
 
             @if($more_articles->isEmpty())
             @else
-                <h4 class="mb-4 mt-4"><strong>More</strong> to <strong class="put-red">Read</strong></h4>
+                <h4 class="mb-4 mt-4"><strong>More</strong> to <strong class="put-gold">Read</strong></h4>
                 <div class="justify-content-start">
 
                     <div class="row row-cols-1 row-cols-md-4 g-3">

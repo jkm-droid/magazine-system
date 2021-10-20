@@ -6,7 +6,7 @@
         <div class="container mt-4" data-aos="fade-up">
 
             <div class="text-center mb-4">
-                <h2 class="text-danger">Frequently Asked Questions - FAQ</h2>
+                <h2 class="text-dark">Frequently Asked Questions - <span class="put-gold">FAQ</span></h2>
             </div>
 
             <div class="faq-list">

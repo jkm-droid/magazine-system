@@ -46,7 +46,7 @@
 {{--</div>--}}
 @include('includes.site_footer')
 {{--<div id="preloader"></div>--}}
-<a href="#" class="back-to-top d-flex align-items-center bg-warning justify-content-center text-danger"><strong>TOP</strong></a>
+<a href="#" class="back-to-top d-flex align-items-center bg-dark justify-content-center text-white"><strong>TOP</strong></a>
 <!-- Vendor JS Files -->
 <script src="{{ asset('assets/vendor/aos/aos.js') }}"></script>
 <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

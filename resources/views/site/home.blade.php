@@ -10,11 +10,10 @@
                 {{--                                </div>--}}
 
                 <div class="col-xl-7 col-md-7 col-lg-9 text-center">
-                    <h1 class="text-dark">Industrialising <span style="color: red;">Africa</span> Magazine</h1>
+                    <h1 class="text-dark">Industrialising <span  class="put-gold">Africa</span> Magazine</h1>
                     <h3 class="text-danger quote-danger" style="font-style: italic;">
 
-                        "Ensuring a dynamic information aggregation and information platform for
-                        investors, manufacturers, processors and suppliers for the continent of Africa"
+                        "A dynamic information aggregation and dissemination ecosystem catalysing Industrialisation in Africa"
 
                     </h3>
                     <h2 class="text-dark" id="text"></h2>
@@ -23,12 +22,12 @@
                 </div>
             </div>
             <div class="text-center mt-2">
-                <button class="btn btn-lg btn-warning put-red"><h2>Get Insights on:</h2></button>
+                <button class="btn btn-lg put-gold" style="background-color: black;"><h2>Get Insights on:</h2></button>
             </div>
 
             <div class="row icon-boxes">
                 <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" >
-                    <div class="icon-box bg-warning">
+                    <div class="icon-box">
                         <div class="icon text-center"><i class="bx bxs-factory"></i><i class="bx bxs-car-mechanic bx-lg"></i></div>
                         <h5 class="title"><a href="">Manufacturing & Assembly</a></h5>
                         <p class="description">Manufacturing activities boost the overall value generated in a given
@@ -37,7 +36,7 @@
                 </div>
 
                 <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" >
-                    <div class="icon-box bg-warning">
+                    <div class="icon-box">
                         <div class="icon"><i class="bx bxs-ev-station"></i><i class="bx bxs-chip"></i></div>
                         <h5 class="title"><a href="">Energy & Technology</a></h5>
                         <p class="description">Energy is a critical component in the industrialisation process
@@ -46,16 +45,16 @@
                 </div>
 
                 <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in">
-                    <div class="icon-box bg-warning">
+                    <div class="icon-box">
                         <div class="icon"><i class="bx bxs-truck"></i><i class="bx bxs-plane-alt"></i></div>
-                        <h5 class="title"><a href="">Logistics and Transport</a></h5>
+                        <h5 class="title"><a href="">Logistics & Transport</a></h5>
                         <p class="description">The modernisation of African logistics is one of the most important
                             areas of development on the continent today. </p>
                     </div>
                 </div>
 
                 <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" >
-                    <div class="icon-box bg-warning">
+                    <div class="icon-box">
                         <div class="icon"><i class="bx bxs-coin-stack"></i><i class="bx bxs-business"></i></div>
                         <h5 class="title"><a href="">Corporate Finance & SME's</a></h5>
                         <p class="description">The Bank’s ambition is to help double the industrial GDP by 2025,
@@ -145,7 +144,7 @@
         <div class="container" data-aos="fade-up">
 
             <div class="text-center">
-                <h1 class="mt-0 mb-4" style="color: red;">Magazine</h1>
+                <h2 class="mt-0 mb-4" style="color: goldenrod; font-weight: bold;">Magazine <span class="text-dark">Gallery</span></h2>
 
             </div>
             <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="300">
@@ -253,7 +252,7 @@
     <!----multi item carousel--->
     <div class="container text-center mt-4" data-aos="fade-up">
         <h2 class="font-weight-light">
-            <strong class="put-red">Explore</strong> <span style="color: grey;">Major Categories</span>
+            <strong class="put-gold">Explore</strong> <span style="color: black;">Major Categories</span>
         </h2>
         @if(!$categories->isEmpty())
             <div class="row mx-auto mt-4 justify-content-center">
@@ -400,7 +399,7 @@
     <section id="about" class="about">
         <div class="container" data-aos="fade-up">
             <div class="section-title">
-                <h2><span style="color: #939328">About</span> <strong class="text-danger">Us</strong></h2>
+                <h2><span class="put-gold">About</span> <strong class="text-dark">Us</strong></h2>
             </div>
 
             <p><strong class="text-dark">Industrialising Africa</strong> magazine, a publication of
@@ -445,7 +444,7 @@
         <div class="container" data-aos="fade-up">
 
             <div class="text-center mb-4">
-                <h2 class="text-danger">Frequently Asked Questions - FAQ</h2>
+                <h2 class="text-dark">Frequently Asked Questions - <span class="put-gold">FAQ</span></h2>
             </div>
 
             <div class="faq-list">

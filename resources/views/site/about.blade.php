@@ -5,7 +5,7 @@
     <section id="about" class="about">
         <div class="container mt-4" data-aos="fade-up">
             <div class="section-title">
-                <h2><span style="color: #939328">About</span> <strong class="text-danger">Us</strong></h2>
+                <h2><span style="color: goldenrod">About</span> <strong class="text-dark">Us</strong></h2>
             </div>
 
             <p><strong class="text-dark">Industrialising Africa</strong> magazine, a publication of

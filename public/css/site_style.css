@@ -176,7 +176,7 @@ style for the category drop down
     opacity: 0.8;
 }
 .multi-item-carousel .card-img-overlay{
-   color: red;
+   color: black;
 }
 
 /*red color style*/
@@ -221,7 +221,16 @@ style for the category drop down
     }
 }
 
+.article-cover p:hover{
+    color: red;
+}
 .article-cover img:hover{
+    transform: scale(1.4, 1.4);
     transition: all 3s ease-in-out;
     overflow: hidden;
 }
+
+.put-gold{
+    color: goldenrod;
+}
+
