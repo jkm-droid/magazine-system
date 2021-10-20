@@ -2,7 +2,7 @@
 
 @section('content')
     <section>
-        <div class="container col-md-7" style="margin-top: 40px;">
+        <div class="container" style="margin-top: 40px;">
 
             @if($feature_article->isEmpty())
             @else
@@ -30,7 +30,7 @@
 
             @endif
             <br><br>
-            <h3 class="mt-4">Latest <span class="text-secondary"><strong>Articles</strong></span></h3>
+            <h3 class="mt-4 put-black">Latest <span class="put-gold"><strong>Articles</strong></span></h3>
             <br>
 
             @if($articles->isEmpty())
@@ -48,7 +48,7 @@
                                 <div class="col-md-10">
                                     <div class="card-body mt-0">
                                         <a class="text-secondary" href="{{ route('site.article.full.show', $article->slug) }}">
-                                            <p class="card-title text-dark">{{ $article->title }}</p>
+                                            <p class="card-title put-black">{{ $article->title }}</p>
 
                                             <p class="card-text">{{ date('d-m-Y', strtotime($article->created_at)) }} |
                                                 @foreach($article->categories as $article_cat)
@@ -72,27 +72,27 @@
 
             @if($more_articles->isEmpty())
             @else
-                <h4 class="mb-4 mt-4"><strong>More</strong> to <strong class="put-gold">Read</strong></h4>
+                <h4 class="mb-4 mt-4 put-black"><strong>More</strong> to <strong class="put-gold">Read</strong></h4>
                 <div class="justify-content-start">
 
                     <div class="row row-cols-1 row-cols-md-4 g-3">
                         @foreach($more_articles as $more)
                             <div class="col">
-                                <div class="card h-100" style="border:none;">
+                                <div class="card h-100" style="border:none; box-shadow: 0 0 10px goldenrod;">
                                     <a href="{{ route('site.article.full.show', $more->slug) }}">
                                         <img src="/article_covers/{{ $more->image }}" class="card-img-top" alt="..." height="200">
-                                        <div class="card-body">
+                                        <div class="card-body bg-dark text-white">
                                             @foreach($more->categories as $more_cat)
-                                                <div class="text-secondary"><h6>{{ \Illuminate\Support\Str::upper($more_cat->title) }}</h6></div>
+                                                <div class="text-warning"><h6>{{ \Illuminate\Support\Str::upper($more_cat->title) }}</h6></div>
                                             @endforeach
                                             <h5 class="card-title">
-                                                <a class="text-dark" href="{{ route('site.article.full.show', $more->slug) }}">{{ $more->title }}</a>
+                                                <a class="put-gold" href="{{ route('site.article.full.show', $more->slug) }}">{{ $more->title }}</a>
                                             </h5>
                                             <p class="card-text">{!! \Illuminate\Support\Str::limit(strip_tags($more->body), $limit = 50, $end = '...') !!}</p>
                                         </div>
 
                                         <div class="card-footer" style="border:none;">
-                                            <small class="">{{ \Illuminate\Support\Str::upper(date('F Y', strtotime($more->created_at))) }}</small>
+                                            <small class="put-black">{{ \Illuminate\Support\Str::upper(date('F Y', strtotime($more->created_at))) }}</small>
                                         </div>
                                     </a>
                                 </div>

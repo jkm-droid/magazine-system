@@ -2,7 +2,7 @@
 <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center justify-content-between">
 
-        <a href="/" class="logo"><img src="{{ asset('site_images/logo.jpg') }}" alt="" class="img-fluid"></a>
+        <a href="/" class="logo"><img src="{{ asset('site_images/ialogo.png') }}" alt="" class="img-fluid"></a>
 
         <nav id="navbar" class="navbar navbar-light">
             <ul class="text-uppercase text-dark">

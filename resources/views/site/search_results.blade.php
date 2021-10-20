@@ -2,7 +2,7 @@
 
 @section('content')
     <section>
-        <div class="container col-md-7" style="margin-top: 40px;">
+        <div class="container" style="margin-top: 40px;">
             @if($results->isEmpty())
                 <p>No results found</p>
             @else
@@ -19,8 +19,6 @@
                     </div>
                     <br>
                 @endforeach<br>
-
-
 
                 {!! $results->links() !!}
             @endif

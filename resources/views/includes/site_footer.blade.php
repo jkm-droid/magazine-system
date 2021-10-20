@@ -6,7 +6,7 @@
             <div class="row">
 
                 <div class="col-lg-3 col-md-6 footer-contact">
-                    <a href="/" class="logo"><img src="{{ asset('site_images/logo.jpg') }}" alt="" class="img-fluid"></a>
+                    <a href="/" class="logo"><img src="{{ asset('site_images/ialogo.png') }}" alt="" class="img-fluid"></a>
                     <p>
                         <strong>Phone:</strong> +254-722-666-747<br>
                         Nairobi, Kenya <br>
@@ -48,7 +48,7 @@
 
                 <div class="col-lg-4 col-md-6 footer-newsletter">
                     <h4 class="put-red" style="color: white;">Join Our Newsletter</h4>
-                    <p class="put-gold">Get the latest updates from our team</p>
+                    <p class="put-gold">Enter your email address to get the latest updates from our team.</p>
                     <form action="" method="post">
                         <input type="email" class="form-control" name="email">
                         <input class="text-uppercase" style="background-color: goldenrod; color: black;" type="submit" value="Subscribe">

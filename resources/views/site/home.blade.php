@@ -22,7 +22,9 @@
                 </div>
             </div>
             <div class="text-center mt-2">
-                <button class="btn btn-lg put-gold" style="background-color: black;"><h2>Get Insights on:</h2></button>
+                <button class="btn btn-lg put-gold" style="background-color: black; box-shadow: 0 0 30px goldenrod;">
+                    <h2>Get Insights on:</h2>
+                </button>
             </div>
 
             <div class="row icon-boxes">
