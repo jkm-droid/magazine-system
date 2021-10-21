@@ -1,3 +1,25 @@
 .admin-make-form{
     display: none;
 }
+
+.background-black{
+    background-color: black;
+}
+.background-gold{
+    background-color: goldenrod;
+}
+.put-black{
+    color: black;
+}
+
+.put-gold{
+    color: goldenrod;
+}
+
+.nav-link p{
+    color: goldenrod;
+}
+
+.nav-link .nav-icon{
+    color: white;
+}

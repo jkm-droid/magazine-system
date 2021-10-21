@@ -50,5 +50,12 @@ class Article extends Model
         return Str::of($this->body)->limit(40);
     }
 
-    protected $appends = ['formatted_date', 'article_body'];
+    /**
+     * return all the categories
+     */
+    public function getAllCategoriesAttribute(){
+        return Category::get();
+    }
+
+    protected $appends = ['formatted_date', 'article_body','all_categories'];
 }

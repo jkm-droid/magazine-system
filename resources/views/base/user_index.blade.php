@@ -23,6 +23,7 @@
     @yield('content')
 </div>
 
+{{--@include('includes/site_footer')--}}
 <!-- Optional JavaScript; choose one of the two! -->
 
 <!-- Option 1: Bootstrap Bundle with Popper -->

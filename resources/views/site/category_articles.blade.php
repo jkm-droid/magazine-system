@@ -4,7 +4,7 @@
     <section>
         <div class="container" style="margin-top: 40px;">
             <br>
-            <h3>Articles on <span class="text-secondary"><strong>{{ $category_title }}</strong></span></h3>
+            <h3 class="put-black">Articles on <span class="put-gold"><strong>{{ $category_title }}</strong></span></h3>
             <br>
 
             @if($cat_articles->isEmpty())
@@ -21,7 +21,7 @@
                             <div class="col-md-8">
                                 <div class="card-body mt-0">
                                     <a class="text-secondary" href="{{ route('site.article.full.show', $article->slug) }}">
-                                    <h5 class="card-title text-danger"><strong>{{ $article->title }}</strong></h5>
+                                    <h5 class="card-title put-black"><strong>{{ $article->title }}</strong></h5>
                                     <p class="card-text">{{ date('d-m-Y', strtotime($article->created_at)) }} |
                                         @foreach($article->categories as $article_cat)
                                             {{ \Illuminate\Support\Str::upper($article_cat->title) }}

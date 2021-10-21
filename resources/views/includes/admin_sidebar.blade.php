@@ -1,11 +1,11 @@
-<div class="sidebar">
+<div class="sidebar background-black put-gold">
     <!-- Sidebar user panel (optional) -->
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex put-gold">
         <div class="image">
             <img src="{{ asset('admin-dashboard/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
         </div>
-        <div class="info">
-            <a href="#" class="d-block">{{ Auth::user()->email }}</a>
+        <div class="info put-gold">
+            <a style="color: goldenrod;" href="#" class="d-block put-gold">{{ Auth::user()->email }}</a>
         </div>
     </div>
 

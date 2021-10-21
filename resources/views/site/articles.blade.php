@@ -8,11 +8,12 @@
             @else
                 <a href="{{ route('site.article.full.show', $feature_article[0]->slug) }}" class="img-fluid col-md-12">
 
-                    <div class="card card-shadow article-cover">
-                        <img src="/article_covers/{{ $feature_article[0]->image }}" class="img-fluid col-md-12" width="100%" style="max-height: 450px; opacity: 0.6;" alt="">
-
+                    <div class="card card-shadow img-hover-zoom--slowmo">
+                        <div class="">
+                            <img src="/article_covers/{{ $feature_article[0]->image }}" class="img-fluid col-md-12" width="100%" style="max-height: 450px; opacity: 0.6;" alt="">
+                        </div>
                         <div class="card-img-overlay article-cover-content">
-                            <h4 class="card-title put-red">{{ $feature_article[0]->title }}</h4>
+                            <h4 class="card-title put-black">{{ $feature_article[0]->title }}</h4>
                             <p class="card-text text-dark mt-auto">
                                 {{ \Illuminate\Support\Str::upper($feature_article[0]->author) }} |
 
@@ -37,32 +38,32 @@
                 no articles found
             @else
                 @foreach($articles as $article)
-                        <div class="card border-0" style=" background-color: #efeeee;">
-                            <div class="row no-gutters">
+                    <div class="card border-0" style=" background-color: #efeeee;">
+                        <div class="row no-gutters">
 
-                                <div class="col-md-2">
+                            <div class="col-md-2">
+                                <a class="text-secondary" href="{{ route('site.article.full.show', $article->slug) }}">
+                                    <img class="float-start card-img-top img-fluid " src="/article_covers/{{ $article->image }}" style="min-width: 150px; min-height: 130px;"   alt="">
+                                </a>
+                            </div>
+                            <div class="col-md-10">
+                                <div class="card-body mt-0">
                                     <a class="text-secondary" href="{{ route('site.article.full.show', $article->slug) }}">
-                                        <img class="float-start card-img-top img-fluid" src="/article_covers/{{ $article->image }}" style="min-width: 150px; min-height: 130px;"   alt="">
+                                        <p class="card-title put-black">{{ $article->title }}</p>
+
+                                        <p class="card-text">{{ date('d-m-Y', strtotime($article->created_at)) }} |
+                                            @foreach($article->categories as $article_cat)
+                                                {{ \Illuminate\Support\Str::upper($article_cat->title) }}
+                                            @endforeach
+                                            <br>
+                                            {!! \Illuminate\Support\Str::limit(strip_tags($article->body), $limit = 100, $end = '...') !!}
+                                        </p>
                                     </a>
                                 </div>
-                                <div class="col-md-10">
-                                    <div class="card-body mt-0">
-                                        <a class="text-secondary" href="{{ route('site.article.full.show', $article->slug) }}">
-                                            <p class="card-title put-black">{{ $article->title }}</p>
-
-                                            <p class="card-text">{{ date('d-m-Y', strtotime($article->created_at)) }} |
-                                                @foreach($article->categories as $article_cat)
-                                                    {{ \Illuminate\Support\Str::upper($article_cat->title) }}
-                                                @endforeach
-                                                <br>
-                                                {!! \Illuminate\Support\Str::limit(strip_tags($article->body), $limit = 100, $end = '...') !!}
-                                            </p>
-                                        </a>
-                                    </div>
-                                </div>
-
                             </div>
+
                         </div>
+                    </div>
                 @endforeach
 
             @endif

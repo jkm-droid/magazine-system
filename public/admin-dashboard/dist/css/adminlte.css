@@ -11264,11 +11264,12 @@ body:not(.layout-fixed).layout-navbar-fixed.text-sm .wrapper .main-sidebar .side
 }
 
 .layout-navbar-fixed .wrapper .brand-link {
+  padding: 0;
   overflow: hidden;
   position: fixed;
   top: 0;
   transition: width 0.3s ease-in-out;
-  width: 250px;
+  /*width: 250px;*/
   z-index: 1035;
 }
 

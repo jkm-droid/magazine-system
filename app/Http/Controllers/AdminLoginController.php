@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -21,7 +22,7 @@ class AdminLoginController extends Controller
 
     //show the index page
     public function admin_show_login(){
-        return view('admin.login');
+        return view('admin.login')->with('all_categories', Category::get());
     }
 
     public function admin_login(Request $request){

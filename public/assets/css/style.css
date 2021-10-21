@@ -11,7 +11,7 @@
 body {
     font-family: "Open Sans", sans-serif;
     color: #444444;
-    background-color: #efeeee;
+    background-color: #faf9f9;
 }
 
 a {
@@ -27,7 +27,16 @@ a:hover {
 h1, h2, h3, h4, h5, h6 {
     font-family: "Raleway", sans-serif;
 }
+.background-black{
+    background-color: black;
+}
+.put-black{
+    color: black;
+}
 
+.put-gold{
+    color: goldenrod;
+}
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
@@ -619,7 +628,7 @@ section {
 }
 #about{
     font-size: larger;
-    color: #060707;
+    color: black;
     width: 100%;
     position: relative;
     background: url("../img/technology-impact.jpg") top center;

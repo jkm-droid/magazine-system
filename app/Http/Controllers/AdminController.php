@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendAdminCreationEmailJob;
 use App\Models\Admin;
 use App\Models\Role;
 use http\Header;
@@ -59,6 +60,11 @@ class AdminController extends Controller
         ]);
 
         $email_address = trim($request->email);
+        $link = route('admin.show.register');
+
+        SendAdminCreationEmailJob::dispatch($email_address, $link);
+
+        return redirect()->route('admin.index')->with('success', 'Email sent successfully');
     }
 
     //change admin status -> super admin or <- normal admin

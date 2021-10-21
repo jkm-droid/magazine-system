@@ -221,13 +221,20 @@ style for the category drop down
     }
 }
 
-.article-cover p:hover{
-    color: red;
-}
-.article-cover img:hover{
-    transform: scale(1.4, 1.4);
-    transition: all 3s ease-in-out;
+/* Slow-motion Zoom Container */
+.img-hover-zoom--slowmo{
     overflow: hidden;
+}
+.img-hover-zoom--slowmo img {
+    transform-origin: 50% 65%;
+    transition: transform 5s, filter 3s ease-in-out;
+    filter: brightness(150%);
+}
+
+/* The Transformation */
+.img-hover-zoom--slowmo:hover img {
+    filter: brightness(100%);
+    transform: scale(3);
 }
 
 .put-gold{

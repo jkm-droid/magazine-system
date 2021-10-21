@@ -2,19 +2,19 @@
 
 @section('content')
     <section>
-        <div class="container" style="margin-top: 40px;">
+        <div class="container" style="margin-top: 40px; min-height: 200px;">
             @if($results->isEmpty())
-                <p>No results found</p>
+                <p class="text-center put-red">No results found</p>
             @else
-                <h3>Found <strong class="text-secondary">Results</strong></h3>
+                <h3 class="put-black">Found <strong class="put-gold">Results</strong></h3>
 
                 @foreach($results as $result)
-                    <div style="background-color: gold;  border-radius: 10px;">
+                    <div style="background-color: goldenrod;  border-radius: 10px;">
                         <a href="{{ route('site.article.full.show', $result->slug) }}" style="padding: 10px;">
-                            <h5 class="text-danger font-weight-bold">
+                            <h5 class="put-black font-weight-bold">
                                 {{ ++$i}}. {{ $result->title }}
                             </h5>
-                            <p style="margin-left: 20px;" class="ml-4">{!! \Illuminate\Support\Str::limit(strip_tags($result->body), $limit = 100, $end = '...') !!}</p>
+                            <p style="margin-left: 20px;" class="ml-4 text-white">{!! \Illuminate\Support\Str::limit(strip_tags($result->body), $limit = 100, $end = '...') !!}</p>
                         </a>
                     </div>
                     <br>

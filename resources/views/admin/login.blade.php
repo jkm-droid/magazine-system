@@ -3,9 +3,9 @@
 @section('content')
     <div class="login-box">
         <!-- /.login-logo -->
-        <div class="card card-outline card-danger">
+        <div class="card card-outline card-warning">
             <div class="card-header text-center">
-                <h3><a href="/" class="h3">Industrialising Africa<br><small><strong class="text-danger">Magazine</strong></small></a></h3>
+                <h3 class="put-black"><a href="/" class="h3">Industrialising Africa<br><small><strong>Magazine</strong></small></a></h3>
             </div>
             <div class="card-body">
                 @if ($message = Session::get('success'))
@@ -41,7 +41,7 @@
                         </div>
                         <!-- /.col -->
                         <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                            <button type="submit" class="btn btn-primary btn-block background-black put-gold text-uppercase">Sign In</button>
                         </div>
                         <!-- /.col -->
                     </div>

@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">{{ $article->title }}</h1>
+                    <h1 class="m-0">"{{ $article->title }}" Preview</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -17,20 +17,22 @@
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
-    <div class="m-2">
-        <a href="{{ route('my_articles.index', \Illuminate\Support\Facades\Auth::user()->id) }}"><button class="btn btn-success btn-sm">Back</button></a>
-    <h4 class="text-secondary">{{ \Illuminate\Support\Str::upper($article->category) }}</h4>
-    <p>
-        by {{ \Illuminate\Support\Str::upper($article->author) }}
-        Published: {{ date('d-m-Y', strtotime($article->created_at)) }}
-        Status:
-        @if($article->status == 0)
-            <span class="badge badge-danger">Draft</span>
-        @else
-            <span class="badge badge-success">Published</span>
-        @endif
-    </p>
-    <img src="/article_covers/{{ $article->image }}" class="img-fluid" alt="">
-    <p class="mt-3">{!! $article->body !!}</p>
-    </div>
+    <section>
+        <div class="col-md-10 m-2 mt-0">
+            <a href="{{ route('my_articles.index', \Illuminate\Support\Facades\Auth::user()->id) }}">
+                <button class="btn btn-success btn-sm">Back</button><br>
+            </a>
+            <br>
+            @foreach($article->categories as $article_cat)
+                <h4 class="text-secondary">{{ \Illuminate\Support\Str::upper($article_cat->title) }}</h4>
+            @endforeach
+            <h1 class="m-0">{{ $article->title }}</h1>
+            <p>
+                by {{ \Illuminate\Support\Str::upper($article->author) }}
+                Published: {{ date('d-m-Y', strtotime($article->created_at)) }}
+            </p>
+            <img src="/article_covers/{{ $article->image }}" class="img-fluid col-md-12" style="max-height: 300px;" alt="">
+            <p class="mt-3">{!! $article->body !!}</p>
+        </div>
+    </section>
 @endsection

@@ -29,7 +29,7 @@
 
     <!--- admin panel css section---->
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}" />
-    <!--- edn admin panel section---->
+    <!--- end admin panel section---->
 
     <!--- toast section---->
     <!-- Core Stylesheet -->
@@ -63,9 +63,9 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="{{ route('dashboard') }}" class="brand-link">
-{{--                        <img src="{{ asset('site_images/firstcodeLogo.png') }}" alt="AdminLTE Logo" class="brand-image" style="opacity: .8">--}}
-            <span class="brand-text font-weight-light text-center">Industrialising Africa<br>Magazine</span>
+        <a href="{{ route('dashboard') }}" class="brand-l">
+                        <img src="{{ asset('site_images/ialogo.png') }}" alt="AdminLTE Logo"   style="opacity: .8; max-width: 250px; max-height: 70px; padding: 0;">
+{{--            <span class="brand-text font-weight-light text-center">Industrialising Africa<br>Magazine</span>--}}
         </a>
 
         <!-- Sidebar -->

@@ -19,9 +19,9 @@
     </div>
 
     <div class="col-12">
-        <div class="card card-outline card-danger">
+        <div class="card card-outline card-dark">
             <div class="card-header">
-                <h3 class="card-title">Responsive Hover Table</h3>
+                <h3 class="card-title">Admin creation</h3>
             </div>
             <!-- /.card-header -->
 

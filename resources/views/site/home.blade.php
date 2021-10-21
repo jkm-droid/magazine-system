@@ -3,11 +3,8 @@
 @section('content')
     <!--    welcome area--->
     <section id="hero" class="d-flex align-items-center"  >
-        <div class="container position-relative" data-aos="fade-up">
+        <div class="container position-relative">
             <div class="row justify-content-center">
-                {{--                                <div class="col-xl-7 col-lg-9 ">--}}
-                {{--                                    <h2 class="text-dark">Welcome to</h2>--}}
-                {{--                                </div>--}}
 
                 <div class="col-xl-7 col-md-7 col-lg-9 text-center">
                     <h1 class="text-dark">Industrialising <span  class="put-gold">Africa</span> Magazine</h1>
@@ -149,7 +146,7 @@
                 <h2 class="mt-0 mb-4" style="color: goldenrod; font-weight: bold;">Magazine <span class="text-dark">Gallery</span></h2>
 
             </div>
-            <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="300">
+            <div class="row portfolio-container" data-aos="fade-up">
 
                 <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                     <div class="portfolio-wrap">
@@ -465,7 +462,7 @@
                         </div>
                     </li>
 
-                    <li data-aos="fade-up" data-aos-delay="100">
+                    <li data-aos="fade-up" data-aos-delay="50">
                         <i class="bx bx-help-circle icon-help"></i>
                         <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">
                             2. What is FirstCode Corporation about?
@@ -480,7 +477,7 @@
                         </div>
                     </li>
 
-                    <li data-aos="fade-up" data-aos-delay="200">
+                    <li data-aos="fade-up" data-aos-delay="100">
                         <i class="bx bx-help-circle icon-help"></i>
                         <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">
                             3. How old is Industrialising Africa?
@@ -493,7 +490,7 @@
                         </div>
                     </li>
 
-                    <li data-aos="fade-up" data-aos-delay="300">
+                    <li data-aos="fade-up" data-aos-delay="150">
                         <i class="bx bx-help-circle icon-help"></i>
                         <a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed">
                             4. Where are your offices?
@@ -506,7 +503,7 @@
                         </div>
                     </li>
 
-                    <li data-aos="fade-up" data-aos-delay="400">
+                    <li data-aos="fade-up" data-aos-delay="200">
                         <i class="bx bx-help-circle icon-help"></i>
                         <a data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapsed">
                             5. Who are your strategic partners?
@@ -521,7 +518,7 @@
                         </div>
                     </li>
 
-                    <li data-aos="fade-up" data-aos-delay="500">
+                    <li data-aos="fade-up" data-aos-delay="250">
                         <i class="bx bx-help-circle icon-help"></i>
                         <a data-bs-toggle="collapse" data-bs-target="#faq-list-6" class="collapsed">
                             6. What are your major activities?
@@ -538,7 +535,7 @@
                         </div>
                     </li>
 
-                    <li data-aos="fade-up" data-aos-delay="600">
+                    <li data-aos="fade-up" data-aos-delay="300">
                         <i class="bx bx-help-circle icon-help"></i>
                         <a data-bs-toggle="collapse" data-bs-target="#faq-list-7" class="collapsed">
                             7. Your agenda for Africa is too ambitious, how do you intend achieve it?
@@ -553,7 +550,7 @@
                             </p>
                         </div>
                     </li>
-                    <li data-aos="fade-up" data-aos-delay="700">
+                    <li data-aos="fade-up" data-aos-delay="350">
                         <i class="bx bx-help-circle icon-help"></i>
                         <a data-bs-toggle="collapse" data-bs-target="#faq-list-8" class="collapsed">
                             8. What sets your initiative apart?
@@ -567,7 +564,7 @@
                         </div>
                     </li>
 
-                    <li data-aos="fade-up" data-aos-delay="800">
+                    <li data-aos="fade-up" data-aos-delay="400">
                         <i class="bx bx-help-circle icon-help"></i>
                         <a data-bs-toggle="collapse" data-bs-target="#faq-list-9" class="collapsed">
                             9. In how many languages do you disseminate your information?
@@ -581,7 +578,7 @@
                         </div>
                     </li>
 
-                    <li data-aos="fade-up" data-aos-delay="900">
+                    <li data-aos="fade-up" data-aos-delay="450">
                         <i class="bx bx-help-circle icon-help"></i>
                         <a data-bs-toggle="collapse" data-bs-target="#faq-list-10" class="collapsed">
                             10. How many hard copies of the magazine do you print?
@@ -594,7 +591,7 @@
                         </div>
                     </li>
 
-                    <li data-aos="fade-up" data-aos-delay="1000">
+                    <li data-aos="fade-up" data-aos-delay="500">
                         <i class="bx bx-help-circle icon-help"></i>
                         <a data-bs-toggle="collapse" data-bs-target="#faq-list-11" class="collapsed">
                             11. How big or wide is your circulation?
@@ -607,7 +604,7 @@
                         </div>
                     </li>
 
-                    <li data-aos="fade-up" data-aos-delay="1100">
+                    <li data-aos="fade-up" data-aos-delay="550">
                         <i class="bx bx-help-circle icon-help"></i>
                         <a data-bs-toggle="collapse" data-bs-target="#faq-list-12" class="collapsed">
                             12. Is the publication a monthly or quarterly?
@@ -619,7 +616,7 @@
                         </div>
                     </li>
 
-                    <li data-aos="fade-up" data-aos-delay="1200">
+                    <li data-aos="fade-up" data-aos-delay="600">
                         <i class="bx bx-help-circle icon-help"></i>
                         <a data-bs-toggle="collapse" data-bs-target="#faq-list-13" class="collapsed">
                             13. What are your major revenue sources?
@@ -633,7 +630,7 @@
                         </div>
                     </li>
 
-                    <li data-aos="fade-up" data-aos-delay="1300">
+                    <li data-aos="fade-up" data-aos-delay="650">
                         <i class="bx bx-help-circle icon-help"></i>
                         <a data-bs-toggle="collapse" data-bs-target="#faq-list-14" class="collapsed">
                             14. Do you partner with training institutions in the industrial sector?
@@ -652,7 +649,7 @@
                         </div>
                     </li>
 
-                    <li data-aos="fade-up" data-aos-delay="1400">
+                    <li data-aos="fade-up" data-aos-delay="700">
                         <i class="bx bx-help-circle icon-help"></i>
                         <a data-bs-toggle="collapse" data-bs-target="#faq-list-15" class="collapsed">
                             15. Where do you intend to see this initiative five years from now?

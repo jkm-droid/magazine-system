@@ -26,11 +26,11 @@
                 <li><a class="nav-link scrollto" href="{{ route('site.faqs.show') }}">FAQS</a></li>
                 <li><a class="nav-link scrollto" href="{{ route('site.about.show') }}">About Us</a></li>
 
-                <li><a class="nav-link scrollto" href="#footer">Contacts</a></li>
+                <li><a class="nav-link scrollto ml-4" href="#footer">Contacts</a></li>
                 @if( Route::currentRouteName() == 'site.home' | Route::currentRouteName() == 'site.faqs.show' | Route::currentRouteName() == 'site.about.show')
 
                 @else
-                    <form class="d-flex col-md-3 ml-3" style="height: 30px;" method="GET" action="{{ route('site.articles.search') }}">
+                    <form class="d-flex col-md-3 ml-3" style="height: 30px; margin-left: 5px;" method="GET" action="{{ route('site.articles.search') }}">
                         @csrf
                         <input style="border: 1px solid goldenrod;" name="search" class="form-control me-2" type="search" placeholder="enter keyword" aria-label="Search">
                         <button class="btn btn-sm btn-outline-warning" type="submit">Search</button>
