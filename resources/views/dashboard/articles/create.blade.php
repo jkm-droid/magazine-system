@@ -19,7 +19,7 @@
     </div>
 
     <div class="col-12">
-        <div class="card card-outline card-danger">
+        <div class="card card-outline card-dark">
             <div class="card-header">
                 <h3 class="card-title"><a class="btn btn-success btn-sm" href="{{ route('articles.index') }}">Back</a></h3>
             </div>

@@ -72,12 +72,17 @@
                 <span class="hidden-xs">{{ Auth::user()->username }}</span>
 
             </a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu" style="background-color: black; color: goldenrod;">
                 <!-- The user image in the menu -->
                 <li class="user-header">
-                    {{--                    <img src="/profile_pictures/{{ \Illuminate\Support\Facades\Auth::user()->profile_url }}" class="img-circle" alt="User Image" />--}}
+                    <img src="/profile_pictures/{{ \Illuminate\Support\Facades\Auth::user()->profile_url }}" class="img-circle" alt="User Image" />
                     <p>
-                        {{ Auth::user()->email }} - Admin
+                        {{ Auth::user()->email }} -
+                        @if(\Illuminate\Support\Facades\Auth::user()->isSuperAdmin == 1)
+                            Admin
+                        @else
+                            Author
+                        @endif
                         <small>Member since {{ date_format(Auth::user()->created_at, 'M Y')}}</small>
                     </p>
                 </li>
@@ -87,11 +92,11 @@
                         {{--                        <a href="{{ route('profile.index', \Illuminate\Support\Facades\Auth::user()->id) }}" class="btn btn-default btn-flat">Profile</a>--}}
                     </div>
                     <div class="pull-right">
-{{--                        @if(Auth::guard('admin')->check())--}}
-{{--                            <a href="{{ route('admin.logout') }}" class="btn btn-default btn-flat">Sign out</a>--}}
-{{--                        @else--}}
-                            <a href="{{ route('admin.logout') }}" class="btn btn-default btn-flat">Sign out</a>
-{{--                        @endif--}}
+                        {{--                        @if(Auth::guard('admin')->check())--}}
+                        {{--                            <a href="{{ route('admin.logout') }}" class="btn btn-default btn-flat">Sign out</a>--}}
+                        {{--                        @else--}}
+                        <a href="{{ route('admin.logout') }}" class="btn btn-default btn-flat">Sign out</a>
+                        {{--                        @endif--}}
                     </div>
                 </li>
             </ul>

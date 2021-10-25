@@ -15,7 +15,7 @@
     <!-- Bootstrap CSS -->
 {{--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">--}}
 
-    <!--base assets, icons--->
+<!--base assets, icons--->
     <link href="{{asset('assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
 
@@ -27,7 +27,7 @@
     <link href="{{ asset( 'assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
     <link href="{{ asset( 'assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+{{--    <link href="{{ asset('assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">--}}
     <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
     <!--base css--->
     <link href="{{ asset('css/site_style.css') }}" rel="stylesheet">
@@ -43,14 +43,18 @@
     </style>
 </head>
 <body>
-{{--<div class="container col-md-10">--}}
 
-    @include('includes.site_navbar')
+@include('includes.site_navbar')
 
-    @yield('content')
+<div class=" social-icons-float text-md-right pt-3 pt-md-0 fixed-top">
+    <a href="https://twitter.com/AfroIndustry" class="twitter"><i class="bx bxl-twitter"></i></a>
+    <a href="https://www.facebook.com/industrialisingafrica" class="facebook"><i class="bx bxl-facebook"></i></a>
+    <a href="https://www.instagram.com/industrialafrica/" class="instagram"><i class="bx bxl-instagram"></i></a>
+    <a href="https://www.linkedin.com/in/industrialising-africa-17b536211/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+    <a href="https://www.youtube.com/c/IndustrialisingAfrica"><i class="bx bxl-youtube"></i></a>
+</div>
+@yield('content')
 
-
-{{--</div>--}}
 @include('includes.site_footer')
 {{--<div id="preloader"></div>--}}
 <a href="#" class="back-to-top d-flex align-items-center bg-dark justify-content-center text-white"><strong>TOP</strong></a>
@@ -59,7 +63,7 @@
 <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
 <script src="{{ asset('assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
-<script src="{{ asset('assets/vendor/purecounter/purecounter.js') }}"></script>
+{{--<script src="{{ asset('assets/vendor/purecounter/purecounter.js') }}"></script>--}}
 <script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
 
 <!-- Template Main JS File -->

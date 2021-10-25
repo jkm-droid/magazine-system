@@ -33,7 +33,7 @@
                             <p>Articles</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-bag"></i>
+                            <i class="ion-ios-albums"></i>
                         </div>
                         <a href="{{ route('articles.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
@@ -48,7 +48,7 @@
                             <p>Categories</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-stats-bars"></i>
+                            <i class="ion-android-menu"></i>
                         </div>
                         <a href="{{ route('categories.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
@@ -63,7 +63,7 @@
                             <p>My Articles</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-person-add"></i>
+                            <i class="ion-ios-albums-outline"></i>
                         </div>
                         <a href="{{ route('my_articles.index', \Illuminate\Support\Facades\Auth::user()->id) }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
@@ -78,7 +78,7 @@
                             <p>Admins</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-albums"></i>
+                            <i class="ion-android-people"></i>
                         </div>
                         @if(\Illuminate\Support\Facades\Auth::user()->isSuperAdmin == 1)
                             <a href="{{ route('admin.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>

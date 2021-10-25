@@ -124,6 +124,37 @@ h1, h2, h3, h4, h5, h6 {
     [data-aos-delay] {
         transition-delay: 0 !important;
     }
+    .article-cover-content{
+        margin: 0;
+    }
+
+    .explore-more{
+        display: none;
+    }
+
+    .article-image{
+        min-height: 250px;
+    }
+
+    .social-icons-float{
+        margin-top: 50px;
+        font-size: small;
+    }
+
+    .social-icons-float a{
+        font-size: small;
+        display: inline-block;
+        background: black;
+        color: white;
+        line-height: 1;
+        padding: 8px 0;
+        margin-right: 4px;
+        border-radius: 5px;
+        text-align: center;
+        width: 26px;
+        height: 26px;
+        transition: 0.3s;
+    }
 }
 
 /*--------------------------------------------------------------
@@ -140,7 +171,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #header.header-scrolled {
     border-color: goldenrod;
-    box-shadow: 0px 2px 15px rgba(18, 66, 101, 0.08);
+    box-shadow: 0 2px 15px rgba(18, 66, 101, 0.08);
 }
 
 #header .logo {
@@ -244,7 +275,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar .dropdown ul li {
-    min-width: 200px;
+    /*min-width: 200px;*/
 }
 
 .navbar .dropdown ul a {
@@ -275,7 +306,7 @@ h1, h2, h3, h4, h5, h6 {
 .navbar .dropdown .dropdown:hover > ul {
     opacity: 1;
     top: 0;
-    left: 100%;
+    /*left: 100%;*/
     visibility: visible;
 }
 

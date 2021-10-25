@@ -2,7 +2,7 @@
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex put-gold">
         <div class="image">
-            <img src="{{ asset('admin-dashboard/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+            <img src="/profile_pictures/{{ \Illuminate\Support\Facades\Auth::user()->profile_url }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info put-gold">
             <a style="color: goldenrod;" href="#" class="d-block put-gold">{{ Auth::user()->email }}</a>
@@ -37,7 +37,7 @@
 
             <li class="nav-item">
                 <a href="{{ route('my_articles.index', \Illuminate\Support\Facades\Auth::user()->id) }}" class="nav-link">
-                    <i class="nav-icon fa fa-envelope"></i>
+                    <i class="nav-icon fa fa-clone"></i>
                     <p>
                         My Articles
                     </p>
@@ -73,7 +73,7 @@
 
             <li class="nav-item">
                 <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-book"></i>
+                    <i class="nav-icon fa fa-bars"></i>
                     <p>
                         Categories
                         <i class="fas fa-angle-left right"></i>

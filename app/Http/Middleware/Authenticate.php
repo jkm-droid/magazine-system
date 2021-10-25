@@ -20,7 +20,7 @@ class Authenticate extends Middleware
                 return redirect()->route('admin.show.login');
             }
 
-            return route('home');
+            return route('site.home');
         }
     }
 }

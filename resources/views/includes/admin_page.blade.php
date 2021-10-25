@@ -1,7 +1,7 @@
 @if( Auth::user()->is_admin == 1)
     <li class="nav-item">
         <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-book"></i>
+            <i class="nav-icon fas fa-cog"></i>
             <p>
                 Roles
                 <i class="fas fa-angle-left right"></i>
@@ -26,7 +26,7 @@
 
     <li class="nav-item">
         <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-book"></i>
+            <i class="nav-icon fas fa-key"></i>
             <p>
                 Permissions
                 <i class="fas fa-angle-left right"></i>
@@ -51,7 +51,7 @@
 
     <li class="nav-item">
         <a href="{{ route('admin.index') }}" class="nav-link">
-            <i class="nav-icon fa fa-wrench"></i>
+            <i class="nav-icon fa fa-users"></i>
             <p>
                 Admins
             </p>

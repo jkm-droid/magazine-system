@@ -1,6 +1,7 @@
 <!-- navbar section -->
-<header id="header" class="fixed-top">
-    <div class="container d-flex align-items-center justify-content-between">
+<header id="header" class="fixed-top" style="background-color: red;">
+<div id="header" class="fixed-top navbar navbar-expand-md">
+    <div class="container" >
 
         <a href="/" class="logo"><img src="{{ asset('site_images/ialogo.png') }}" alt="" class="img-fluid"></a>
 
@@ -15,7 +16,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         @foreach($all_categories as $category)
-                            <li>
+                            <li class="">
                                 <a class="dropdown-item" href="{{ route('site.category.all.articles.show', $category->slug) }}">
                                     {{ \Illuminate\Support\Str::upper($category->title) }}
                                 </a>
@@ -23,6 +24,9 @@
                         @endforeach
                     </ul>
                 </li>
+                <!----custom drop down menu--->
+
+                <!----end custom drop down menu--->
                 <li><a class="nav-link scrollto" href="{{ route('site.faqs.show') }}">FAQS</a></li>
                 <li><a class="nav-link scrollto" href="{{ route('site.about.show') }}">About Us</a></li>
 
@@ -42,7 +46,9 @@
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav>
         <!-- .navbar -->
-
     </div>
+</div>
+
 </header>
+
 <!-- end navbar section -->
