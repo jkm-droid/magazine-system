@@ -24,7 +24,7 @@
             <div class="card card-outline card-warning">
                 <div class="card-header">
 
-                    <a class="btn btn-sm btn-success" href="{{ route('article.create') }}">
+                    <a class="btn btn-sm put-gold background-black" href="{{ route('article.create') }}">
                         <h3 class="card-title">Add New Article</h3>
                     </a>
 

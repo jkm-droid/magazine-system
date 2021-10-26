@@ -54,12 +54,12 @@
                 </a>
                 <ul class="nav nav-treeview">
                     @if( Auth::user()->is_admin == 1)
-                    <li class="nav-item">
-                        <a href="{{ route('articles.index') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>View All</p>
-                        </a>
-                    </li>
+                        <li class="nav-item">
+                            <a href="{{ route('articles.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>View All</p>
+                            </a>
+                        </li>
                     @endif
 
                     <li class="nav-item">
@@ -81,15 +81,41 @@
                 </a>
                 <ul class="nav nav-treeview">
                     @if( Auth::user()->is_admin == 1)
-                    <li class="nav-item">
-                        <a href="{{ route('categories.index') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>View All</p>
-                        </a>
-                    </li>
+                        <li class="nav-item">
+                            <a href="{{ route('categories.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>View All</p>
+                            </a>
+                        </li>
                     @endif
                     <li class="nav-item">
                         <a href="{{ route('category.create') }}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Add New</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fa fa-bars"></i>
+                    <p>
+                        Magazines
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @if( Auth::user()->is_admin == 1)
+                        <li class="nav-item">
+                            <a href="{{ route('magazines.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>View All</p>
+                            </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="{{ route('magazine.create') }}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Add New</p>
                         </a>

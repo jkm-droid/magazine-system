@@ -8,13 +8,20 @@
     <title></title>
 </head>
 <body>
-<div class="text-center">
-    <h2>Hello, <strong >{{ $email }}</strong></h2><br>
-    <p>
-        This is to notify you that have been invited to become an admin in Industrialising Africa. Please click below to complete registration.
-        <a href="{{ $link }}">Click Here</a>
-    </p><br>
-    <p>We value you!!!</p>
-</div>
+<h4>Hello {{ $email }} </h4>
+<p>
+    This is to notify you that have been invited to become an admin in Industrialising Africa. Please click the link below to complete registration.
+    <a href="{{ $link }}">Click Here</a>
+    <br>
+    or
+    <br>
+    You can copy and paste this link in your browser tab. {{ $link }}
+</p>
+<p>
+    Kindest regards,<br>
+    <span style="font-style: italic;">Industrialising Africa</span><br>
+</p>
+
+<img src="{{ asset('site_images/ialogo.png') }}" alt="">
 </body>
 </html>

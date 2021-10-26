@@ -31,11 +31,13 @@ class SendAdminCreationLink extends Mailable
     public function build()
     {
         return $this->view('mails.admin_creation')
-            ->from('info@industrialisingafrica.com','industrialisingafrica.com')
+            ->from('no-reply@industrialisingafrica.com','industrialisingafrica.com')
             ->subject("Invitation to become an Admin")
             ->with([
-                'email'=>$this->admin_email,
+                'email'=>strstr($this->admin_email, '@',true),
                 'link'=>$this->link,
             ]);
     }
+
+
 }

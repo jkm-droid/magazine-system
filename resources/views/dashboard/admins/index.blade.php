@@ -22,10 +22,10 @@
         <h4 class="text-center">No Admin found.</h4>
     @else
         <div class="col-12">
-            <div class="card card-outline card-warning">
+            <div class="card card-outline card-dark">
                 <div class="card-header">
 
-                    <a class="btn btn-sm btn-success" href="{{ route('admin.create') }}">
+                    <a class="btn btn-sm put-gold background-black" href="{{ route('admin.create') }}">
                         <h3 class="card-title">Add New Admin</h3>
                     </a>
 
@@ -101,7 +101,7 @@
                                         <form action="{{ route('admin.delete',$admin->id) }}" method="POST">
 
                                             <a class="btn btn-primary btn-sm" href="{{ route('admin.show',$admin->id) }}">Show</a>
-                                            <a class="btn btn-primary btn-sm" href="{{ route('admin.edit',$admin->id) }}">Edit</a>
+                                            <a class="btn btn-sm background-gold" href="{{ route('admin.edit',$admin->id) }}">Edit</a>
 
                                             @csrf
                                             @method('PUT')

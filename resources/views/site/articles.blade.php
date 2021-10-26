@@ -48,6 +48,7 @@
                                     <img class="float-start card-img-top img-fluid " src="/article_covers/{{ $article->image }}" style="min-width: 150px; min-height: 130px;"   alt="">
                                 </a>
                             </div>
+
                             <div class="col-md-10">
                                 <div class="card-body mt-0">
                                     <a class="text-secondary" href="{{ route('site.article.full.show', $article->slug) }}">

@@ -21,7 +21,9 @@
     <div class="col-12">
         <div class="card card-outline card-dark">
             <div class="card-header">
-                <h3 class="card-title">Admin creation</h3>
+                <h3 class="card-title">
+                    <a class="btn btn-sm put-gold background-black" href="{{ route('admin.index') }}">Back</a>
+                </h3>
             </div>
             <!-- /.card-header -->
 
@@ -42,7 +44,7 @@
                 </div>
 
                 <div class="card-footer">
-                    <input type="submit" id="submit_button" value="Send Invitation Link" name="save_admin" class="btn btn-success">
+                    <input type="submit" id="submit_button" value="Send Invitation Link" name="save_admin" class="btn background-gold">
                 </div>
 
             </form>

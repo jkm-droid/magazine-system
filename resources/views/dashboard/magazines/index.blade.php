@@ -5,26 +5,27 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Articles</h1>
+                    <h1 class="m-0">Magazines</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active"><b>Articles</b></li>
+                        <li class="breadcrumb-item active"><b>Magazines</b></li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
-    @if($articles->isEmpty())
-        <h4 class="text-center">No article found. <a href="{{ route('article.create') }}">Add New</a></h4>
+
+    @if(count($magazines) == 0)
+        <h4 class="text-center">No magazine found. <a href="{{ route('magazine.create') }}">Add New</a></h4>
     @else
         <div class="col-12">
-            <div class="card card-outline card-warning">
+            <div class="card card-outline card-dark">
                 <div class="card-header">
 
-                    <a class="btn btn-sm put-gold background-black" href="{{ route('article.create') }}">
-                        <h3 class="card-title">Add New Article</h3>
+                    <a class="btn btn-sm put-gold background-black" href="{{ route('magazine.create') }}">
+                        <h3 class="card-title">Add New Magazine</h3>
                     </a>
 
                     <div class="card-tools">
@@ -45,49 +46,43 @@
                         <thead>
                         <tr>
                             <th>Title</th>
-                            <th>Category</th>
+                            <th>Issue</th>
                             <th>Image</th>
-                            <th>Author</th>
                             <th>Creation Date</th>
                             <th>Status</th>
                             @if(\Illuminate\Support\Facades\Auth::user()->is_admin = 1)
+                                <th></th>
                                 <th>Action</th>
                             @endif
                         </tr>
                         </thead>
 
                         <tbody>
-                        @foreach($articles as $article)
+                        @foreach($magazines as $magazine)
                             <tr>
-                                <td><a href="{{ route('article.show', $article->id) }}">{{ $article->title }}</a></td>
-                                @if($article->categories->isEmpty())
-                                    <td></td>
-                                @else
-                                    @foreach($article->categories as $category)
-                                        <td>{{ $category->title }}</td>
-                                    @endforeach
-                                @endif
+                                <td><a href="{{ route('magazine.show', $magazine->id) }}">{{ $magazine->title }}</a></td>
+                                <td>{{ $magazine->issue }}</td>
                                 <td>
-                                    <img src="/article_covers/{{ $article->image }}" alt="" height="40" width="50">
+                                    <img src="/magazine_covers/{{ $magazine->image }}" alt="" height="40" width="50">
                                 </td>
-                                <td>{{ $article->author }}</td>
-                                <td>{{ $article->created_at }}</td>
-                                @if($article->status  == 1)
+                                <td>{{ $magazine->created_at }}</td>
+                                @if($magazine->status  == 1)
                                     <td><i class="text-success fa fa-check-circle"></i></td>
                                 @else
                                     <td><i class="text-danger fa fa-times-circle"></i></td>
                                 @endif
 
                                 @if(\Illuminate\Support\Facades\Auth::user()->is_admin = 1)
+
                                     <td>
-                                        @if($article->status  == 1)
-                                            <form action="{{ route('article.publish',$article->id) }}" method="post">
+                                        @if($magazine->status  == 1)
+                                            <form action="{{ route('magazine.publish',$magazine->id) }}" method="post">
                                                 @csrf
                                                 @method('PUT')
                                                 <button type="submit" class="btn btn-warning btn-sm">Draft</button>
                                             </form>
                                         @else
-                                            <form action="{{ route('article.publish',$article->id) }}" method="post">
+                                            <form action="{{ route('magazine.publish',$magazine->id) }}" method="post">
                                                 @csrf
                                                 @method('PUT')
                                                 <button type="submit" class="btn btn-success btn-sm" >Publish</button>
@@ -95,6 +90,21 @@
                                         @endif
 
                                     </td>
+
+                                    <td>
+                                        <form action="{{ route('magazine.delete',$magazine->id) }}" method="POST">
+
+                                            <a class="btn btn-info btn-sm" href="{{ route('magazine.show',$magazine->id) }}">Show</a>
+
+                                            <a class="btn btn-primary btn-sm" href="{{ route('magazine.edit',$magazine->id) }}">Edit</a>
+
+                                            @csrf
+                                            @method('PUT')
+
+                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        </form>
+                                    </td>
+
                                 @endif
 
                             </tr>
@@ -108,6 +118,6 @@
         </div>
     @endif
 
-    {!! $articles->links() !!}
+    {!! $magazines->links() !!}
 
 @endsection

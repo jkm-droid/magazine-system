@@ -23,3 +23,7 @@
 .nav-link .nav-icon{
     color: white;
 }
+
+.card-header a:hover{
+    color: white;
+}

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\ArticleCategory;
 use App\Models\Category;
+use App\Models\Magazine;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -82,7 +83,6 @@ class SiteController extends Controller
     }
 
     /**
-     * @param $category_slug
      * Get all the articles belonging to a particular category
      */
     public function get_all_articles_per_category($category_slug){
@@ -104,7 +104,6 @@ class SiteController extends Controller
     }
 
     /**
-     * @return mixed
      * Get all the categories for the category drop down menu
      */
     public function get_all_categories(){
@@ -112,7 +111,6 @@ class SiteController extends Controller
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
      * Get seven categories for the mega drop down menu
      */
     public function get_categories(){
@@ -120,7 +118,6 @@ class SiteController extends Controller
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\HigherOrderBuilderProxy|mixed|string
      * Get one category
      */
     public function get_one_category(){
@@ -164,6 +161,19 @@ class SiteController extends Controller
 
         return view('site.search_results', compact('results'))
             ->with('i', (request()->input('page', 1) - 1) * 5)
+            ->with('categories', $this->get_categories())
+            ->with('all_categories', $this->get_all_categories())
+            ->with('one_category', $this->get_one_category());
+    }
+
+    /**
+     * show the archives page, magazine issues
+     */
+    public function show_archives_page(){
+
+        $magazines = Magazine::get();
+
+        return view('site.magazine', compact('magazines'))
             ->with('categories', $this->get_categories())
             ->with('all_categories', $this->get_all_categories())
             ->with('one_category', $this->get_one_category());

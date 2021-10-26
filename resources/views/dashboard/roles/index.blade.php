@@ -24,7 +24,7 @@
             <div class="card card-outline card-warning">
                 <div class="card-header">
 
-                    <a class="btn btn-sm btn-success" href="{{ route('role.create') }}">
+                    <a class="btn btn-sm put-gold background-black" href="{{ route('role.create') }}">
                         <h3 class="card-title">Add New Role</h3>
                     </a>
 
@@ -71,7 +71,7 @@
                                     <form action="{{ route('role.delete',$role->id) }}" method="POST">
 
                                         <a class="btn btn-primary btn-sm" href="{{ route('role.show',$role->slug) }}">Show</a>
-                                        <a class="btn btn-primary btn-sm" href="{{ route('role.edit',$role->slug) }}">Edit</a>
+                                        <a class="btn btn-sm put-black background-gold" href="{{ route('role.edit',$role->slug) }}">Edit</a>
 
                                         @csrf
                                         @method('PUT')

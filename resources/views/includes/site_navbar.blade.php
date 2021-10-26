@@ -9,6 +9,7 @@
             <ul class="text-uppercase text-dark">
                 <li><a class="nav-link scrollto active" href="/">Home</a></li>
                 <li><a class="nav-link scrollto" href="https://firstcodecorporation.com/" target="_blank">FirstCode</a></li>
+                <li><a class="nav-link scrollto" href="{{ route('site.archives.show')  }}">Archives</a></li>
                 <li><a class="nav-link scrollto" href="{{ route('site.articles.show')  }}">Articles</a></li>
                 <li class="nav-item dropdown text-uppercase">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -28,7 +29,7 @@
 
                 <!----end custom drop down menu--->
                 <li><a class="nav-link scrollto" href="{{ route('site.faqs.show') }}">FAQS</a></li>
-                <li><a class="nav-link scrollto" href="{{ route('site.about.show') }}">About Us</a></li>
+                <li><a class="nav-link scrollto" href="{{ route('site.about.show') }}">About</a></li>
 
                 <li><a class="nav-link scrollto ml-4" href="#footer">Contacts</a></li>
                 @if( Route::currentRouteName() == 'site.home' | Route::currentRouteName() == 'site.faqs.show' | Route::currentRouteName() == 'site.about.show')

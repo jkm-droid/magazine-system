@@ -24,7 +24,7 @@
             <div class="card card-outline card-warning">
                 <div class="card-header">
 
-                    <a class="btn btn-sm btn-success" href="{{ route('permission.create') }}">
+                    <a class="btn btn-sm put-gold background-black" href="{{ route('permission.create') }}">
                         <h3 class="card-title">Add New Permission</h3>
                     </a>
 

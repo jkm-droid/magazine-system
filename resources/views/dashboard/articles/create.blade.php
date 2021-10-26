@@ -21,7 +21,7 @@
     <div class="col-12">
         <div class="card card-outline card-dark">
             <div class="card-header">
-                <h3 class="card-title"><a class="btn btn-success btn-sm" href="{{ route('articles.index') }}">Back</a></h3>
+                <h3 class="card-title"><a class="btn btn-sm put-gold background-black" href="{{ route('articles.index') }}">Back</a></h3>
             </div>
             <!-- /.card-header -->
 
@@ -78,7 +78,7 @@
                 </div>
 
                 <div class="card-footer">
-                    <input type="submit" id="submit_button" value="Save Article" name="save_articles" class="btn btn-success">
+                    <input type="submit" id="submit_button" value="Save Article" name="save_articles" class="btn background-gold">
                 </div>
 
             </form>

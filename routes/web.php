@@ -5,6 +5,7 @@ use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MagazineController;
 use App\Http\Controllers\NotificationsController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 //site routes
 Route::get('/', [SiteController::class, 'show_index_page'])->name('site.home');
 Route::get('/industrialising-africa', [SiteController::class, 'show_articles_page'])->name('site.articles.show');
+Route::get('/industrialising-africa/archives', [SiteController::class, 'show_archives_page'])->name('site.archives.show');
 Route::get('/industrialising-africa/about', [SiteController::class, 'show_about_page'])->name('site.about.show');
 Route::get('/industrialising-africa/faqs', [SiteController::class, 'show_faqs_page'])->name('site.faqs.show');
 Route::get('/industrialising-africa/search', [SiteController::class, 'search_articles'])->name('site.articles.search');
@@ -57,6 +59,20 @@ Route::group(['middleware'=>['role:author|admin']], function (){
     Route::post('categories/update/{category_id}', [CategoryController::class, 'update_category'])->name('category.update');
     Route::get('categories/show/{category_id}', [CategoryController::class, 'show_category'])->name('category.show');
     Route::put('categories/delete/{category_id}', [CategoryController::class, 'delete_category'])->name('category.delete');
+
+    //magazines
+    Route::get('magazines/create', [MagazineController::class, 'create_magazine'])->name('magazine.create');
+    Route::post('magazines/save', [MagazineController::class, 'save_magazine'])->name('magazine.save');
+    Route::get('magazines/edit/{magazine_id}', [MagazineController::class, 'edit_magazine'])->name('magazine.edit');
+    Route::post('magazines/update/{magazine_id}', [MagazineController::class, 'update_magazine'])->name('magazine.update');
+    Route::get('magazines/show/{magazine_id}', [MagazineController::class, 'show_magazine'])->name('magazine.show');
+    Route::post('magazines/delete/{magazine_id}', [MagazineController::class, 'delete_magazine'])->name('magazine.delete');
+
+    //magazine articles
+    Route::post('magazines/article/{magazine_id}', [MagazineController::class, 'add_magazine_article'])->name('magazine.article.add');
+    Route::get('magazines/article/edit/{magazine_article_id}', [MagazineController::class, 'edit_magazine_article'])->name('magazine.article.edit');
+    Route::post('magazines/article/update/{magazine_article_id}', [MagazineController::class, 'update_magazine_article'])->name('magazine.article.update');
+    Route::post('magazines/article/delete/{magazine_article_id}', [MagazineController::class, 'delete_magazine_article'])->name('magazine.article.delete');
 });
 
 
@@ -66,8 +82,11 @@ Route::group(['middleware'=>['role:author|admin']], function (){
 Route::group(['middleware'=>'role:admin'], function (){
     Route::get('articles', [ArticlesController::class, 'index'])->name('articles.index');
     Route::get('categories', [CategoryController::class, 'index'])->name('categories.index');
+    Route::get('magazines', [MagazineController::class, 'index'])->name('magazines.index');
     //only the admin can publish or un-publish an article
     Route::put('articles/publish/{article_id}', [ArticlesController::class, 'publish_draft_article'])->name('article.publish');
+    //only the admin can publish or un-publish a magazine
+    Route::put('magazines/publish/{magazine_id}', [ArticlesController::class, 'publish_draft_magazine'])->name('magazine.publish');
 
     //roles
     Route::get('roles', [RoleController::class, 'index'])->name('role.index');
