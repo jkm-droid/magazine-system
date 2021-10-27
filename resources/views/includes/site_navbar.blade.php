@@ -1,8 +1,7 @@
 <!-- navbar section -->
-<header id="header" class="fixed-top" style="background-color: red;">
+<header id="header" class="fixed-top">
 <div id="header" class="fixed-top navbar navbar-expand-md">
     <div class="container" >
-
         <a href="/" class="logo"><img src="{{ asset('site_images/ialogo.png') }}" alt="" class="img-fluid"></a>
 
         <nav id="navbar" class="navbar navbar-light">

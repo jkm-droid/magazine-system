@@ -155,7 +155,8 @@
                             <h4>Magazine Cover</h4>
                             <div class="portfolio-links">
                                 <a href="{{ asset('/site_images/magazine_cover.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="">
-                                    <i class="bx bx-plus"></i></a>
+                                    <i class="bx bx-plus"></i>
+                                </a>
                             </div>
                         </div>
                     </div>

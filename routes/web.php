@@ -86,7 +86,7 @@ Route::group(['middleware'=>'role:admin'], function (){
     //only the admin can publish or un-publish an article
     Route::put('articles/publish/{article_id}', [ArticlesController::class, 'publish_draft_article'])->name('article.publish');
     //only the admin can publish or un-publish a magazine
-    Route::put('magazines/publish/{magazine_id}', [ArticlesController::class, 'publish_draft_magazine'])->name('magazine.publish');
+    Route::put('magazines/publish/{magazine_id}', [MagazineController::class, 'publish_draft_magazine'])->name('magazine.publish');
 
     //roles
     Route::get('roles', [RoleController::class, 'index'])->name('role.index');

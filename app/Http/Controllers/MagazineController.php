@@ -115,6 +115,25 @@ class MagazineController extends Controller
     }
 
     /**
+     * publish or draft (un-publish) a magazine
+     */
+    public function publish_draft_magazine($magazine_id){
+        $magazine = Magazine::find($magazine_id);
+
+        if ($magazine->published == 1){
+            $magazine->published = 0;
+            $message = "Magazine un-published successfully";
+        }else{
+            $magazine->published = 1;
+            $message = "Magazine Published successfully";
+        }
+
+        $magazine->update();
+
+        return redirect()->route('magazines.index')->with('success',$message);
+    }
+
+    /**
      * add an article belonging to a magazine
      */
 

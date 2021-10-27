@@ -48,6 +48,14 @@
 
                     <div class="row g-3">
                         <div class="col-md-6">
+                            <label for="copy" class="form-label">Magazine Digital Copy</label>
+                            <input type="file" name="copy" class="form-control" placeholder="enter magazine copy">
+                            @if ($errors->has('copy'))
+                                <div class="text-danger form-text">{{ $errors->first('copy') }}</div>
+                            @endif
+                        </div>
+
+                        <div class="col-md-6">
                             <label for="image" class="form-label">Magazine Cover Image</label>
                             <input type="file" name="image" class="form-control" placeholder="enter magazine image" id="image">
                             @if ($errors->has('image'))

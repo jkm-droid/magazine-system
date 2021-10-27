@@ -25,6 +25,7 @@
                     <ul>
                         <li><i class="bx bx-chevron-right"></i> <a href="#hero">Home</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="https://firstcodecorporation.com/" target="_blank">Firstcode</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="/industrialising-africa/archives">Archives</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="/industrialising-africa">Articles</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="#">Categories</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="#about">About us</a></li>

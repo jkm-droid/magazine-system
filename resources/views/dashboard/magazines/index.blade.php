@@ -66,7 +66,7 @@
                                     <img src="/magazine_covers/{{ $magazine->image }}" alt="" height="40" width="50">
                                 </td>
                                 <td>{{ $magazine->created_at }}</td>
-                                @if($magazine->status  == 1)
+                                @if($magazine->published  == 1)
                                     <td><i class="text-success fa fa-check-circle"></i></td>
                                 @else
                                     <td><i class="text-danger fa fa-times-circle"></i></td>
@@ -75,7 +75,7 @@
                                 @if(\Illuminate\Support\Facades\Auth::user()->is_admin = 1)
 
                                     <td>
-                                        @if($magazine->status  == 1)
+                                        @if($magazine->published  == 1)
                                             <form action="{{ route('magazine.publish',$magazine->id) }}" method="post">
                                                 @csrf
                                                 @method('PUT')
