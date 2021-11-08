@@ -105,6 +105,7 @@ Route::group(['middleware'=>['role:author|admin']], function (){
     //magazines
     Route::get('magazines/create', [MagazineController::class, 'create_magazine'])->name('magazine.create');
     Route::post('magazines/save', [MagazineController::class, 'save_magazine'])->name('magazine.save');
+    Route::post('magazines/upload', [MagazineController::class, 'upload_magazine_digital_copy'])->name('magazine.upload.copy');
     Route::get('magazines/edit/{magazine_id}', [MagazineController::class, 'edit_magazine'])->name('magazine.edit');
     Route::post('magazines/update/{magazine_id}', [MagazineController::class, 'update_magazine'])->name('magazine.update');
     Route::get('magazines/show/{magazine_id}', [MagazineController::class, 'show_magazine'])->name('magazine.show');

@@ -29,6 +29,7 @@ class MagazineController extends Controller
      * show the magazine creation form
      */
     public function create_magazine(){
+//        dd(phpinfo());
         return view('dashboard.magazines.create');
     }
 
@@ -39,7 +40,7 @@ class MagazineController extends Controller
         $request->validate([
             'title'=>'required',
             'issue'=>'required',
-            'copy'=>'required|mimes:pdf,xlx,csv',
+            'copy'=>'required|mimes:pdf',
             'image'=>'required|image'
         ]);
 
@@ -60,11 +61,19 @@ class MagazineController extends Controller
         $magazine->image = $imageName;
         $magazine->slug = str_replace(' ','-', Str::lower($magazine_info['title']));
         $magazine->copy = $copyName;
+        $magazine->document_name = $copyName;
 
         //save the magazine
         $magazine->save();
 
         return redirect()->route('magazines.index')->with('success','Magazine Created successfully');
+    }
+
+    /**
+     * upload large files
+     */
+    public function upload_magazine_digital_copy(Request $request){
+
     }
 
     /**

@@ -16,23 +16,26 @@
 
                         <div class="col-md-9">
                             <h3 class="put-black">In this <strong class="put-gold">Issue</strong></h3>
-                            @foreach($magazine->magazine_articles as $mag_article)
-                                <a href="{{ route('show.register') }}">
-                                    <div class="card mb-3 border-0">
-                                        <div class="row g-0">
-                                            <div class="col-md-2">
-                                                <img src="/magazine_covers/{{ $mag_article->image }}" class="img-fluid" alt="..." >
-                                            </div>
-                                            <div class="col-md-10">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">{{ $mag_article->title }}</h5>
-                                                    <span class="card-text">{!! $mag_article->description !!}</span>
+                            @if($magazine->magazine_articles->isEmpty())
+                                <p class="text-danger">no articles found</p>
+                                @foreach($magazine->magazine_articles as $mag_article)
+                                    <a href="{{ route('show.register') }}">
+                                        <div class="card mb-3 border-0">
+                                            <div class="row g-0">
+                                                <div class="col-md-2">
+                                                    <img src="/magazine_covers/{{ $mag_article->image }}" class="img-fluid" alt="..." >
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">{{ $mag_article->title }}</h5>
+                                                        <span class="card-text">{!! $mag_article->description !!}</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </a>
-                            @endforeach
+                                    </a>
+                                @endforeach
+                            @endif
                         </div>
 
                     @endforeach
