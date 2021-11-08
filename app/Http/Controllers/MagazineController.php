@@ -6,6 +6,8 @@ use App\Models\Magazine;
 use App\Models\MagazineArticle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
+
 
 class MagazineController extends Controller
 {
@@ -37,6 +39,7 @@ class MagazineController extends Controller
         $request->validate([
             'title'=>'required',
             'issue'=>'required',
+            'copy'=>'required|mimes:pdf,xlx,csv',
             'image'=>'required|image'
         ]);
 
@@ -46,10 +49,17 @@ class MagazineController extends Controller
         $request->image->move(public_path('magazine_covers'), $imageName);
         $magazine_info['image'] = $imageName;
 
+        //save the magazine copy to folder
+        $copyName = str_replace(' ', '_', $magazine_info['title']) . '.' . $request->copy->extension();
+        $request->copy->move(public_path('magazine_copies'), $copyName);
+        $magazine_info['copy'] = $copyName;
+
         $magazine = new Magazine();
         $magazine->title = $magazine_info['title'];
         $magazine->issue = $magazine_info['issue'];
         $magazine->image = $imageName;
+        $magazine->slug = str_replace(' ','-', Str::lower($magazine_info['title']));
+        $magazine->copy = $copyName;
 
         //save the magazine
         $magazine->save();
@@ -88,16 +98,29 @@ class MagazineController extends Controller
         $magazine_data = $request->all();
 
         if ($request->hasFile('image')){
+            //save the magazine image to folder
             $imageName = str_replace(' ','_',$magazine_data['title']).'.'.$request->image->extension();
             $request->image->move(public_path('magazine_covers'), $imageName);
             File::delete($magazine->image);
 
             $magazine_data['image'] = $imageName;
             $magazine->image = $imageName;
+
+        }
+
+        if ($request->hasFile('copy')){
+            //save the magazine copy to folder
+            $copyName = str_replace(' ', '_', $magazine_data['title']) . '.' . $request->copy->extension();
+            $request->copy->move(public_path('magazine_copies'), $copyName);
+            File::delete($magazine->copy);
+
+            $magazine_data['copy'] = $copyName;
+            $magazine->copy = $copyName;
         }
 
         $magazine->title = $magazine_data['title'];
         $magazine->issue = $magazine_data['issue'];
+        $magazine->slug = str_replace(' ','-', Str::lower($magazine_data['title']));
 
         $magazine->update();
 
@@ -143,6 +166,7 @@ class MagazineController extends Controller
             'description'=>'required',
             'image'=>'required|image'
         ]);
+
         $magazine_article_info = $request->all();
         //save the image to folder
         $imageName = str_replace(' ', '_', $magazine_article_info['title']) . '.' . $request->image->extension();

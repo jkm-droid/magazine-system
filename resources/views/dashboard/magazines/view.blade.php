@@ -45,7 +45,12 @@
                             <div class="card card-outline">
                                 <div class="card-body m-1">
                                     <img src="/magazine_covers/{{ $magazine->image }}" alt="" class="img-fluid">
-                                    <h4 class="mt-2">{{ $magazine->issue }}</h4>
+                                    <h4 class="mt-2 text-center">{{ $magazine->issue }}</h4>
+                                    @if($magazine->copy)
+                                        <p class="text-center">
+                                            <span class="badge badge-success">Digital Copy Available</span>
+                                        </p>
+                                    @endif
                                 </div>
                             </div>
                         </div>

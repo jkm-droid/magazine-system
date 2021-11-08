@@ -13,7 +13,9 @@ class Magazine extends Model
     protected $fillable = [
         'title',
         'issue',
-        'image'
+        'image',
+        'slug',
+        'copy',
     ];
 
     /**

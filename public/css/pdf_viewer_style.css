@@ -1,0 +1,18 @@
+.top-bar {
+  padding: 1rem;
+}
+
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.page-info {
+  margin-left: 1rem;
+}
+
+.error {
+  background: orangered;
+  color: #fff;
+  padding: 1rem;
+}

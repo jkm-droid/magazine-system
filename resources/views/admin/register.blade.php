@@ -1,4 +1,4 @@
-@extends('base.user_index')
+@extends('base.auth_admin_index')
 
 @section('content')
     <div class="register-box">

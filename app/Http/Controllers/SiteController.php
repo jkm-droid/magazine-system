@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\HelperFunctions\GetCategories;
 use App\Models\Article;
 use App\Models\ArticleCategory;
 use App\Models\Category;
 use App\Models\Magazine;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class SiteController extends Controller
 {
+    use GetCategories;
+
     public function __construct(){
         $this->middleware('guest:admin')->except('logout', 'admin_logout');
     }
@@ -19,6 +23,21 @@ class SiteController extends Controller
      * show the home page
      */
     public function show_index_page(){
+
+        $data = '{
+        "result":1,
+        "message":"Successfully retrieved payment details.",
+        "details":{"merchantTransactionID":"321",
+        "checkoutRequestID":"16606006",
+        "receiptNumber":"321rc1636138530",
+        "amountPaid":"1.0000","currencyCode":"KES",
+        "serviceCode":"FIRSTCODE","accountNumber":"254700861587_321","serviceChargeAmount":"0.0000","today":"2021-11-05 21:55:30",
+        "acknowledged":"true",
+        "payments":[{
+        "cpgTransactionID":"1174897182","merchantTransactionID":"321",
+        "payerClientName":"Safaricom Kenya Limited","MSISDN":"254700861587","currencyCode":"KES","amountPaid":"1.0000",
+        "serviceCode":"FIRSTCODE","payerTransactionID":"PK549JZD26","hubOverallStatus":"139",
+        "accountNumber":"254700861587_321","customerName":"Customer","payerClientCode":"SAFKE","datePaymentReceived":"2021-11-05 18:55:25"}]}}';
 
         return view('site.home')
             ->with('categories', $this->get_categories())
@@ -57,9 +76,9 @@ class SiteController extends Controller
         $feature_article = Article::with('categories')->where('status',1)->inRandomOrder()->limit(1)->get();
         $more_articles = Article::with('categories')->where('status',1)->inRandomOrder()->limit(3)->get();
         $articles = Article::with('categories')->where('status',1)->latest()->paginate(5);
-//dd($this->get_all_categories());
+
         return view('site.articles', compact('articles'))
-        ->with('i', (request()->input('page', 1) - 1) * 5)
+            ->with('i', (request()->input('page', 1) - 1) * 5)
             ->with('feature_article', $feature_article)
             ->with('more_articles', $more_articles)
             ->with('categories', $this->get_categories())
@@ -71,15 +90,7 @@ class SiteController extends Controller
      *  render a full article based on its slug
      */
     public function show_full_article($slug){
-        $article = Article::with('categories')->where('slug', $slug)->get();
-
-        //get articles belonging to the author
-        $author_articles = Article::with('categories')->where('author',$article[0]->author)->where('status',1)->get();
-
-        return view('site.full_article', compact('article','author_articles'))
-            ->with('categories', $this->get_categories())
-            ->with('all_categories', $this->get_all_categories())
-            ->with('one_category', $this->get_one_category());
+        $this->show_full_article($slug);
     }
 
     /**
@@ -104,36 +115,6 @@ class SiteController extends Controller
     }
 
     /**
-     * Get all the categories for the category drop down menu
-     */
-    public function get_all_categories(){
-        return Category::get();
-    }
-
-    /**
-     * Get seven categories for the mega drop down menu
-     */
-    public function get_categories(){
-        return Category::with('articles')->inRandomOrder()->take(7)->get();
-    }
-
-    /**
-     * Get one category
-     */
-    public function get_one_category(){
-        $categories = Category::with('articles')->inRandomOrder()->take(1)->get();
-
-        $cat_articles = '';
-        foreach ($categories as $category){
-            $cat_articles = $category->articles;
-        }
-
-        return $cat_articles;
-    }
-
-    /**
-     * @param $category_id
-     * @return \Illuminate\Http\JsonResponse
      * Get the articles belonging to a certain category
      */
     public function get_category_articles($category_id){
@@ -171,11 +152,23 @@ class SiteController extends Controller
      */
     public function show_archives_page(){
 
-        $magazines = Magazine::get();
+        $magazines = Magazine::where('published',1)->get();
 
         return view('site.magazine', compact('magazines'))
             ->with('categories', $this->get_categories())
             ->with('all_categories', $this->get_all_categories())
             ->with('one_category', $this->get_one_category());
     }
+
+    /**
+     * show payment success
+     */
+    public function post_from_tingg(){
+        return redirect()->route('site.success.show');
+    }
+
+    public function show_success_page(){
+        return view('site.success');
+    }
+
 }

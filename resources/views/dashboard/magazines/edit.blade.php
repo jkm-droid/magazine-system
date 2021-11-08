@@ -48,6 +48,11 @@
 
                     <div class="row g-3">
                         <div class="col-md-6">
+                            <label for="image" class="form-label">Magazine Digital Copy</label>
+                            <input type="file" name="copy" class="form-control" placeholder="enter magazine digital copy">
+                        </div>
+
+                        <div class="col-md-6">
                             <label for="image" class="form-label">Magazine Cover Image</label>
                             <input type="file" name="image" class="form-control" placeholder="enter magazine image" id="image">
                         </div>

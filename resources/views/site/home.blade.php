@@ -20,12 +20,12 @@
             </div>
             <div class="text-center mt-2">
                 <button class="btn btn-lg put-gold" style="background-color: black; box-shadow: 0 0 30px goldenrod;">
-                    <h2>Get Insights on:</h2>
+                    <a class="nav-link ml-4 put-gold text-uppercase" href="{{ route('show.register') }}">Get Started</a>
                 </button>
             </div>
 
             <div class="row icon-boxes">
-                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" >
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                     <div class="icon-box">
                         <div class="icon text-center"><i class="bx bxs-factory"></i><i class="bx bxs-car-mechanic bx-lg"></i></div>
                         <h5 class="title"><a href="">Manufacturing & Assembly</a></h5>
@@ -34,7 +34,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" >
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                     <div class="icon-box">
                         <div class="icon"><i class="bx bxs-ev-station"></i><i class="bx bxs-chip"></i></div>
                         <h5 class="title"><a href="">Energy & Technology</a></h5>
@@ -43,7 +43,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in">
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                     <div class="icon-box">
                         <div class="icon"><i class="bx bxs-truck"></i><i class="bx bxs-plane-alt"></i></div>
                         <h5 class="title"><a href="">Logistics & Transport</a></h5>
@@ -52,7 +52,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" >
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                     <div class="icon-box">
                         <div class="icon"><i class="bx bxs-coin-stack"></i><i class="bx bxs-business"></i></div>
                         <h5 class="title"><a href="">Corporate Finance & SME's</a></h5>
@@ -140,13 +140,13 @@
     <br>
     <!----magazine images section------>
     <section id="portfolio" class="portfolio">
-        <div class="container" data-aos="fade-up">
+        <div class="container">
 
             <div class="text-center">
                 <h2 class="mt-0 mb-4" style="color: goldenrod; font-weight: bold;">Magazine <span class="text-dark">Gallery</span></h2>
 
             </div>
-            <div class="row portfolio-container" data-aos="fade-up">
+            <div class="row portfolio-container">
 
                 <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                     <div class="portfolio-wrap">
@@ -262,7 +262,7 @@
     <!-----end magazine images section------>
 
     <!----multi item carousel--->
-    <div class="container text-center mt-4" data-aos="fade-up">
+    <div class="container text-center mt-4">
         <h2 class="font-weight-light">
             <strong class="put-gold">Explore</strong> <span style="color: black;">Major Categories</span>
         </h2>
@@ -422,13 +422,12 @@
                 This is intended to contribute in a small way be it may, to the efforts of raising industrial GDP
                 in Africa to 130% by 2025 as envisaged or US$ 1.72 trillion and drive Africa’s overall GDP from US$ 2.2
                 trillion to US$ 4.6 trillion through synergistic industrialisation and trade within the continent.</p>
-            <br><br>
 
             <p> The publication highlights the role of various industrial stakeholders in industrialising Africa and
                 also showcases best practices and gold standard case studies on the continent. This information sharing
                 platform provided by the Industrialising Africa magazine is designed to catalyse and maintain the
                 industrialisation conversation on the African continent in this modern era.</p>
-            <br><br>
+
             <p> The magazine copies are distributed through a variety of channels with a targeted deep reach amongst
                 the sectoral decision-makers on the continent and beyond. The publication is distributed through:
             <ul>

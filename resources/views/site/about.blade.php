@@ -16,13 +16,12 @@
                 This is intended to contribute in a small way be it may, to the efforts of raising industrial GDP
                 in Africa to 130% by 2025 as envisaged or US$ 1.72 trillion and drive Africa’s overall GDP from US$ 2.2
                 trillion to US$ 4.6 trillion through synergistic industrialisation and trade within the continent.</p>
-            <br><br>
 
             <p> The publication highlights the role of various industrial stakeholders in industrialising Africa and
                 also showcases best practices and gold standard case studies on the continent. This information sharing
                 platform provided by the Industrialising Africa magazine is designed to catalyse and maintain the
                 industrialisation conversation on the African continent in this modern era.</p>
-            <br><br>
+            
             <p> The magazine copies are distributed through a variety of channels with a targeted deep reach amongst
                 the sectoral decision-makers on the continent and beyond. The publication is distributed through:
             <ul>
@@ -30,9 +29,8 @@
                 <li>Embassies and</li>
                 <li>High Commissions</li>
             </ul>
-            to all the 53 Ministries and departments of trade and industry on:
+            to all the 54 Ministries and departments of trade and industry on the African soil, in addition, other organisations liek;
             <ul>
-                <li>the African continent</li>
                 <li>the African Union</li>
                 <li>Financial Institutions</li>
                 <li>Supranational Agencies</li>
