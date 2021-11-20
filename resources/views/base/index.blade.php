@@ -32,6 +32,9 @@
     <!--base css--->
     <link href="{{ asset('css/site_style.css') }}" rel="stylesheet">
 
+    <!--pdf viewer css--->
+    <link href="{{ asset('css/pdf_viewer_style.css') }}" rel="stylesheet">
+
     <!-- Template Main CSS File -->
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
 
@@ -55,6 +58,7 @@
 @yield('content')
 
 @include('includes.site_footer')
+
 {{--<div id="preloader"></div>--}}
 <a href="#" class="back-to-top d-flex align-items-center bg-dark justify-content-center text-white"><strong>TOP</strong></a>
 <!-- Vendor JS Files -->
@@ -76,7 +80,18 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 -->
-
+<script>
+    var prevScrollpos = window.pageYOffset;
+    window.onscroll = function(){
+        var currentscrollPos = window.pageYOffset;
+        if (prevScrollpos > currentscrollPos) {
+            document.getElementById("header").style.top = "0";
+        }else{
+            document.getElementById("header").style.top = "-60px";
+        }
+        prevScrollpos = currentscrollPos;
+    }
+</script>
 <script>
     $(document).ready(function(){
         $('.nav-tabs > li > a').hover(function() {

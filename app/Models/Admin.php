@@ -30,16 +30,16 @@ class Admin extends Authenticatable
     /**
      * Get the articles owned by the user.
      */
-    public function article(){
-        return $this->hasMany(Article::class);
-    }
+//    public function article(){
+//        return $this->hasMany(Article::class);
+//    }
 
     /**
      * Get the categories owned by the user.
      */
-    public function category(){
-        return $this->hasMany(Category::class);
-    }
+//    public function category(){
+//        return $this->hasMany(Category::class);
+//    }
 
     /**
      * Get the roles owned by the user.

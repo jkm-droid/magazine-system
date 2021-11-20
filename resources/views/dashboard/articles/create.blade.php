@@ -31,7 +31,7 @@
                     <div class="row g-3">
                         <div class="col-md-6">
                             <label for="title" class="form-label">Article Title</label>
-                            <input type="text" name="title" class="form-control" placeholder="enter article title" id="title">
+                            <input type="text" name="title" class="form-control" placeholder="enter article title" value="{{ old('title') }}">
                             @if ($errors->has('title'))
                                 <div class="text-danger form-text">{{ $errors->first('title') }}</div>
                             @endif
@@ -52,29 +52,43 @@
                             <select name="category" id="category" class="form-select form-control" aria-label="Default select example" autofocus>
                                 <option value="" disabled selected>Select article category</option>
                                 @foreach($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                    <option value="{{ $category->id }}" {{ old($category->id) == $category->id ? 'selected' : '' }}>{{ $category->title }}</option>
                                 @endforeach
                             </select>
                             @if ($errors->has('category'))
                                 <div class="text-danger form-text">{{ $errors->first('category') }}</div>
                             @endif
                         </div>
+
+                        <div class="col-md-6 mt-3">
+                            <label for="category" class="form-label">Article Type</label>
+                            <select name="type" class="form-select form-control" aria-label="Default select example" autofocus>
+                                <option value="" disabled selected>Select article type</option>
+
+                                <option value="premium" {{ old('premium') == "premium" ? 'selected' : '' }}>Magazine Article</option>
+                                <option value="free" {{ old('free') == "free" ? 'selected' : '' }}>Free Article</option>
+
+                            </select>
+                            @if ($errors->has('type'))
+                                <div class="text-danger form-text">{{ $errors->first('type') }}</div>
+                            @endif
+                        </div>
                     </div>
 
                     <div>
                         <label for="body" class="form-label">Article Description/Body</label>
-                        <textarea class="form-control summernote" name="body" id="body" rows="4"></textarea>
+                        <textarea class="form-control summernote" name="body" id="body" rows="4">{{ old('body') }}</textarea>
                         @if ($errors->has('body'))
                             <div class="text-danger form-text">{{ $errors->first('body') }}</div>
                         @endif
                     </div>
 
-{{--                    <div class="check-primary mt-2">--}}
-{{--                        <input type="checkbox" name="status" id="status">--}}
-{{--                        <label for="status">--}}
-{{--                            Draft--}}
-{{--                        </label>--}}
-{{--                    </div>--}}
+                    {{--                    <div class="check-primary mt-2">--}}
+                    {{--                        <input type="checkbox" name="status" id="status">--}}
+                    {{--                        <label for="status">--}}
+                    {{--                            Draft--}}
+                    {{--                        </label>--}}
+                    {{--                    </div>--}}
                 </div>
 
                 <div class="card-footer">

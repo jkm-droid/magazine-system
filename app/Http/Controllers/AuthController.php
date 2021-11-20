@@ -37,12 +37,10 @@ class AuthController extends Controller
         ]);
 
         $info = $request->all();
-
         $credentials = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
-        if(Auth::attempt(array($credentials=>$info['username'], 'password'=>$info['password'], 'payment_status'=>1))){
-            $user_id = Auth::user()->id;
+        if(Auth::attempt(array($credentials=>$info['username'], 'password'=>$info['password']))){
 
-            return redirect()->route('portal')->with('success', 'logged in successfully');
+            return redirect()->route('portal.magazine.show')->with('success', 'logged in successfully');
         }
 
         return redirect()->route('show.login')->with('error', 'Error, login details are incorrect');
@@ -62,53 +60,44 @@ class AuthController extends Controller
      * */
     public function register(Request $request){
         $request->validate([
-            'username'=>'required',
+            'username'=>'required|unique:users',
             'first_name'=>'required',
             'last_name'=>'required',
-            'phone_number'=>'required',
+            'phone_number'=>'required|unique:users',
             'country'=>'required',
             'email'=>'required|email|unique:users',
             'password'=>'required|min:6',
+            'password_confirm'=>'required|min:6|same:password',
         ]);
 
         $user_data = $request->all();
-        $subscription_plan = '';
-        $amount = 0;
-
-        //get the checked button to know the subscription plan
-        if($user_data['subscription_plan'] == 6){
-            $subscription_plan = "quarterly";
-            $amount = 6;
-        }else if($user_data['subscription_plan'] == 24){
-            $subscription_plan = "annual";
-            $amount = 24;
-        }
 
         //get the country code iso-country code phonecode-phone number code
         $country = Country::find($user_data['country']);
         $phone_number = $country->phonecode.''.substr($user_data['phone_number'],1);
 
         //create the new user
-        $this->create($user_data, $subscription_plan, $amount, $country->iso, $phone_number);
+        $this->create($user_data, $country->iso, $phone_number);
 
-        return redirect()->route('show.subscribe', $user_data['email'])->with('success', 'Registered successfully');
+        return redirect()->route('show.subscription.plan', $user_data['email'])
+            ->with('success', 'registered successfully');
     }
 
     /**
      *
      * create the user
      */
-    public function create(array $data, $sub_plan, $amt, $country_code, $phone){
+    public function create(array $data, $country_code, $phone){
         return User::create([
             'username'=>$data['username'],
+            'email'=>$data['email'],
             'first_name'=>$data['first_name'],
             'last_name'=>$data['last_name'],
             'phone_number'=>$phone,
             'country'=>$country_code,
-            'subscription_plan'=>$sub_plan,
-            'amount'=>$amt,
-            'email'=>$data['email'],
-            'password'=>Hash::make($data['password'])
+            'subscription_plan'=>"annual",
+            'amount'=>0,
+            'password'=>Hash::make(trim($data['password']))
         ]);
     }
 
@@ -142,7 +131,7 @@ class AuthController extends Controller
             'created_at'=>Carbon::now()
         ]);
 
-        Mail::send('mail.forgot_pass', ['token'=>$token], function ($message) use($request){
+        Mail::send('mails.forgot_pass', ['token'=>$token], function ($message) use($request){
             $message->to($request->email);
             $message->subject('Reset Password Notification');
         });
@@ -158,7 +147,7 @@ class AuthController extends Controller
         $request->validate([
             'email'=>'email|exists:users',
             'password'=>'required|string|min:6|same:password_confirm',
-            'password_confirm'=>'required'
+            'password_confirm'=>'required|min:6'
         ]);
 
         $info = $request->all();

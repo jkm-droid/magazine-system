@@ -10,7 +10,7 @@
 
                     <div class="card card-shadow img-hover-zoom--slowmo">
 
-                        <img src="/article_covers/{{ $feature_article[0]->image }}" class="img-fluid col-md-12 article-image" width="100%" style="max-height: 450px; opacity: 0.6;" alt="">
+                        <img src="/article_covers/{{ $feature_article[0]->image }}" class="img-fluid col-md-12 article-image" width="100%" style="max-height: 350px; opacity: 0.6;" alt="">
 
                         <div class="card-img-overlay article-cover-content">
                             <h4 class="card-title put-black">{{ $feature_article[0]->title }}</h4>

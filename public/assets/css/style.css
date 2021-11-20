@@ -486,10 +486,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #hero .icon-box {
-    padding: 40px 30px;
     position: relative;
     overflow: hidden;
-    background: goldenrod;
     box-shadow: 0 0 29px 0 rgb(10, 10, 10);
     transition: all 0.3s ease-in-out;
     border-radius: 8px;
@@ -548,11 +546,6 @@ h1, h2, h3, h4, h5, h6 {
     #hero {
         height: auto;
     }
-
-    .subscribe-box .card{
-       margin-top: 120px;
-        margin-bottom: 30px;
-    }
 }
 
 @media (max-width: 992px) {
@@ -567,8 +560,17 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 18px;
         line-height: 24px;
     }
+
+    /*registration box*/
+    .subscribe-box{
+        margin-top: 350px;
+        margin-bottom: 30px;
+    }
 }
 
+.put-red{
+    color: red;
+}
 /*--------------------------------------------------------------
 # Sections General
 --------------------------------------------------------------*/
@@ -1550,7 +1552,7 @@ section {
     list-style: none;
 }
 .faq .faq-list p {
-   color: black;
+    color: black;
 }
 
 .faq .faq-list li + li {

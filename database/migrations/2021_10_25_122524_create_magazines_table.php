@@ -18,6 +18,10 @@ class CreateMagazinesTable extends Migration
             $table->string('title');
             $table->string('issue');
             $table->binary('image');
+            $table->boolean('published')->default(0);
+            $table->binary('copy')->nullable();
+            $table->string('slug');
+            $table->string('document_name');
             $table->timestamps();
 
         });

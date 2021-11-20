@@ -19,13 +19,12 @@ class CreateArticlesTable extends Migration
             $table->longText('body');
             $table->string('slug');
             $table->string('author');
+            $table->string('type');
             $table->boolean('status')->default(0);
             $table->string('image_url')->default('0b0f077382bb1c7ce2b100cc28ca8e1a.png');
             $table->binary('image');
             $table->timestamps();
-
             $table->unsignedBigInteger('admin_id');
-            $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
         });
     }
 

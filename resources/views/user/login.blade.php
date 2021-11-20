@@ -21,13 +21,13 @@
                     <div class="mb-3">
                         <input type="text" class="form-control" name="username" placeholder="Email or Username">
                         @if ($errors->has('username'))
-                            <div class="text-danger form-text">{{ $errors->first('username') }}</div>
+                            <div class="text-danger form-text"><small>{{ $errors->first('username') }}</small></div>
                         @endif
                     </div>
                     <div class=" mb-3">
                         <input type="password" class="form-control" name="password" placeholder="Password">
                         @if ($errors->has('password'))
-                            <div class="text-danger form-text">{{ $errors->first('password') }}</div>
+                            <div class="text-danger form-text"><small>{{ $errors->first('password') }}</small></div>
                         @endif
                     </div>
                     <div class="row">
@@ -46,10 +46,14 @@
                         <!-- /.col -->
                     </div>
                 </form>
-                    <a href="{{ route('show.register') }}" class="text-center">I don't have a membership</a>
+                <div class="text-center">
+                    <a href="{{ route('show.register') }}" class="text-center">I don't have a membership</a><br>
+                    <a href="{{ route('user.show.forgot_pass_form') }}" class="text-center">Forgot password?</a>
+                </div>
             </div>
             <!-- /.card-body -->
         </div>
         <!-- /.card -->
     </div>
 @endsection
+

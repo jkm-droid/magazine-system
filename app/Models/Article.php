@@ -16,15 +16,16 @@ class Article extends Model
         'body',
         'author',
         'image',
-        'slug'
+        'slug',
+        'type'
     ];
 
     /**
      * Get the user that owns the article.
      */
-    public function admin(){
-        return $this->belongsTo(Admin::class);
-    }
+//    public function admin(){
+//        return $this->belongsTo(Admin::class);
+//    }
 
     /**
      * Get the categories that belongs to the article.

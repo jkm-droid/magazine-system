@@ -1,65 +1,62 @@
-@extends('base.premium_index')
+@extends('base.index')
 
 @section('content')
     <section>
-        <div class="container"  style="margin-top: 40px;">
-            <div class="card card-danger">
-                <div class="card-header text-center">
-                    <h4>{{ $magazine->title }} , {{ $magazine->issue }} Issue</h4>
-                </div>
-                <div class="top-bar">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item"><a class="page-link" href="#" id="prev-page">Previous</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">
-                                    <span class="page-info">Page <span id="page-num"></span> of <span id="page-count"></span></span>
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#" id="next-page">Next</a></li>
-                        </ul>
-                    </nav>
-
-                </div>
-
-                <canvas id="pdf-render"></canvas>
+        <div class="container"  style="margin-to: 40px;">
+            <div class="card pdf-container border-0" id="pdf-container">
                 <div class="top-bar text-center">
                     <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item"><a class="page-link" href="#" id="prev-page">Previous</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">
-                                    <span class="page-info">Page <span id="page-num"></span> of <span id="page-count"></span></span>
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#" id="next-page">Next</a></li>
-                        </ul>
+                        <a class="put-black text-center" href="#">
+                            <span class="page-info"><span id="page-num"></span><span id="page-count"></span></span>
+                        </a>
                     </nav>
+                </div>
+
+                <span class="text-center float-right" id="load" style="margin-top: 20%;">Loading magazine...Please wait</span>
+                <div class="text-center align-items-center pdf-canvas">
+                    <div class="prev-next">
+                        <a class="previous display-3" id="prev-page" href="#"><i class="bx bx-chevron-left"></i></a>
+                        <a class="next display-3" id="next-page" href="#"> <i class="bx bx-chevron-right"></i></a>
+                    </div>
+
+                    @for($i = 0; $i <= 224; $i++)
+                    <canvas class="pdf-render" id="pdf-render{{ $i }}"></canvas>
+                    @endfor
+
+                    <style>
+                        .hide{
+                            display: none;
+                        }
+                    </style>
                 </div>
             </div>
         </div>
     </section>
-    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+
+    <script src="{{ asset('js/pdfjs/build/pdf.js') }}"></script>
     <script>
-        var copy = "{{ $magazine->copy }}";
-        const url = '{{ asset('magazine_copies') }}/'+copy;
+        const url = '{{ asset('magazine_split/p') }}';
+        pdfjsLib.GlobalWorkerOptions.workerSrc = '{{ asset('js/pdfjs/build/pdf.worker.js') }}'
 
         let pdfDoc = null,
-            pageNum = 4,
+            pageNum = 1,
+            numPages = 224,
             pageIsRendering = false,
             pageNumIsPending = null;
 
-        const scale = 1.5,
-            canvas = document.querySelector('#pdf-render'),
-            ctx = canvas.getContext('2d');
+        const loaded = [];
 
-        // Render the page
+        const scale = 1.5;
+
         const renderPage = num => {
             pageIsRendering = true;
+            document.querySelector('#load').style.display = 'none';
 
-            // Get page
-            pdfDoc.getPage(num).then(page => {
-                // Set scale
+            console.log("Page num: "+num);
+
+            pdfDoc.getPage(1).then(page => {
+                const canvas = document.querySelector('#pdf-render'+num),
+                    ctx = canvas.getContext('2d');
                 const viewport = page.getViewport({ scale });
                 canvas.height = viewport.height;
                 canvas.width = viewport.width;
@@ -72,25 +69,42 @@
                 page.render(renderCtx).promise.then(() => {
                     pageIsRendering = false;
 
-                    if (pageNumIsPending !== null) {
+                    if (pageNumIsPending !== null){
+                        console.log("pending: "+pageNumIsPending);
                         renderPage(pageNumIsPending);
                         pageNumIsPending = null;
                     }
                 });
-
-                // Output current page
-                document.querySelector('#page-num').textContent = num;
             });
         };
 
+        const displayOne = num => {
+            $(".pdf-render").addClass("hide");
+            $("#pdf-render"+num).removeClass("hide");
+            document.querySelector('#page-num').textContent = num;
+
+            var load = [num];
+            for(var i = num; i > 0 && i > num-3; i--){
+                console.log("loop: "+i);
+                load.push(i);}
+            for(var i = num; i <= numPages && i < num+4; i++){
+                console.log("loop: "+i);
+                load.push(i);}
+            load.forEach(val => {if(!loaded.includes(val)){
+                loadPdf(val);
+                loaded.push(val);
+                console.log(loaded);
+            }});
+        }
+
         // Check for pages rendering
-        const queueRenderPage = num => {
-            if (pageIsRendering) {
-                pageNumIsPending = num;
-            } else {
-                renderPage(num);
-            }
-        };
+        // const queueRenderPage = num => {
+        //   if (pageIsRendering) {
+        //     pageNumIsPending = num;
+        //   } else {
+        //     renderPage(num);
+        //   }
+        // };
 
         // Show Prev Page
         const showPrevPage = () => {
@@ -98,39 +112,43 @@
                 return;
             }
             pageNum--;
-            queueRenderPage(pageNum);
+            console.log("prev: "+pageNum);
+            displayOne(pageNum);
         };
 
         // Show Next Page
         const showNextPage = () => {
-            if (pageNum >= pdfDoc.numPages) {
+            if (pageNum >= numPages) {
                 return;
             }
             pageNum++;
-            queueRenderPage(pageNum);
+            console.log("next: "+pageNum);
+            displayOne(pageNum);
         };
 
-        // Get Document
-        pdfjsLib
-            .getDocument(url)
-            .promise.then(pdfDoc_ => {
-            pdfDoc = pdfDoc_;
+        const loadPdf = function(number){
+            pdfjsLib
+                .getDocument(url+number+".pdf")
+                .promise.then(pdfDoc_ => {
+                pdfDoc = pdfDoc_;
 
-            document.querySelector('#page-count').textContent = pdfDoc.numPages;
+                // document.querySelector('#page-count').textContent = pdfDoc.numPages;
+                document.querySelector('#page-count').textContent = '-'+numPages;
+                console.log("Load")
+                renderPage(number);
+            })
+                .catch(err => {
+                    // Display error
+                    const div = document.createElement('div');
+                    div.className = 'error';
+                    div.appendChild(document.createTextNode(err.message));
+                    document.querySelector('body').insertBefore(div, canvas);
+                    // Remove top bar
+                    document.querySelector('.top-bar').style.display = 'none';
+                });
+        }
+        displayOne(1);
 
-            renderPage(pageNum);
-        })
-            .catch(err => {
-                // Display error
-                const div = document.createElement('div');
-                div.className = 'error';
-                div.appendChild(document.createTextNode(err.message));
-                document.querySelector('body').insertBefore(div, canvas);
-                // Remove top bar
-                document.querySelector('.top-bar').style.display = 'none';
-            });
-
-        // Button Events
         document.querySelector('#prev-page').addEventListener('click', showPrevPage);
         document.querySelector('#next-page').addEventListener('click', showNextPage);
 

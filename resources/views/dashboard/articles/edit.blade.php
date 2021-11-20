@@ -50,9 +50,12 @@
                     <div class="row g-3">
                         <div class="col-md-6 mt-3">
                             <label for="category" class="form-label">Article Category</label>
+
                             <select name="category" id="category" class="form-select form-control" aria-label="Default select example" autofocus>
-                                @if($article->category)
-                                    <option value="{{ $article->category }}" selected>{{ $article->category }}</option>
+                                @if($article->categories)
+                                    @foreach($article->categories as $category)
+                                        <option value="{{ $category->id }}" selected>{{ $category->title }}</option>
+                                    @endforeach
                                 @endif
                                 <option value="" disabled>Select article category</option>
                                 @foreach($categories as $category)
@@ -63,6 +66,24 @@
                                 <div class="text-danger form-text">{{ $errors->first('category') }}</div>
                             @endif
                         </div>
+
+                        <div class="col-md-6 mt-3">
+                            <label for="category" class="form-label">Article Type</label>
+                            <select name="type" class="form-select form-control" aria-label="Default select example" autofocus>
+
+                                @if($article->type)
+                                    <option value="{{ $article->type }}" selected>{{ $article->type }}</option>
+                                @endif
+
+                                <option value="" disabled>Select article type</option>
+                                <option value="premium">Magazine Article</option>
+                                <option value="free">Free Article</option>
+
+                            </select>
+                            @if ($errors->has('type'))
+                                <div class="text-danger form-text">{{ $errors->first('type') }}</div>
+                            @endif
+                        </div>
                     </div>
 
                     <div>
@@ -71,13 +92,6 @@
                         @if ($errors->has('body'))
                             <div class="text-danger form-text">{{ $errors->first('body') }}</div>
                         @endif
-                    </div>
-
-                    <div class="check-primary mt-2">
-                        <input type="checkbox" name="status" id="status">
-                        <label for="status">
-                            Draft
-                        </label>
                     </div>
                 </div>
 

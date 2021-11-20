@@ -8,6 +8,7 @@ use App\Models\ArticleCategory;
 use App\Models\Category;
 use App\Models\Magazine;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -23,27 +24,15 @@ class SiteController extends Controller
      * show the home page
      */
     public function show_index_page(){
-
-        $data = '{
-        "result":1,
-        "message":"Successfully retrieved payment details.",
-        "details":{"merchantTransactionID":"321",
-        "checkoutRequestID":"16606006",
-        "receiptNumber":"321rc1636138530",
-        "amountPaid":"1.0000","currencyCode":"KES",
-        "serviceCode":"FIRSTCODE","accountNumber":"254700861587_321","serviceChargeAmount":"0.0000","today":"2021-11-05 21:55:30",
-        "acknowledged":"true",
-        "payments":[{
-        "cpgTransactionID":"1174897182","merchantTransactionID":"321",
-        "payerClientName":"Safaricom Kenya Limited","MSISDN":"254700861587","currencyCode":"KES","amountPaid":"1.0000",
-        "serviceCode":"FIRSTCODE","payerTransactionID":"PK549JZD26","hubOverallStatus":"139",
-        "accountNumber":"254700861587_321","customerName":"Customer","payerClientCode":"SAFKE","datePaymentReceived":"2021-11-05 18:55:25"}]}}';
-
+        if (Auth::check()){
+            return redirect()->route('portal');
+        }
+//        dd($this->get_seven_leading_articles());
         return view('site.home')
             ->with('categories', $this->get_categories())
             ->with('all_categories', $this->get_all_categories())
             ->with('one_category', $this->get_one_category())
-            ->with('not_search_form', "false");
+            ->with('leading_articles', $this->get_seven_leading_articles());
     }
 
     /**
@@ -54,7 +43,8 @@ class SiteController extends Controller
         return view('site.about')
             ->with('categories', $this->get_categories())
             ->with('all_categories', $this->get_all_categories())
-            ->with('one_category', $this->get_one_category());
+            ->with('one_category', $this->get_one_category())
+            ->with('leading_articles', $this->get_seven_leading_articles());
     }
 
     /**
@@ -65,7 +55,8 @@ class SiteController extends Controller
         return view('site.faqs')
             ->with('categories', $this->get_categories())
             ->with('all_categories', $this->get_all_categories())
-            ->with('one_category', $this->get_one_category());
+            ->with('one_category', $this->get_one_category())
+            ->with('leading_articles', $this->get_seven_leading_articles());
     }
 
 
@@ -83,14 +74,21 @@ class SiteController extends Controller
             ->with('more_articles', $more_articles)
             ->with('categories', $this->get_categories())
             ->with('all_categories', $this->get_all_categories())
-            ->with('one_category', $this->get_one_category());
+            ->with('one_category', $this->get_one_category())
+            ->with('leading_articles', $this->get_seven_leading_articles());
     }
 
     /**
      *  render a full article based on its slug
      */
     public function show_full_article($slug){
-        $this->show_full_article($slug);
+        $article = Article::with('categories')->where('slug', $slug)->first();
+
+        return view('site.full_article')->with('article',$article)
+            ->with('categories', $this->get_categories())
+            ->with('all_categories', $this->get_all_categories())
+            ->with('one_category', $this->get_one_category())
+            ->with('leading_articles', $this->get_seven_leading_articles());
     }
 
     /**
@@ -111,7 +109,8 @@ class SiteController extends Controller
             ->with('categories', $this->get_categories())
             ->with('all_categories', $this->get_all_categories())
             ->with('category_title', $category_title)
-            ->with('one_category', $this->get_one_category());
+            ->with('one_category', $this->get_one_category())
+            ->with('leading_articles', $this->get_seven_leading_articles());
     }
 
     /**
@@ -144,7 +143,8 @@ class SiteController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * 5)
             ->with('categories', $this->get_categories())
             ->with('all_categories', $this->get_all_categories())
-            ->with('one_category', $this->get_one_category());
+            ->with('one_category', $this->get_one_category())
+            ->with('leading_articles', $this->get_seven_leading_articles());
     }
 
     /**
@@ -157,13 +157,28 @@ class SiteController extends Controller
         return view('site.magazine', compact('magazines'))
             ->with('categories', $this->get_categories())
             ->with('all_categories', $this->get_all_categories())
-            ->with('one_category', $this->get_one_category());
+            ->with('one_category', $this->get_one_category())
+            ->with('leading_articles', $this->get_seven_leading_articles());
     }
 
     /**
      * show payment success
      */
+    //pending
+    public function pending_from_tingg(){
+
+        return redirect()->route('show.login')->with('error', "Oops! Transaction is pending, but you can login to continue browsing article");
+    }
+
+    //failure
+    public function failure_from_tingg(){
+
+        return redirect()->route('show.login')->with('error', 'Oops! Transaction has failed, but you can login to continue browsing article');
+    }
+
+    //success
     public function post_from_tingg(){
+
         return redirect()->route('site.success.show');
     }
 

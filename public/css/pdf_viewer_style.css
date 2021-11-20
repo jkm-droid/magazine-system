@@ -1,18 +1,124 @@
 .top-bar {
-  padding: 1rem;
+    padding: 1rem;
 }
 
 
 .btn:hover {
-  opacity: 0.9;
+    opacity: 0.9;
 }
 
 .page-info {
-  margin-left: 1rem;
+    margin-left: 1rem;
 }
 
 .error {
-  background: orangered;
-  color: #fff;
-  padding: 1rem;
+    background: orangered;
+    color: #fff;
+    padding: 1rem;
+}
+
+.pdf-canvas{
+    /*max-height: 700px;*/
+    /*overflow-x: hidden;*/
+    /*overflow-y: auto;*/
+    text-align: center;
+    /*padding: 10px;*/
+}
+
+.previous{
+    position: relative;
+    float: left;
+    margin-top: 25%;
+    color: red;
+}
+.next{
+    position: relative;
+    float: right;
+    margin-top: 25%;
+    color: red;
+}
+.prev-next{
+    height: 10px;
+    width: 100%;
+    position: absolute;
+}
+@media (max-width: 767px) {
+    .pdf-canvas{
+        margin-top: 0;
+        width: 100%;
+        /*padding: 2px;*/
+    }
+
+    .pdf-render {
+        width: 100%;
+    }
+
+    .prev-next{
+        margin-top: 50%;
+    }
+    .previous{
+        /*margin-top: 50%;*/
+        /*position: relative;*/
+    }
+
+    .next{
+        /*margin-top: 50%;*/
+    }
+}
+.pdf-container .pagination .page-item{
+    border: none;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+#toolbar {
+    display: flex;
+    align-items: center;
+    background-color: #555;
+    color: #fff;
+    padding: 0.5em;
+}
+#toolbar button,
+#page-mode input {
+    color: currentColor;
+    background-color: transparent;
+    font: inherit;
+    border: 1px solid currentColor;
+    border-radius: 3px;
+    padding: 0.25em 0.5em;
+}
+#toolbar button:hover,
+#toolbar button:focus,
+#page-mode input:hover,
+#page-mode input:focus {
+    color: lightGreen;
+}
+#page-mode {
+    display: flex;
+    align-items: center;
+    padding: 0.25em 0.5em;
+}
+
+#viewport-container {
+    flex: 1;
+    background: #eee;
+    overflow: auto;
+}
+#viewport {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+#viewport > div {
+    text-align: center;
+    max-width: 100%;
+}
+#viewport canvas {
+    width: 100%;
+    box-shadow: 0 2px 5px gray;
 }

@@ -13,7 +13,7 @@ class CreatePyamentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('pyaments', function (Blueprint $table) {
+        Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreatePyamentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pyaments');
+        Schema::dropIfExists('payments');
     }
 }

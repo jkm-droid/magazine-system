@@ -1,36 +1,37 @@
-@extends('base.premium_index')
+@extends('base.index')
 
 @section('content')
     <section>
         <div class="container">
-            @if($feature_article->isEmpty())
-            @else
-                <a href="{{ route('portal.full.article.show', $feature_article[0]->slug) }}" class="col-md-12">
+            @if($feature_article)
+                <a href="{{ route('portal.full.article.show', $feature_article->slug) }}" class="col-md-12">
                     <div class="card mb-3" style="margin-top: 40px;">
                         <div class="row g-0">
                             <div class="col-md-7">
-                                <img src="/article_covers/{{ $feature_article[0]->image }}" class="img-fluid rounded-start" alt="..." style="min-height: 400px;">
+                                <img src="/article_covers/{{ $feature_article->image }}"
+                                     class="img-fluid rounded-start portal-image" alt="..." width="100%" style="max-height: 350px;">
                             </div>
                             <div class="col-md-5">
                                 <div class="card-body">
-                                    <h4 class="card-title put-black">{{ $feature_article[0]->title }}</h4>
+                                    <h4 class="card-title put-black">{{ $feature_article->title }}</h4>
                                     <p class="card-text">
-                                        {{ \Illuminate\Support\Str::upper($feature_article[0]->author) }} |
+                                        {{ \Illuminate\Support\Str::upper($feature_article->author) }} |
 
-                                        @foreach($feature_article[0]->categories as $feature_cat)
+                                        @foreach($feature_article->categories as $feature_cat)
                                             {{ \Illuminate\Support\Str::upper($feature_cat->title) }} |
                                         @endforeach
 
-                                        {{ date('d-m-Y', strtotime($feature_article[0]->created_at)) }}
+                                        {{ date('d-m-Y', strtotime($feature_article->created_at)) }}
                                     </p>
                                     <p class="card-text">
-                                        <small class="text-muted">{!! \Illuminate\Support\Str::limit(strip_tags($feature_article[0]->body), $limit = 200, $end = '...') !!}</small>
+                                        <small class="text-muted">{!! \Illuminate\Support\Str::limit(strip_tags($feature_article->body), $limit = 200, $end = '...') !!}</small>
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </a>
+            @else
             @endif
 
             <h3 class="mt-4 put-black">Explore <span class="put-gold"><strong>Articles</strong></span></h3>

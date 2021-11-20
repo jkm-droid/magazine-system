@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Magazine;
 use App\Models\MagazineArticle;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
 
 
@@ -152,17 +154,21 @@ class MagazineController extends Controller
     public function publish_draft_magazine($magazine_id){
         $magazine = Magazine::find($magazine_id);
 
-        if ($magazine->published == 1){
-            $magazine->published = 0;
-            $message = "Magazine un-published successfully";
-        }else{
-            $magazine->published = 1;
-            $message = "Magazine Published successfully";
+        if (Auth::user()->isSuperAdmin == 1) {
+            if ($magazine->published == 1) {
+                $magazine->published = 0;
+                $message = "Magazine un-published successfully";
+            } else {
+                $magazine->published = 1;
+                $message = "Magazine Published successfully";
+            }
+
+            $magazine->update();
+
+            return redirect()->route('magazines.index')->with('success', $message);
         }
 
-        $magazine->update();
-
-        return redirect()->route('magazines.index')->with('success',$message);
+        return Redirect::back()->with('error', 'You lack permission to do this action');
     }
 
     /**

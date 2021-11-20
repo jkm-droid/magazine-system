@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Category;
+use Faker\Factory as Faker;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -14,7 +15,7 @@ class CategoryController extends Controller
         $this->middleware('auth:admin');
     }
 
-    //show all the articles while maintaining pagination
+    //show all the categories while maintaining pagination
     public function index(){
         $categories = Category::latest()->paginate(10);
 
@@ -32,21 +33,27 @@ class CategoryController extends Controller
     public function save_category(Request $request){
         $request->validate([
             'title'=> 'required | unique:categories',
-            'image' => 'required|image|file'
         ]);
 
         $data = $request->all();
-        //save the image to folder
-        $imageName = str_replace(' ', '_', $data['title']) . '.' . $request->image->extension();
-        $request->image->move(public_path('category_covers'), $imageName);
-        $data['image'] = $imageName;
-
         $category = new Category();
+
+        //save the image to folder
+        if ($request->hasFile('image')) {
+            $imageName = str_replace(' ', '_', $data['title']) . '.' . $request->image->extension();
+            $request->image->move(public_path('category_covers'), $imageName);
+            $data['image'] = $imageName;
+            $category->image = $imageName;
+        }else{
+            $faker = Faker::create('App\Category');
+            $faker->image(public_path('category_covers'), 900, 400, null, false);
+            $category->image = str_replace(' ', '_', $data['title']);
+        }
+
         $category->title = ucfirst($data['title']);
         $category->slug = str_replace(" ", "-", strtolower($data['title']));
         $category->admin_id = Auth::user()->id;
         $category->author = Auth::user()->name;
-        $category->image = $imageName;
         $category->save();
 
         return redirect()->route('categories.index')->with('success','Category created successfully');
@@ -75,6 +82,10 @@ class CategoryController extends Controller
 
             $data['image'] = $imageName;
             $category->image = $imageName;
+        }else{
+            $faker = Faker::create('App\Category');
+            $image = $faker->image(public_path('category_covers'), 900, 400, null, false);
+            $category->image = str_replace(' ', '_', $data['title']);
         }
 
         $category->title = ucfirst($data['title']);

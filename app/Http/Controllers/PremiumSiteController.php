@@ -6,7 +6,9 @@ use App\HelperFunctions\GetCategories;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Magazine;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PremiumSiteController extends Controller
@@ -21,8 +23,14 @@ class PremiumSiteController extends Controller
      * display the authenticated home page
      */
     public function portal(){
-        $feature_article = Article::with('categories')->where('status',1)->inRandomOrder()->limit(1)->get();
+//        $user = User::find(Auth::user()->id);
+//        if ($user->payment_status == 0){
+//            return redirect()->route('show.subscribe', $user->email);
+//        }
+
+        $feature_article = Article::with('categories')->where('status',1)->inRandomOrder()->limit(1)->first();
         $articles = Article::with('categories')->where('status',1)->latest()->paginate(5);
+
         return view('premium_site.portal', compact('articles'))
             ->with('i', (request()->input('page', 1) - 1) * 5)
             ->with('feature_article', $feature_article)
@@ -36,10 +44,10 @@ class PremiumSiteController extends Controller
      */
 
     public function show_full_premium_article($slug){
-        $article = Article::with('categories')->where('slug', $slug)->get();
+        $article = Article::with('categories')->where('slug', $slug)->first();
 
         //get articles belonging to the author
-        $author_articles = Article::with('categories')->where('author',$article[0]->author)->where('status',1)->get();
+        $author_articles = Article::with('categories')->where('author',$article->author)->where('status',1)->get();
 
         return view('premium_site.full_article', compact('article','author_articles'))
             ->with('categories', $this->get_categories())
@@ -105,12 +113,17 @@ class PremiumSiteController extends Controller
      * read the magazine
      */
     public function read_magazine($magazine_slug){
-        $magazine = Magazine::where('slug',$magazine_slug)->first();
+        $user = User::find(Auth::user()->id);
+        if ($user->payment_status == 1) {
+            $magazine = Magazine::where('slug', $magazine_slug)->first();
 
-        return view('premium_site.read_magazine')
-            ->with('magazine',$magazine)
-            ->with('categories', $this->get_categories())
-            ->with('all_categories', $this->get_all_categories())
-            ->with('one_category', $this->get_one_category());
+            return view('premium_site.read_magazine')
+                ->with('magazine', $magazine)
+                ->with('categories', $this->get_categories())
+                ->with('all_categories', $this->get_all_categories())
+                ->with('one_category', $this->get_one_category());
+        }
+
+        return view('payments.subscription_plan', compact('user'));
     }
 }

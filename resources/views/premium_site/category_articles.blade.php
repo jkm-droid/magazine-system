@@ -1,4 +1,4 @@
-@extends('base.premium_index')
+@extends('base.index')
 
 @section('content')
     <section>

@@ -58,7 +58,7 @@ class PublishPostNotification extends Notification
         return [
             'article_id'=> $this->article->id,
             'title' => $this->article->title,
-            'body' => $this->article->body,
+//            'body' => $this->article->body,
             'author'=> auth()->user()->name,
         ];
     }

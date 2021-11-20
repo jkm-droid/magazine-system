@@ -18,8 +18,9 @@
                             <h3 class="put-black">In this <strong class="put-gold">Issue</strong></h3>
                             @if($magazine->magazine_articles->isEmpty())
                                 <p class="text-danger">no articles found</p>
+                            @else
                                 @foreach($magazine->magazine_articles as $mag_article)
-                                    <a href="{{ route('show.register') }}">
+                                    <a href="{{ route('show.register') }}" style="text-decoration: none;" class="text-secondary">
                                         <div class="card mb-3 border-0">
                                             <div class="row g-0">
                                                 <div class="col-md-2">
@@ -27,8 +28,8 @@
                                                 </div>
                                                 <div class="col-md-10">
                                                     <div class="card-body">
-                                                        <h5 class="card-title">{{ $mag_article->title }}</h5>
-                                                        <span class="card-text">{!! $mag_article->description !!}</span>
+                                                        <h5 class="card-title put-black">{{ $mag_article->title }}</h5>
+                                                        <span class="card-text">{!! \Illuminate\Support\Str::limit(strip_tags($mag_article->description), $limit = 200, $end = '...') !!}</span>
                                                     </div>
                                                 </div>
                                             </div>

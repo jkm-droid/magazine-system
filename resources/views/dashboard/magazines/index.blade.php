@@ -50,10 +50,11 @@
                             <th>Image</th>
                             <th>Creation Date</th>
                             <th>Status</th>
-                            @if(\Illuminate\Support\Facades\Auth::user()->is_admin = 1)
+                            @if(\Illuminate\Support\Facades\Auth::user()->isSuperAdmin == 1)
                                 <th></th>
-                                <th>Action</th>
                             @endif
+                                <th>Action</th>
+
                         </tr>
                         </thead>
 
@@ -72,7 +73,7 @@
                                     <td><i class="text-danger fa fa-times-circle"></i></td>
                                 @endif
 
-                                @if(\Illuminate\Support\Facades\Auth::user()->is_admin = 1)
+                                @if(\Illuminate\Support\Facades\Auth::user()->isSuperAdmin == 1)
 
                                     <td>
                                         @if($magazine->published  == 1)
@@ -90,7 +91,7 @@
                                         @endif
 
                                     </td>
-
+                                @endif
                                     <td>
                                         <form action="{{ route('magazine.delete',$magazine->id) }}" method="POST">
 
@@ -105,7 +106,7 @@
                                         </form>
                                     </td>
 
-                                @endif
+
 
                             </tr>
                         @endforeach

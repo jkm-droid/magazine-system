@@ -1,18 +1,18 @@
-@extends('base.premium_index')
+@extends('base.index')
 
 @section('content')
     <section>
         <div class="container" style="margin-top: 40px;">
-            @foreach($article[0]->categories as $article_cat)
+            @foreach($article->categories as $article_cat)
                 <h6 class="text-gray-dark">{{ \Illuminate\Support\Str::upper($article_cat->title) }}</h6>
             @endforeach
-            <h3 class="put-black">{{ $article[0]->title }}</h3>
+            <h3 class="put-black">{{ $article->title }}</h3>
             <p>
-                by {{ \Illuminate\Support\Str::upper($article[0]->author) }}
-                Published: {{ date('d-m-Y', strtotime($article[0]->created_at)) }}
+                by {{ \Illuminate\Support\Str::upper($article->author) }}
+                Published: {{ date('d-m-Y', strtotime($article->created_at)) }}
             </p>
-            <img src="/article_covers/{{ $article[0]->image }}" class="img-fluid col-md-12" alt="" style="max-height: 450px;">
-            <p class="mt-3 mb-3 m-2">{!! $article[0]->body !!}</p>
+            <img src="/article_covers/{{ $article->image }}" class="img-fluid col-md-12" alt="" style="max-height: 350px;">
+            <p class="mt-3 mb-3 m-2">{!! $article->body !!}</p>
 
             @if($author_articles->isEmpty())
             @else

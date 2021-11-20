@@ -46,18 +46,18 @@ class AdminLoginController extends Controller
         return view('admin.register');
     }
 
-    public function register(Request $request){
+    public function admin_register(Request $request){
         $request->validate([
-            'username'=>'required',
+            'username'=>'required|unique:admins',
             'name'=>'required',
-            'email'=>'required|email|unique:users',
+            'email'=>'required|email|unique:admins',
             'password'=>'required|min:6',
         ]);
 
         $user_data = $request->all();
         $this->create($user_data);
 
-        return redirect()->route('show.login')->with('success', 'Registered successfully, you can now login');
+        return redirect()->route('admin.show.login')->with('success', 'Registered successfully, you can now login');
     }
 
     public function create(array $data){

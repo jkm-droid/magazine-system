@@ -19,6 +19,7 @@ class CreateAdminsTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->boolean('is_admin')->default(0);
+            $table->boolean('isSuperAdmin')->default(0);
             $table->string('profile_url')->default('blank.profile.picture.png');
             $table->binary('profile_picture')->default('blank.profile.picture.png');
             $table->timestamp('email_verified_at')->nullable();

@@ -20,19 +20,46 @@ class PaymentController extends Controller
     }
 
     /**
-     * display the payment page
+     * show the subscription plan page, select the plan
      */
-    public function show_payment_page($email){
+    public function show_subscription_plan($email){
         $user = User::where('email', $email)->first();
 
+        return view('payments.subscription_plan', compact('user'));
+    }
+
+    /**
+     * save the subscription details &
+     * the payment page
+     */
+    public function save_subscription_plan(Request $request, $email){
+        $user = User::where('email', $email)->first();
+        $subscription_plan = '';
+        $amount = 0;
+        $sub_data = $request->all();
+
+        //get the checked button to know the subscription plan
+        if($sub_data['subscription_plan'] == 6){
+            $subscription_plan = "quarterly";
+            $amount = 6;
+        }else if($sub_data['subscription_plan'] == 24){
+            $subscription_plan = "annual";
+            $amount = 24;
+        }
+
+        //update the rest of the details
+        $user->amount = $amount;
+        $user->subscription_plan = $subscription_plan;
+        $user->update();
+
         $data = array(
-            'requestAmount'=> 1,
-            'currencyCode'=> 'KES',
+            'requestAmount'=> $amount,
+            'currencyCode'=> 'USD',
             'accountNumber'=>$user->phone_number,
             'dueDate'=> date("Y-m-d H:m:s", time()+(14*24*60*60)),
-            'requestDescription'=>ucfirst($user->subscription_plan).''.' Magazine Subscription Plan',
+            'requestDescription'=>ucfirst($subscription_plan).''.' Magazine Subscription Plan',
             'MSISDN'=>$user->phone_number,
-            'countryCode'=>'KE',
+            'countryCode'=>$user->country,
             'customerFirstName'=>$user->first_name,
             'customerLastName'=>$user->last_name,
             'customerEmail'=>$user->email,

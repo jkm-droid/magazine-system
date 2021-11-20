@@ -18,7 +18,7 @@
                 <script>
                     var app_ = @json($my_data);
                     app_['payerClientCode'] = "";
-                    app_['successRedirectUrl'] = "{{ url('industrialising-africa/success') }}";
+                    app_['successRedirectUrl'] = "{{ url('industrialising-africa/post') }}";
                     app_['failRedirectUrl'] = "{{ url('user/register') }}";
                     app_['pendingRedirectUrl'] = "{{ url('user/register') }}";
 

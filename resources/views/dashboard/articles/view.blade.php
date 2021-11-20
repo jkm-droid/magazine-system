@@ -20,7 +20,7 @@
     <section>
         <div class="col-md-10 m-2 mt-0">
             <a href="{{ route('my_articles.index', \Illuminate\Support\Facades\Auth::user()->id) }}">
-                <button class="btn btn-success btn-sm">Back</button><br>
+                <button class="btn put-gold background-black btn-sm">Back</button><br>
             </a>
             <br>
             @foreach($article->categories as $article_cat)

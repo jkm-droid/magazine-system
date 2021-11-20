@@ -14,10 +14,10 @@ trait GetCategories{
     }
 
     /**
-     * Get seven categories for the mega drop down menu
+     * Get seven categories for the carousel section
      */
     public function get_categories(){
-        return Category::with('articles')->inRandomOrder()->take(7)->get();
+       return Category::with('articles')->inRandomOrder()->take(7)->get();
     }
 
     /**
@@ -32,6 +32,13 @@ trait GetCategories{
         }
 
         return $cat_articles;
+    }
+
+    /**
+     * get 7 leading articles
+     */
+    public function get_seven_leading_articles(){
+        return Article::where('type','premium')->take(7)->get();
     }
 
 }

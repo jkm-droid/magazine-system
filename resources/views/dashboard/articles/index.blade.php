@@ -50,7 +50,7 @@
                             <th>Author</th>
                             <th>Creation Date</th>
                             <th>Status</th>
-                            @if(\Illuminate\Support\Facades\Auth::user()->is_admin = 1)
+                            @if(\Illuminate\Support\Facades\Auth::user()->isSuperAdmin == 1)
                                 <th>Action</th>
                             @endif
                         </tr>
@@ -61,7 +61,7 @@
                             <tr>
                                 <td><a href="{{ route('article.show', $article->id) }}">{{ $article->title }}</a></td>
                                 @if($article->categories->isEmpty())
-                                    <td></td>
+                                    <td>Action</td>
                                 @else
                                     @foreach($article->categories as $category)
                                         <td>{{ $category->title }}</td>
@@ -78,7 +78,7 @@
                                     <td><i class="text-danger fa fa-times-circle"></i></td>
                                 @endif
 
-                                @if(\Illuminate\Support\Facades\Auth::user()->is_admin = 1)
+                                @if(\Illuminate\Support\Facades\Auth::user()->isSuperAdmin == 1)
                                     <td>
                                         @if($article->status  == 1)
                                             <form action="{{ route('article.publish',$article->id) }}" method="post">

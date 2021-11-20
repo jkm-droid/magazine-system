@@ -20,47 +20,76 @@
             </div>
             <div class="text-center mt-2">
                 <button class="btn btn-lg put-gold" style="background-color: black; box-shadow: 0 0 30px goldenrod;">
-                    <a class="nav-link ml-4 put-gold text-uppercase" href="{{ route('show.register') }}">Get Started</a>
+                    <a class="nav-link ml-4 put-gold text-uppercase" href="{{ route('show.register') }}">Read Publication Now</a>
                 </button>
             </div>
 
             <div class="row icon-boxes">
-                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                    <div class="icon-box">
-                        <div class="icon text-center"><i class="bx bxs-factory"></i><i class="bx bxs-car-mechanic bx-lg"></i></div>
-                        <h5 class="title"><a href="">Manufacturing & Assembly</a></h5>
-                        <p class="description">Manufacturing activities boost the overall value generated in a given
-                            economy by catalysing more activity along value chains. </p>
-                    </div>
-                </div>
+                @if($leading_articles)
+                    @foreach($leading_articles as $leading)
+                        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                            <div class="card icon-box">
+                                <a href=" {{ route('site.article.full.show', $leading->slug) }}">
 
-                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                    <div class="icon-box">
-                        <div class="icon"><i class="bx bxs-ev-station"></i><i class="bx bxs-chip"></i></div>
-                        <h5 class="title"><a href="">Energy & Technology</a></h5>
-                        <p class="description">Energy is a critical component in the industrialisation process
-                            a key driver for Africa's industrialisation agenda.</p>
-                    </div>
-                </div>
+                                    <div class="card-img">
+                                        <img src="article_covers/{{ $leading->image }}" class="img-fluid" height="100%" alt="" style="opacity: 0.4;">
+                                    </div>
+                                    <div class="card-img-overlay" style="padding-top: 20px; padding-bottom: 20px;">
+                                        <h5 class="title put-black">{{ $leading->title }}</h5>
+                                        <p class="description"> {!! \Illuminate\Support\Str::limit(strip_tags($leading->body), $limit = 150, $end = '...') !!}</p>
+                                    </div>
 
-                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                    <div class="icon-box">
-                        <div class="icon"><i class="bx bxs-truck"></i><i class="bx bxs-plane-alt"></i></div>
-                        <h5 class="title"><a href="">Logistics & Transport</a></h5>
-                        <p class="description">The modernisation of African logistics is one of the most important
-                            areas of development on the continent today. </p>
+                                </a>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                        <a href="{{ route('show.register') }}">
+                            <div class="icon-box">
+                                <div class="icon text-center"><i class="bx bxs-factory"></i><i class="bx bxs-car-mechanic bx-lg"></i></div>
+                                <h5 class="title text-white">Manufacturing & Assembly</h5>
+                                <p class="description">Manufacturing activities boost the overall value generated in a given
+                                    economy by catalysing more activity along value chains. </p>
+                            </div>
+                        </a>
                     </div>
-                </div>
 
-                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                    <div class="icon-box">
-                        <div class="icon"><i class="bx bxs-coin-stack"></i><i class="bx bxs-business"></i></div>
-                        <h5 class="title"><a href="">Corporate Finance & SME's</a></h5>
-                        <p class="description">The Bank’s ambition is to help double the industrial GDP by 2025,
-                            and increase its industrial GDP to US $1.72 trillion.  </p>
+                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                        <a href="{{ route('show.register') }}">
+                            <div class="icon-box">
+                                <div class="icon"><i class="bx bxs-ev-station"></i><i class="bx bxs-chip"></i></div>
+                                <h5 class="title text-white">Energy & Technology</h5>
+
+                                <p class="description">Energy is a critical component in the industrialisation process
+                                    a key driver for Africa's industrialisation agenda.</p>
+                            </div>
+                        </a>
                     </div>
-                </div>
 
+                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                        <a href="{{ route('show.register') }}">
+                            <div class="icon-box">
+                                <div class="icon"><i class="bx bxs-truck"></i><i class="bx bxs-plane-alt"></i></div>
+                                <h5 class="title text-white">Logistics & Transport</h5>
+                                <p class="description">The modernisation of African logistics is one of the most important
+                                    areas of development on the continent today. </p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                        <a href="{{ route('show.register') }}">
+                            <div class="icon-box">
+                                <div class="icon"><i class="bx bxs-coin-stack"></i><i class="bx bxs-business"></i></div>
+                                <h5 class="title text-white">Corporate Finance & SME's</h5>
+                                <p class="description">The Bank’s ambition is to help double the industrial GDP by 2025,
+                                    and increase its industrial GDP to US $1.72 trillion.  </p>
+                            </div>
+                        </a>
+                    </div>
+
+                @endif
             </div>
         </div>
     </section>
@@ -138,6 +167,141 @@
 
     </script>
     <br>
+
+    <!----multi item carousel--->
+    <div class="container text-center mt-4">
+        <h2 class="font-weight-light">
+            <strong class="put-gold">Publication</strong> <span style="color: black;">Section Stories</span>
+        </h2>
+        @if(!$categories->isEmpty())
+            <div class="row mx-auto mt-4 justify-content-center">
+                <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner multi-item-carousel" role="listbox">
+                        <div class="carousel-item active">
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <a href="">
+                                            <img src="{{ asset('site_images/factory.jpg') }}" class="img-fluid" alt="" style="opacity: 0.4;">
+                                        </a>
+                                    </div>
+                                    <div class="card-img-overlay"><h2>Assembly</h2></div>
+                                </div>
+                            </div>
+                        </div>
+                        @foreach($categories as $category)
+                            <div class="carousel-item">
+                                <div class="col-md-3" >
+                                    <a href=" {{ route('site.category.all.articles.show', $category->slug) }}">
+                                        <div class="card">
+                                            <div class="card-img">
+                                                <img src="category_covers/{{ $category->image }}" class="img-fluid" alt="" style="opacity: 0.4;">
+                                            </div>
+                                            <div class="card-img-overlay">
+                                                <h2>{{ $category->title }}</h2>
+                                                @foreach($category->articles as $cat_article)
+                                                    @if($loop->first)
+                                                        <h4>{{ $cat_article->title }}</h4>
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        @endforeach
+
+                    </div>
+                    <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </a>
+                    <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon text-danger" aria-hidden="true"></span>
+                    </a>
+                </div>
+            </div>
+        @else
+            <div class="row mx-auto mt-4 justify-content-center">
+                <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner multi-item-carousel" role="listbox">
+                        <div class="carousel-item active">
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <a href="">
+                                            <img src="{{ asset('site_images/factory.jpg') }}" class="img-fluid" alt="" >
+                                        </a>
+                                    </div>
+                                    <div class="card-img-overlay"><h2>Manufacturing</h2></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="col-md-3">
+                                <a href="#contacts">
+                                    <div class="card">
+                                        <div class="card-img">
+                                            <img src="{{ asset('site_images/download.jpeg') }}" class="img-fluid" alt="" >
+                                        </div>
+                                        <div class="card-img-overlay"><h2>Assembly</h2></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img src="{{ asset('site_images/green.jpg') }}" class="img-fluid" alt="" >
+                                    </div>
+                                    <div class="card-img-overlay"><h2>Green Energy</h2></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img src="{{ asset('site_images/logistics.jpeg') }}" class="img-fluid" alt="" >
+                                    </div>
+                                    <div class="card-img-overlay"><h2>Logistics</h2></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img src="{{ asset('site_images/transport.jpg') }}" class="img-fluid" alt="" >
+                                    </div>
+                                    <div class="card-img-overlay"><h2>Transport</h2></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img src="{{ asset('site_images/corporate-finance.jpg') }}" class="img-fluid" alt="" >
+                                    </div>
+                                    <div class="card-img-overlay"><h2>Corporate Finance</h2></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </a>
+                    <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </a>
+                </div>
+            </div>
+        @endif
+        <h5 class="mb-4 fw-light">Industrialising Africa Magazine</h5>
+    </div>
+    <!----end multi item carousel---->
+
     <!----magazine images section------>
     <section id="portfolio" class="portfolio">
         <div class="container">
@@ -252,141 +416,37 @@
                             </div>
                         </div>
                     </div>
+                </div>
 
+                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                    <div class="portfolio-wrap">
+                        <img src="{{ asset('/site_images/magazine_back_front_image.jpeg') }}" loading="lazy" class="img-fluid" alt="">
+                        <div class="portfolio-info">
+                            <h4>Green Energy Benefits</h4>
+                            <div class="portfolio-links">
+                                <a href="{{ asset('/site_images/magazine_back_front_image.jpeg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="">
+                                    <i class="bx bx-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                    <div class="portfolio-wrap">
+                        <img src="{{ asset('/site_images/magazine_image.jpeg') }}" loading="lazy" class="img-fluid" alt="">
+                        <div class="portfolio-info">
+                            <h4>Green Energy Benefits</h4>
+                            <div class="portfolio-links">
+                                <a href="{{ asset('/site_images/magazine_image.jpeg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="">
+                                    <i class="bx bx-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>
         </div>
     </section>
-
     <!-----end magazine images section------>
-
-    <!----multi item carousel--->
-    <div class="container text-center mt-4">
-        <h2 class="font-weight-light">
-            <strong class="put-gold">Explore</strong> <span style="color: black;">Major Categories</span>
-        </h2>
-        @if(!$categories->isEmpty())
-            <div class="row mx-auto mt-4 justify-content-center">
-                <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner multi-item-carousel" role="listbox">
-                        <div class="carousel-item active">
-                            <div class="col-md-3">
-                                <div class="card">
-                                    <div class="card-img">
-                                        <a href="">
-                                            <img src="{{ asset('site_images/factory.jpg') }}" class="img-fluid" alt="" >
-                                        </a>
-                                    </div>
-                                    <div class="card-img-overlay"><h2>Assembly</h2></div>
-                                </div>
-                            </div>
-                        </div>
-                        @foreach($categories as $category)
-                            <div class="carousel-item">
-                                <div class="col-md-3" >
-                                    <a href=" {{ route('site.category.all.articles.show', $category->slug) }}">
-                                        <div class="card">
-                                            <div class="card-img">
-                                                <img src="category_covers/{{ $category->image }}" class="img-fluid" alt="" >
-                                            </div>
-                                            <div class="card-img-overlay"><h2>{{ $category->title }}</h2></div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        @endforeach
-
-                    </div>
-                    <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    </a>
-                    <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    </a>
-                </div>
-            </div>
-        @else
-            <div class="row mx-auto mt-4 justify-content-center">
-                <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner multi-item-carousel" role="listbox">
-                        <div class="carousel-item active">
-                            <div class="col-md-3">
-                                <div class="card">
-                                    <div class="card-img">
-                                        <a href="">
-                                            <img src="{{ asset('site_images/factory.jpg') }}" class="img-fluid" alt="" >
-                                        </a>
-                                    </div>
-                                    <div class="card-img-overlay"><h2>Manufacturing</h2></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="col-md-3">
-                                <a href="#contacts">
-                                    <div class="card">
-                                        <div class="card-img">
-                                            <img src="{{ asset('site_images/download.jpeg') }}" class="img-fluid" alt="" >
-                                        </div>
-                                        <div class="card-img-overlay"><h2>Assembly</h2></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="col-md-3">
-                                <div class="card">
-                                    <div class="card-img">
-                                        <img src="{{ asset('site_images/green.jpg') }}" class="img-fluid" alt="" >
-                                    </div>
-                                    <div class="card-img-overlay"><h2>Green Energy</h2></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="col-md-3">
-                                <div class="card">
-                                    <div class="card-img">
-                                        <img src="{{ asset('site_images/logistics.jpeg') }}" class="img-fluid" alt="" >
-                                    </div>
-                                    <div class="card-img-overlay"><h2>Logistics</h2></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="col-md-3">
-                                <div class="card">
-                                    <div class="card-img">
-                                        <img src="{{ asset('site_images/transport.jpg') }}" class="img-fluid" alt="" >
-                                    </div>
-                                    <div class="card-img-overlay"><h2>Transport</h2></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="col-md-3">
-                                <div class="card">
-                                    <div class="card-img">
-                                        <img src="{{ asset('site_images/corporate-finance.jpg') }}" class="img-fluid" alt="" >
-                                    </div>
-                                    <div class="card-img-overlay"><h2>Corporate Finance</h2></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    </a>
-                    <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    </a>
-                </div>
-            </div>
-        @endif
-        <h5 class="mb-4 fw-light">Industrialising Africa Magazine</h5>
-    </div>
-    <!----end multi item carousel---->
 
     <script>
         let items = document.querySelectorAll('.carousel .carousel-item')
@@ -449,7 +509,6 @@
     </section>
     <!--- end about section---->
 
-
     <!----Frequently Asked Questions Section---->
     <section id="faq" class="faq section-bg">
         <div class="container" data-aos="fade-up">
@@ -474,7 +533,7 @@
                         </div>
                     </li>
 
-                    <li data-aos="fade-up" data-aos-delay="50">
+                    <li data-aos="fade-up" data-aos-delay="100">
                         <i class="bx bx-help-circle icon-help"></i>
                         <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">
                             2. What is FirstCode Corporation about?
@@ -489,51 +548,38 @@
                         </div>
                     </li>
 
-                    <li data-aos="fade-up" data-aos-delay="100">
-                        <i class="bx bx-help-circle icon-help"></i>
-                        <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">
-                            3. How old is Industrialising Africa?
-                            <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                        <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
-                            <p>
-                                The idea and concept goes back 5 years but was registered
-                                as FirstCode Corporation Ltd. In Kenya at the beginning of 2021.
-                            </p>
-                        </div>
-                    </li>
-
-                    <li data-aos="fade-up" data-aos-delay="150">
+                    <li data-aos="fade-up" data-aos-delay="200">
                         <i class="bx bx-help-circle icon-help"></i>
                         <a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed">
-                            4. Where are your offices?
+                            3. Where are your offices?
                             <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                         <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
                             <p>
-                                FirstCode has two offices, in Shanghai, China and Nairobi, Kenya. Details are provided on our
+                                FirstCode has two offices in New York, USA, Shanghai, China and Nairobi, Kenya. Details are provided on our
                                 <a href="#contact_us">contacts page.</a>
                             </p>
                         </div>
                     </li>
 
-                    <li data-aos="fade-up" data-aos-delay="200">
+                    <li data-aos="fade-up" data-aos-delay="300">
                         <i class="bx bx-help-circle icon-help"></i>
                         <a data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapsed">
-                            5. Who are your strategic partners?
+                            4. Who are your strategic partners?
                             <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                         <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
                             <p>
                                 We work closely with the relevant stakeholders in the private sector as well associations
                                 and facilitative government agencies in respective countries, including Embassies and
                                 High Commissions. We are also working on bolstering partnerships with agencies like UNIDO, UNCTAD,
-                                UN-ECA, UNDP and AfCFTA in addition to the regional blocs or COMESA, ECOWAS, Maghreb, EAC and SADC.
+                                UN-ECA, UNDP and AfCFTA in addition to the regional blocs like COMESA, ECOWAS, Maghreb, EAC and SADC.
                             </p>
                         </div>
                     </li>
 
-                    <li data-aos="fade-up" data-aos-delay="250">
+                    <li data-aos="fade-up" data-aos-delay="400">
                         <i class="bx bx-help-circle icon-help"></i>
                         <a data-bs-toggle="collapse" data-bs-target="#faq-list-6" class="collapsed">
-                            6. What are your major activities?
+                            5. What are your major activities?
                             <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                         <div id="faq-list-6" class="collapse" data-bs-parent=".faq-list">
                             <ul>
@@ -547,25 +593,26 @@
                         </div>
                     </li>
 
-                    <li data-aos="fade-up" data-aos-delay="300">
+                    <li data-aos="fade-up" data-aos-delay="500">
                         <i class="bx bx-help-circle icon-help"></i>
                         <a data-bs-toggle="collapse" data-bs-target="#faq-list-7" class="collapsed">
-                            7. Your agenda for Africa is too ambitious, how do you intend achieve it?
+                            6. Your agenda for Africa is too ambitious, how do you intend achieve it?
                             <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                         <div id="faq-list-7" class="collapse" data-bs-parent=".faq-list">
                             <p>
                                 It has taken time to formalise FirstCode after careful analysis and assessment to
-                                identify the specific issues and gaps that the organisiation will address itself to.
+                                identify the specific issues and gaps that the organisation will address itself to.
                                 Our goal is very clear, to ensure that there is a dynamic information aggregation and information platform for investors,
                                 manufacturers, processors and suppliers for the continent of Africa. We are doing this by
                                 leveraging on the technology tools and reach at our disposal.
                             </p>
                         </div>
                     </li>
-                    <li data-aos="fade-up" data-aos-delay="350">
+
+                    <li data-aos="fade-up" data-aos-delay="600">
                         <i class="bx bx-help-circle icon-help"></i>
                         <a data-bs-toggle="collapse" data-bs-target="#faq-list-8" class="collapsed">
-                            8. What sets your initiative apart?
+                            7. What sets your initiative apart?
                             <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                         <div id="faq-list-8" class="collapse" data-bs-parent=".faq-list">
                             <p>
@@ -576,37 +623,35 @@
                         </div>
                     </li>
 
-                    <li data-aos="fade-up" data-aos-delay="400">
+                    <li data-aos="fade-up" data-aos-delay="700">
                         <i class="bx bx-help-circle icon-help"></i>
                         <a data-bs-toggle="collapse" data-bs-target="#faq-list-9" class="collapsed">
-                            9. In how many languages do you disseminate your information?
+                            8. In how many languages do you disseminate your information?
                             <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                         <div id="faq-list-9" class="collapse" data-bs-parent=".faq-list">
                             <p>
                                 At the present, we are disseminating our information mainly in English.
-                                We are making arrangements in due course to also have a department to manage our
-                                French speakers on the continent as well.
                             </p>
                         </div>
                     </li>
 
-                    <li data-aos="fade-up" data-aos-delay="450">
+                    <li data-aos="fade-up" data-aos-delay="800">
                         <i class="bx bx-help-circle icon-help"></i>
                         <a data-bs-toggle="collapse" data-bs-target="#faq-list-10" class="collapsed">
-                            10. How many hard copies of the magazine do you print?
+                            9. How many hard copies of the magazine do you print?
                             <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                         <div id="faq-list-10" class="collapse" data-bs-parent=".faq-list">
                             <p>
                                 We are currently printing 30,000 copies and distributing them through various
-                                channels including Embassies and High Commissions based in East Africa.
+                                channels including Embassies and High Commissions based in Africa.
                             </p>
                         </div>
                     </li>
 
-                    <li data-aos="fade-up" data-aos-delay="500">
+                    <li data-aos="fade-up" data-aos-delay="900">
                         <i class="bx bx-help-circle icon-help"></i>
                         <a data-bs-toggle="collapse" data-bs-target="#faq-list-11" class="collapsed">
-                            11. How big or wide is your circulation?
+                            10. How big or wide is your circulation?
                             <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                         <div id="faq-list-11" class="collapse" data-bs-parent=".faq-list">
                             <p>
@@ -616,10 +661,10 @@
                         </div>
                     </li>
 
-                    <li data-aos="fade-up" data-aos-delay="550">
+                    <li data-aos="fade-up" data-aos-delay="1000">
                         <i class="bx bx-help-circle icon-help"></i>
                         <a data-bs-toggle="collapse" data-bs-target="#faq-list-12" class="collapsed">
-                            12. Is the publication a monthly or quarterly?
+                            11. what is the frequency of your publication?
                             <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                         <div id="faq-list-12" class="collapse" data-bs-parent=".faq-list">
                             <p>
@@ -628,43 +673,23 @@
                         </div>
                     </li>
 
-                    <li data-aos="fade-up" data-aos-delay="600">
-                        <i class="bx bx-help-circle icon-help"></i>
-                        <a data-bs-toggle="collapse" data-bs-target="#faq-list-13" class="collapsed">
-                            13. What are your major revenue sources?
-                            <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                        <div id="faq-list-13" class="collapse" data-bs-parent=".faq-list">
-                            <p>
-                                FirstCode is a private business enterprise registered as a company in Kenya and
-                                incorporated in Shanghai, China. The main sources of revenue being individual business
-                                investment, strategic partners/sponsors, advertisers and subscriptions.
-                            </p>
-                        </div>
-                    </li>
-
-                    <li data-aos="fade-up" data-aos-delay="650">
+                    <li data-aos="fade-up" data-aos-delay="1100">
                         <i class="bx bx-help-circle icon-help"></i>
                         <a data-bs-toggle="collapse" data-bs-target="#faq-list-14" class="collapsed">
-                            14. Do you partner with training institutions in the industrial sector?
+                            12. Do you partner with training institutions in the industrial sector?
                             <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                         <div id="faq-list-14" class="collapse" data-bs-parent=".faq-list">
                             <p>
                                 Yes, we recognise training institutions as stakeholders in the industrialisation
                                 story since they provide training for the manpower that serves in various capacities in the industrial sector.
-                                15. Where do you intend to see this initiative five years from now?
-                                A robust FirstCode Information Management and Dissemination Centre for Africa.
-                                Triple the circulation of the hard copies of the magazine.
-                                Stronger online presence and use of the FirstCode Systems App..
-                                Regional offices in North, West, Central and Southern Africa.
-
                             </p>
                         </div>
                     </li>
 
-                    <li data-aos="fade-up" data-aos-delay="700">
+                    <li data-aos="fade-up" data-aos-delay="1200">
                         <i class="bx bx-help-circle icon-help"></i>
                         <a data-bs-toggle="collapse" data-bs-target="#faq-list-15" class="collapsed">
-                            15. Where do you intend to see this initiative five years from now?
+                            13. Where do you intend to see this initiative five years from now?
                             <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                         <div id="faq-list-15" class="collapse" data-bs-parent=".faq-list">
 
@@ -683,5 +708,68 @@
         </div>
     </section>
     <!---- end frequently asked questions section ---->
+
+    <!----editorial section---->
+    <section>
+        <div class="container">
+            <h2>Editorial Board and Contacts</h2>
+            <p>Industrialising Africa is a publication
+                of FirstCode Corporation Inc.
+                Revving up Africa’s industrialisation agenda
+                and contributing to the realization
+                of the <strong class="put-black">AU’s Agenda 2063, ‘The Africa We Want.’</strong></p>
+
+            <div class="row put-black">
+                <div class="col-md-4">
+                    <h4>Advisory Board</h4>
+                    <ul>
+                        <li>Dr. Mukhisa Kituyi</li>
+                        <li>Prof. Henry Bwisa</li>
+                        <li>Prof. David Ogoli</li>
+                        <li>Mr. Robert J. Schneck</li>
+                        <li>Ambassador Boaz Mbaya</li>
+                        <li>Jaytee Kivihya</li>
+                        <li>Anna E. Hee</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h4>Editorial Board</h4>
+                    <ul class="put-black">
+                        <li>Eng. Jorge N. Forester - Editor In-Chief</li>
+                        <li>Sande Olocho  	-	Editor</li>
+                        <li>E.K. Wamaitha 	-	Finance Manager</li>
+                        <li>Ruth Kimani  	-	Administrative Secretary</li>
+                        <li>Fahreen Tharani -	Business Liaison Manager</li>
+                        <li>Martin Khamala  -	ICT Systems Manager</li>
+                        <li>Peter Gachuru 	-	Computer Systems Specialist</li>
+                        <li>Natasha Mugo 	 -	Communications Specialist</li>
+                        <li>David Obiero  	-	Editorial Designer</li>
+                        <li>Philip Kaunda  	-	Graphics Designer</li>
+                        <li>Billy Mutai	- Editorial Photography</li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 put-black">
+                    <h4>Contacts</h4>
+                    No. 1688, East Gaoke Rd.<br>
+                    Pudong New Area Shanghai<br>
+                    Tel: +86 13671830746<br>
+                    www.firstcodecorporation.com<br>
+                    info@firstcodecorporation.com<br>
+                    Tel: +1 360 669 4407 New York<br>
+                    +33 651 99 88 20 France<br><br>
+
+                    TATU CITY<br>
+                    Tatu Industrial Park<br>
+                    Tel: +254 20 8000202<br>
+                    Tel: +254 722 444176<br>
+                    www.industrialisingafrica.com<br>
+                    info@industrialisingafrica.com
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!----end editorial section---->
 
 @endsection

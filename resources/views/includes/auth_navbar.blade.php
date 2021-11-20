@@ -1,8 +1,14 @@
 <nav class="navbar navbar-expand-lg background-black" style="border-bottom: 2px solid goldenrod">
     <div class="container-fluid">
-        <a href="/" class="logo">
-            <img src="{{ asset('site_images/ialogo.png') }}" alt="" class="img-fluid" style="max-width: 200px; max-height: 50px;">
-        </a>
+        @if(\Illuminate\Support\Facades\Auth::check())
+            <a href="{{ route('portal') }}" class="logo">
+                <img src="{{ asset('site_images/ialogo.png') }}" alt="" class="img-fluid" style="max-width: 200px; max-height: 50px;">
+            </a>
+        @else
+            <a href="/" class="logo">
+                <img src="{{ asset('site_images/ialogo.png') }}" alt="" class="img-fluid" style="max-width: 200px; max-height: 50px;">
+            </a>
+        @endif
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
