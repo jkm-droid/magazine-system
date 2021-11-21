@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use App\HelperFunctions\GetCategories;
 use App\Models\Article;
-use App\Models\ArticleCategory;
 use App\Models\Category;
 use App\Models\Magazine;
+use App\Models\NewsLetter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class SiteController extends Controller
 {
@@ -186,4 +186,36 @@ class SiteController extends Controller
         return view('site.success');
     }
 
+    /**
+     * save new user subscriptions
+     */
+    public  function news_letter(Request $request)
+    {
+        $validator = Validator::make($request->all(),[
+            'email'=>'required|email|unique:news_letters',
+        ]);
+        $data = '';
+
+        if ($validator->passes()) {
+            $email = trim($request->email);
+            $newsletter = new NewsLetter();
+            $newsletter->email = $email;
+            if ($newsletter->save())
+                $status = 200;
+            else
+                $status = 201;
+
+            $data = array(
+                'status' => $status,
+                'message' => 'success'
+            );
+
+            return response()->json($data);
+        }
+        $data = array(
+            'status' => 202,
+            'message' => $validator->errors()
+        );
+        return response()->json($data);
+    }
 }

@@ -53,7 +53,9 @@
 .put-red{
     color: red;
 }
-
+.put-green{
+    color: green;
+}
 /*typewriter effect*/
 #text {
     display: inline-block;

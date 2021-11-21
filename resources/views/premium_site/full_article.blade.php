@@ -12,7 +12,30 @@
                 Published: {{ date('d-m-Y', strtotime($article->created_at)) }}
             </p>
             <img src="/article_covers/{{ $article->image }}" class="img-fluid col-md-12" alt="" style="max-height: 350px;">
-            <p class="mt-3 mb-3 m-2">{!! $article->body !!}</p>
+
+            @if($article->type == "premium")
+                @if(\Illuminate\Support\Facades\Auth::user()->payment_status == 1)
+                    <p class="mt-3 mb-3 m-2">{!! $article->body !!}</p>
+                @else
+                    <p class="mt-3 mb-3 m-2">
+                        {!! \Illuminate\Support\Str::limit(strip_tags($article->body), $limit = 713, $end = '...') !!}
+                    </p>
+                    <div class="text-center">
+                        <p class="put-red">For the complete article, please subscribe for a copy of the latest edition of Industrialising Africa magazine</p>
+                        <button class="btn put-gold" style="background-color: black; box-shadow: 0 0 30px goldenrod;">
+                            <a class="nav-link ml-4 put-gold text-uppercase" href="{{ route('show.register') }}">SUBSCRIBE</a>
+                        </button>
+                        <br>
+                        <button class="btn put-gold" style="background-color: black; box-shadow: 0 0 30px goldenrod; margin-top: 10px;">
+                            <a class="nav-link ml-4 put-gold text-uppercase" href="https://order.firstcodecorporation.com/user/">get hardcopy</a>
+                        </button>
+                    </div>
+                @endif
+            @else
+                <p class="mt-3 mb-3 m-2">
+                    {!! $article->body !!}
+                </p>
+            @endif
 
             @if($author_articles->isEmpty())
             @else

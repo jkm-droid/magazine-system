@@ -20,7 +20,13 @@
                 </p>
                 <div class="text-center">
                     <p class="put-red">For the complete article, please subscribe for a copy of the latest edition of Industrialising Africa magazine</p>
-                    <a class="btn btn-dark btn-lg put-gold background-black" href="{{ route('show.register') }}">SUBSCRIBE</a>
+                    <button class="btn put-gold" style="background-color: black; box-shadow: 0 0 30px goldenrod;">
+                        <a class="nav-link ml-4 put-gold text-uppercase" href="{{ route('show.register') }}">SUBSCRIBE</a>
+                    </button>
+                    <br>
+                    <button class="btn put-gold" style="background-color: black; box-shadow: 0 0 30px goldenrod; margin-top: 10px;">
+                        <a class="nav-link ml-4 put-gold text-uppercase" href="https://order.firstcodecorporation.com/user/">get hardcopy</a>
+                    </button>
                 </div>
             @else
                 <p class="mt-3 mb-3 m-2">

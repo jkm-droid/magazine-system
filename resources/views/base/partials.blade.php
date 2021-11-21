@@ -80,3 +80,54 @@
             </a>
         </div>
     </div>
+
+
+    <script type="text/javascript">
+        const inputEmail = document.getElementById('email');
+        const btn = document.getElementById('subscribe-btn');
+
+        inputEmail.addEventListener('input', function (){
+            btn.disabled = (this.value === '');
+        });
+
+        // $(document).ready(function () {
+        $('#subscribe-btn').click(function(e){
+            e.preventDefault();
+
+            var email = $('#email').val();
+            if(email !== "") {
+
+                $.ajax({
+                    url: '/industrialising-africa/subscribe',
+                    type: 'POST',
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        'email': email,
+                    },
+                    success: function (response) {
+                        console.log(response.status);
+
+                        if (response.status === 200) {
+                            const msg = "You have successfully joined our news letter";
+                            let content = '<small class="text-center" style="color: green;" ' + msg + '</small>';
+                            $("#message-box").html(content);
+                        }else{
+                            const msg = "An error occurred";
+                            let content = '<small class="text-center" style="color: red;" ' + msg + '</small>';
+                            $("#message-box").html(content);
+                        }
+
+                    },
+
+                    failure: function (response) {
+                        console.log("something went wrong");
+                    }
+                });
+            }else{
+                let content = '<small class="text-center" style="color: red;" ' + "Error!Email cannot be empty" + '</small>';
+                $("#message-box").html(content);
+            }
+        });
+        // });
+
+    </script>

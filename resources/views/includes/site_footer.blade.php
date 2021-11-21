@@ -88,16 +88,67 @@
                     <div class="col-lg-4 col-md-6 footer-newsletter">
                         <h4 class="put-red" style="color: white;">Join Our Newsletter</h4>
                         <p class="put-gold">Enter your email address to get the latest updates from our team.</p>
-                        <form action="" method="post">
-                            <input type="email" class="form-control" name="email">
-                            <input class="text-uppercase" style="background-color: goldenrod; color: black;" type="submit" value="Subscribe">
+                        <p id="message-box"></p>
+                        <form id="subscribe-form">
+                            @csrf
+                            <input type="email" class="form-control" name="email" id="email">
+                            <input class="text-uppercase" style="background-color: goldenrod; color: black;" type="submit" value="join newsletter" id="subscribe-btn">
                         </form>
                     </div>
 
                 </div>
             </div>
         </div>
+        <script type="text/javascript">
+            const inputEmail = document.getElementById('email');
+            const btn = document.getElementById('subscribe-btn');
 
+            inputEmail.addEventListener('input', function (){
+                btn.disabled = (this.value === '');
+            });
+
+            // $(document).ready(function () {
+            $('#subscribe-btn').click(function(e){
+                e.preventDefault();
+
+                var email = $('#email').val();
+                if(email !== "") {
+
+                    $.ajax({
+                        url: '/industrialising-africa/subscribe',
+                        type: 'POST',
+                        data: {
+                            "_token": "{{ csrf_token() }}",
+                            'email': email,
+                        },
+                        success: function (response) {
+                            console.log(response);
+                            let content = "";
+
+                            if(response.status === 200){
+                                content = '<small class="text-center put-green">' + "You have successfully joined our news letter" + '</small>';
+                            }else if(response.status === 202){
+                                content = '<small class="text-center put-red">' + response.message['email'] + '</small>';
+                            }else{
+                                content = '<small class="text-center put-red">' + "Oops! An error occurred." + '</small>';
+                            }
+
+                            $("#message-box").html(content);
+
+                        },
+
+                        failure: function (response) {
+                            console.log("something went wrong");
+                        }
+                    });
+                }else{
+                    let content = '<small class="text-center put-red">' + "Error!Email cannot be empty" + '</small>';
+                    $("#message-box").html(content);
+                }
+            });
+            // });
+
+        </script>
         <div class="container d-md-flex py-4">
 
             <div class="me-md-auto text-center text-md-start">
