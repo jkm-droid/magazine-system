@@ -30,8 +30,8 @@
                         @foreach($leading_articles as $leading)
                             <div class="col">
                                 <div class="card h-100 icon-box" style="border:none;">
-                                    <a href="{{ route('portal.full.article.show', $leading->slug) }}">
-                                        <div class="img-hover-zoom--slowmo">
+                                    <a href="{{ route('site.article.full.show', $leading->slug) }}">
+                                        <div class="">
                                             <img src="/article_covers/{{ $leading->image }}" class="card-img-top" alt="..." height="150">
                                         </div>
                                         <div class="card-body background-black">
@@ -48,7 +48,7 @@
 {{--                                                @endforeach--}}
 {{--                                            @endif--}}
                                             <h5 class="card-title">
-                                                <a class="text-warning" href="{{ route('portal.full.article.show', $leading->slug) }}">{{ $leading->title }}</a>
+                                                <a class="text-warning" href="{{ route('site.article.full.show', $leading->slug) }}">{{ $leading->title }}</a>
                                             </h5>
                                             {{--                                                                                <p class="card-text">{!! \Illuminate\Support\Str::limit($author_article->body, 80, $end='...') !!}</p>--}}
                                         </div>
