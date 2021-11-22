@@ -4,7 +4,7 @@
     <div class="register-box">
         <div class="card card-outline card-warning">
             <div class="card-header text-center">
-                <h3><a href="/" class="h3">Industrialising Africa<br><small><strong class="text-danger">Magazine</strong></small></a></h3>
+                <h3><a href="/" class="h3">Industrialising Africa<br><small><strong class="text-danger">Publication</strong></small></a></h3>
             </div>
             <div class="card-body">
                 <p class="login-box-msg">Register a new membership</p>

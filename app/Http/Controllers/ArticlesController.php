@@ -64,7 +64,7 @@ class ArticlesController extends Controller
 
         $article = new Article();
         $user = Admin::find(Auth::user()->id);
-        $article->author = $user->name;
+        $article->author = "Industrialising Africa";
         $article->admin_id = $user->id;
         $article->title = $article_info['title'];
         $special_slug = str_replace($this->special_character, "", strtolower($article_info['title']));
