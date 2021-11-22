@@ -16,7 +16,8 @@
             <img src="/article_covers/{{ $article->image }}" class="img-fluid col-md-12" alt="" style="max-height: 350px;">
             @if($article->type == "premium")
                 <p class="mt-3 mb-3 m-2">
-                    {!! \Illuminate\Support\Str::limit(strip_tags($article->body), $limit = 713, $end = '...') !!}
+{{--                    {!! \Illuminate\Support\Str::limit(strip_tags($article->body), $limit = 713, $end = '...') !!}--}}
+                    {!! $article->body !!}
                 </p>
                 <div class="text-center">
                     <p class="put-red">For the complete article, please subscribe for a copy of the latest edition of Industrialising Africa Publication</p>
