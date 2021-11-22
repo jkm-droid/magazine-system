@@ -130,6 +130,7 @@ class ArticlesController extends Controller
         $special_slug = str_replace($this->special_character, "", strtolower($article_info['title']));
         $article->slug = str_replace(' ', '_',$special_slug);
         $article->type = $article_info['type'];
+        $article->author = "Industrialising Africa";
 
         //update the article and pivot table
         $article->update();
