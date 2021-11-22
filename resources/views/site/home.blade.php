@@ -49,9 +49,7 @@
 {{--                                            @endif--}}
                                             <h5 class="card-title">
                                                 <a class="text-warning" href="{{ route('site.article.full.show', $leading->slug) }}">{{ $leading->title }}</a>
-                                                {{ $leading->image }}
                                             </h5>
-                                            {{--                                                                                <p class="card-text">{!! \Illuminate\Support\Str::limit($author_article->body, 80, $end='...') !!}</p>--}}
                                         </div>
                                     </a>
                                 </div>
