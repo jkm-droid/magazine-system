@@ -38,7 +38,7 @@ trait GetCategories{
      * get 7 leading articles
      */
     public function get_seven_leading_articles(){
-        return Article::where('type','premium')->inRandomOrder()->take(4)->get();
+        return Article::where('type','premium')->where('status',1)->inRandomOrder()->take(4)->get();
     }
 
 }

@@ -33,6 +33,7 @@ class CategoryController extends Controller
     public function save_category(Request $request){
         $request->validate([
             'title'=> 'required | unique:categories',
+            'image' => 'required|image|file'
         ]);
 
         $data = $request->all();
@@ -78,7 +79,7 @@ class CategoryController extends Controller
         if ($request->hasFile('image')){
             $imageName = str_replace(' ','_',$data['title']).'.'.$request->image->extension();
             $request->image->move(public_path('category_covers'), $imageName);
-//            File::delete($data->image);
+            File::delete($data['image']);
 
             $data['image'] = $imageName;
             $category->image = $imageName;
