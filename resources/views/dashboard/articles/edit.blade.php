@@ -72,7 +72,11 @@
                             <select name="type" class="form-select form-control" aria-label="Default select example" autofocus>
 
                                 @if($article->type)
-                                    <option value="{{ $article->type }}" selected>{{ $article->type }}</option>
+                                    @if($article->type == "premium")
+                                        <option value="{{ $article->type }}" selected>Premium Article</option>
+                                    @else
+                                        <option value="{{ $article->type }}" selected>Free Article</option>
+                                    @endif
                                 @endif
 
                                 <option value="" disabled>Select article type</option>

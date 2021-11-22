@@ -65,7 +65,7 @@
                             <select name="type" class="form-select form-control" aria-label="Default select example" autofocus>
                                 <option value="" disabled selected>Select article type</option>
 
-                                <option value="premium" {{ old('premium') == "premium" ? 'selected' : '' }}>Magazine Article</option>
+                                <option value="premium" {{ old('premium') == "premium" ? 'selected' : '' }}>Premium Article</option>
                                 <option value="free" {{ old('free') == "free" ? 'selected' : '' }}>Free Article</option>
 
                             </select>
