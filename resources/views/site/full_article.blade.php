@@ -19,7 +19,7 @@
                     {!! \Illuminate\Support\Str::limit(strip_tags($article->body), $limit = 713, $end = '...') !!}
                 </p>
                 <div class="text-center">
-                    <p class="put-red">For the complete article, please subscribe for a copy of the latest edition of Industrialising Africa magazine</p>
+                    <p class="put-red">For the complete article, please subscribe for a copy of the latest edition of Industrialising Africa Publication</p>
                     <button class="btn put-gold" style="background-color: black; box-shadow: 0 0 30px goldenrod;">
                         <a class="nav-link ml-4 put-gold text-uppercase" href="{{ route('show.register') }}">SUBSCRIBE</a>
                     </button>

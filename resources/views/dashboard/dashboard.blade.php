@@ -38,22 +38,6 @@
                         <a href="{{ route('articles.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
-                <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-warning">
-                        <div class="inner">
-                            <h3>{{ $total_categories }}</h3>
-
-                            <p>Categories</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion-android-menu"></i>
-                        </div>
-                        <a href="{{ route('categories.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-                <!-- ./col -->
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
                     <div class="small-box bg-success">
@@ -68,6 +52,23 @@
                         <a href="{{ route('my_articles.index', \Illuminate\Support\Facades\Auth::user()->id) }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-warning">
+                        <div class="inner">
+                            <h3>{{ $total_users }}</h3>
+
+                            <p>Registered Users</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion-android-people"></i>
+                        </div>
+                        <a href="{{ route('categories.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+
                 <!-- ./col -->
                 <div class="col-lg-3 col-6">
                     <!-- small box -->

@@ -141,7 +141,7 @@ class ArticlesController extends Controller
     //show the article
     public function show_article($article_id){
 
-        $article = Article::find($article_id);
+        $article = Article::findOrFail($article_id);
 
         return view('dashboard.articles.view', compact('article'));
     }

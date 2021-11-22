@@ -4,7 +4,7 @@
 
     <div class="card card-outline card-warning">
         <div class="card-header text-center">
-            <h3 class="put-black"><a href="/" class="h3">Industrialising Africa<br><small><strong>Magazine</strong></small></a></h3>
+            <h3 class="put-black"><a href="/" class="h3">Industrialising Africa<br><small><strong>Publication</strong></small></a></h3>
             <h4 class="text-center">Select your subscription plan</h4>
         </div>
 

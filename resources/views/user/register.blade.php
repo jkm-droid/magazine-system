@@ -5,7 +5,7 @@
         <div class="card card-outline card-dark">
             <div class="card-header text-center">
                 <h3><a href="/" class="h3">
-                        Subscribe to Industrialising Africa<br><small><strong class="put-black">Magazine</strong></small>
+                        Subscribe to Industrialising Africa<br><small><strong class="put-black">Publication</strong></small>
                     </a>
                 </h3>
             </div>

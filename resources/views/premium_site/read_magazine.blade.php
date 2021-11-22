@@ -12,7 +12,7 @@
                     </nav>
                 </div>
 
-                <span class="text-center float-right" id="load" style="margin-top: 20%;">Loading magazine...Please wait</span>
+                <span class="text-center float-right" id="load" style="margin-top: 20%;">Loading Publication...Please wait</span>
                 <div class="text-center align-items-center pdf-canvas">
                     <div class="prev-next">
                         <a class="previous display-3" id="prev-page" href="#"><i class="bx bx-chevron-left"></i></a>

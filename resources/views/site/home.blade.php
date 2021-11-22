@@ -7,7 +7,7 @@
             <div class="row justify-content-center">
 
                 <div class="col-xl-7 col-md-7 col-lg-9 text-center">
-                    <h1 class="text-dark">Industrialising <span  class="put-gold">Africa</span> Magazine</h1>
+                    <h1 class="text-dark">Industrialising <span  class="put-gold">Africa</span> Publication</h1>
                     <h3 class="text-danger quote-danger" style="font-style: italic;">
 
                         "A dynamic information aggregation and dissemination ecosystem catalysing Industrialisation in Africa"
@@ -312,7 +312,7 @@
                 </div>
             </div>
         @endif
-        <h5 class="mb-4 fw-light">Industrialising Africa Magazine</h5>
+        <h5 class="mb-4 fw-light">Industrialising Africa Publication</h5>
     </div>
     <!----end multi item carousel---->
 
@@ -328,11 +328,11 @@
 
                 <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                     <div class="portfolio-wrap">
-                        <img src="{{ asset('/site_images/magazine_cover.jpg') }}" loading="lazy" class="img-fluid" alt="">
+                        <img src="{{ asset('/site_images/magazine_cover.jpeg') }}" loading="lazy" class="img-fluid" alt="">
                         <div class="portfolio-info">
                             <h4>Magazine Cover</h4>
                             <div class="portfolio-links">
-                                <a href="{{ asset('/site_images/magazine_cover.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="">
+                                <a href="{{ asset('/site_images/magazine_cover.jpeg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="">
                                     <i class="bx bx-plus"></i>
                                 </a>
                             </div>

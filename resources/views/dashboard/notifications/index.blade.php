@@ -20,7 +20,7 @@
     @if($notifications->isEmpty())
         <h4 class="text-center">No notification found.</h4>
     @else
-        <div class="col-12">
+        <div class="col-12" id="notification-box">
             <div class="card card-outline card-warning">
                 <!-- /.card-header -->
                 <div class="card-body m-1 table-responsive p-0">
@@ -31,7 +31,7 @@
                             <p>
                                 {{ $notification->created_at }}<br>
                                 A new article <strong>"{{ $notification->data['title'] }}"</strong> was added by <strong>{{ $notification->data['author'] }}</strong>
-                                <button class="btn badge badge-danger right" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Publish</button>
+                                <a class="btn badge badge-danger right"  href="{{ route('article.show',$notification->data['article_id'] ) }}">Publish</a>
                                 <button class="btn badge badge-success right" id="mark-as-read" data-id="{{ $notification->id }}">mark as read</button>
                             </p>
                         </div>
@@ -45,7 +45,7 @@
                                     </div>
                                     <input type="hidden" value="{{ $notification->data['article_id'] }}" id="article-id">
                                     <div class="modal-body">
-                                        <p>{!! $notification->data['body'] !!}</p>
+{{--                                        <p>{!! $notification->data['body'] !!}</p>--}}
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

@@ -4,7 +4,7 @@
     <div class="login-box">
         <div class="card card-outline card-danger">
             <div class="card-header text-center">
-                <h3 class="put-black"><a href="/" class="h3">Industrialising Africa<br><small><strong>Magazine</strong></small></a></h3>
+                <h3 class="put-black"><a href="/" class="h3">Industrialising Africa<br><small><strong>Publication</strong></small></a></h3>
             </div>
             <div class="card-body">
                 @if ($message = Session::get('success'))

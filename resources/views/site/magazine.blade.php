@@ -4,7 +4,7 @@
     <section>
         <div class="container"  style="margin-top: 40px;">
             @if($magazines->isEmpty())
-                <p class="text-center">No magazine found</p>
+                <p class="text-center">No Publication found</p>
             @else
                 <div class="row">
                     @foreach($magazines as $magazine)
