@@ -7,12 +7,11 @@
 
                 <nav id="navbar" class="navbar navbar-light">
                     <ul class="text-uppercase text-dark">
-                        <li><a class="nav-link" href="https://firstcodecorporation.com/" target="_blank">FirstCode</a></li>
-                        <li><a class="nav-link" href="{{ route('portal.magazine.show')  }}">Magazine</a></li>
+                        <li><a class="nav-link" href="{{ route('portal.magazine.show')  }}">Publication</a></li>
                         <li><a class="nav-link" href="{{ route('portal')  }}">Articles</a></li>
                         <li class="nav-item dropdown text-uppercase">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Categories
+                                Sections
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 @foreach($all_categories as $category)
@@ -24,7 +23,8 @@
                                 @endforeach
                             </ul>
                         </li>
-
+                        <li><a class="nav-link" href="https://firstcodecorporation.com/" target="_blank">FirstCode</a></li>
+                        
                         <form class="d-flex col-md-3 ml-3" style="height: 30px; margin-left: 5px;" method="GET" action="{{ route('portal.search') }}">
                             @csrf
                             <input style="border: 1px solid goldenrod;" name="search" class="form-control me-2" type="search" placeholder="enter keyword" aria-label="Search">
