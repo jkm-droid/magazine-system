@@ -22,6 +22,10 @@
                 <button class="btn btn-lg put-gold" style="background-color: black; box-shadow: 0 0 30px goldenrod;">
                     <a class="nav-link ml-4 put-gold text-uppercase" href="{{ route('show.register') }}">Read Current Edition</a>
                 </button>
+                <br>
+                <button class="btn btn-lg put-gold" style="background-color: black; box-shadow: 0 0 30px goldenrod;">
+                    <a class="nav-link ml-4 put-gold text-uppercase" href="https://order.industrialisingafrica.com/user/order.php">get hardcopy Edition</a>
+                </button>
             </div>
 
             <div class="row icon-boxes">

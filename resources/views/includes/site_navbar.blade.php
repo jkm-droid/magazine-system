@@ -24,7 +24,7 @@
                             </ul>
                         </li>
                         <li><a class="nav-link" href="https://firstcodecorporation.com/" target="_blank">FirstCode</a></li>
-                        
+
                         <form class="d-flex col-md-3 ml-3" style="height: 30px; margin-left: 5px;" method="GET" action="{{ route('portal.search') }}">
                             @csrf
                             <input style="border: 1px solid goldenrod;" name="search" class="form-control me-2" type="search" placeholder="enter keyword" aria-label="Search">
