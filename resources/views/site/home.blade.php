@@ -572,7 +572,7 @@
                             <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                         <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
                             <p>
-                                FirstCode has two offices in New York, USA, Shanghai, China and Nairobi, Kenya. Details are provided on our
+                                FirstCode has three offices in New York, USA, Shanghai, China and Nairobi, Kenya. Details are provided on our
                                 <a href="#contact_us">contacts page.</a>
                             </p>
                         </div>
