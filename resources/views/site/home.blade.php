@@ -35,7 +35,8 @@
 
             </div>
 
-            <div class="row icon-boxes">
+            <div class="icon-boxes">
+                <h4 class="text-center"><strong class="put-gold">Lead</strong> Stories</h4>
                 @if($leading_articles)
                     <div class="row row-cols-1 row-cols-md-4 g-4 mt-3">
                         @foreach($leading_articles as $leading)
@@ -46,18 +47,6 @@
                                             <img src="/article_covers/{{ $leading->image }}" class="card-img-top" alt="..." height="150">
                                         </div>
                                         <div class="card-body background-black">
-                                            {{--                                            @if($leading->categories)--}}
-                                            {{--                                                @foreach($leading->categories as $more_cat)--}}
-                                            {{--                                                    <div class="text-white row">--}}
-                                            {{--                                                        <h6>--}}
-                                            {{--                                                            {{ \Illuminate\Support\Str::upper($more_cat->title) }}|--}}
-                                            {{--                                                            <small style="font-size: 14px;">{{ \Illuminate\Support\Str::upper(date('d-m-Y', strtotime($leading->created_at))) }}</small>--}}
-                                            {{--                                                        </h6>--}}
-
-                                            {{--                                                    </div>--}}
-
-                                            {{--                                                @endforeach--}}
-                                            {{--                                            @endif--}}
                                             <h5 class="card-title">
                                                 <a class="text-warning" href="{{ route('site.article.full.show', $leading->slug) }}">{{ $leading->title }}</a>
                                             </h5>
