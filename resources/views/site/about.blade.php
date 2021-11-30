@@ -8,7 +8,7 @@
                 <h2><span style="color: goldenrod">About</span> <strong class="text-dark">Us</strong></h2>
             </div>
 
-            <p><strong class="text-dark">Industrialising Africa</strong> magazine, a publication of
+            <p><strong class="text-dark">Industrialising Africa</strong> publication, a publication of
                 <strong class="text-danger">FirstCode</strong> <strong class="text-warning">Corporation</strong>
                 is a part of a compendium of interventions by the organisation to address
                 the information gap in the Pan-African industrial sector as a way of catalysing
@@ -19,10 +19,10 @@
 
             <p> The publication highlights the role of various industrial stakeholders in industrialising Africa and
                 also showcases best practices and gold standard case studies on the continent. This information sharing
-                platform provided by the Industrialising Africa magazine is designed to catalyse and maintain the
+                platform provided by the Industrialising Africa publication is designed to catalyse and maintain the
                 industrialisation conversation on the African continent in this modern era.</p>
-            
-            <p> The magazine copies are distributed through a variety of channels with a targeted deep reach amongst
+
+            <p> The publication copies are distributed through a variety of channels with a targeted deep reach amongst
                 the sectoral decision-makers on the continent and beyond. The publication is distributed through:
             <ul>
                 <li>Associations of Manufacturers</li>
