@@ -54,7 +54,7 @@
     <a href="https://www.facebook.com/industrialisingafrica" class="facebook" target="_blank"><i class="bx bxl-facebook"></i></a>
     <a href="https://www.instagram.com/industrialafrica/" class="instagram" target="_blank"><i class="bx bxl-instagram"></i></a>
     <a href="https://www.linkedin.com/in/industrialising-africa-17b536211/" class="linkedin" target="_blank"><i class="bx bxl-linkedin"></i></a>
-    <a href="https://www.youtube.com/c/IndustrialisingAfrica" target="_blank"><i class="bx bxl-youtube"></i></a>
+    <a href="https://youtu.be/q5RdTnSVzPw" target="_blank"><i class="bx bxl-youtube"></i></a>
 </div>
 @yield('content')
 
