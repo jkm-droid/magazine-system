@@ -228,14 +228,14 @@
     <!--- end about section---->
 
     <!----Frequently Asked Questions Section---->
-    <section id="faq" class="faq section-bg">
+    <section id="faq" class="faq section-bg text-center">
 
-        <div class="container"  style="background-color: goldenrod;padding: 20px; border-radius: 5px;">
+
             <a href="{{ route('site.about.show') }}">
 
                 <h2 class="text-dark text-center">Frequently Asked Questions - FAQ</h2>
+                <button class="btn btn-lg put-gold background-black text-uppercase">Read More</button>
             </a>
-        </div>
 
     </section>
     <!---- end frequently asked questions section ---->
