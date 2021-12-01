@@ -205,7 +205,7 @@
 
     <!----About Section----->
     <section id="about" class="about">
-        <div class="container" data-aos="fade-up">
+        <div class="container">
             <div class="section-titl text-center">
                 <h2><span class="put-gold">About</span> <strong class="text-dark">Us</strong></h2>
             </div>
@@ -242,7 +242,7 @@
 
     <!----editorial article section---->
     <section id="editorial-section">
-        <div class="container" data-aos="fade-up">
+        <div class="container">
 
             <h2 class="text-center">Industrialisation Renaissance in Africa, <strong class="put-gold">the hour has come.</strong></h2>
             <p>
