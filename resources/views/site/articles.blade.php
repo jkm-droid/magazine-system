@@ -15,7 +15,7 @@
                         <div class="card-img-overlay article-cover-content">
                             <h4 class="card-title put-black">{{ $feature_article[0]->title }}</h4>
                             <p class="card-text put-black mt-auto">
-                                {{ \Illuminate\Support\Str::upper($feature_article[0]->author) }} |
+{{--                                {{ \Illuminate\Support\Str::upper($feature_article[0]->author) }} |--}}
 
                                 @foreach($feature_article[0]->categories as $feature_cat)
                                     {{ \Illuminate\Support\Str::upper($feature_cat->title) }} |

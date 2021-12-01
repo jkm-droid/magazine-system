@@ -10,7 +10,7 @@
             @endif
             <h3 class="put-black">{{ $article->title }}</h3>
             <p>
-                by {{ \Illuminate\Support\Str::upper($article->author) }}
+{{--                by {{ \Illuminate\Support\Str::upper($article->author) }}--}}
                 Published: {{ date('d-m-Y', strtotime($article->created_at)) }}
             </p>
             <img src="/article_covers/{{ $article->image }}" class="img-fluid col-md-12" alt="" style="max-height: 350px;">
