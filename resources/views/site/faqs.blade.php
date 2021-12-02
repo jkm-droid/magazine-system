@@ -3,7 +3,7 @@
 @section('content')
     <!----Frequently Asked Questions Section---->
     <section id="faq" class="faq section-bg">
-        <div class="container mt-4" data-aos="fade-up">
+        <div class="container mt-4" >
 
             <div class="text-center mb-4">
                 <h2 class="text-dark">Frequently Asked Questions - <span class="put-gold">FAQ</span></h2>

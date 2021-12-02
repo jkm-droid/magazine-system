@@ -3,7 +3,7 @@
 @section('content')
     <!----About Section----->
     <section id="about" class="about">
-        <div class="container mt-4" data-aos="fade-up">
+        <div class="container mt-4">
             <div class="section-title">
                 <h2><span style="color: goldenrod">About</span> <strong class="text-dark">Us</strong></h2>
             </div>

@@ -47,7 +47,7 @@
                     </div>
 
                     <div class="row g-3">
-                        <div class="col-md-6 mt-3">
+                        <div class="col-md-4 mt-3">
                             <label for="category" class="form-label">Article Category</label>
                             <select name="category" id="category" class="form-select form-control" aria-label="Default select example" autofocus>
                                 <option value="" disabled selected>Select article category</option>
@@ -60,7 +60,7 @@
                             @endif
                         </div>
 
-                        <div class="col-md-6 mt-3">
+                        <div class="col-md-4 mt-3">
                             <label for="category" class="form-label">Article Type</label>
                             <select name="type" class="form-select form-control" aria-label="Default select example" autofocus>
                                 <option value="" disabled selected>Select article type</option>
@@ -73,6 +73,22 @@
                                 <div class="text-danger form-text">{{ $errors->first('type') }}</div>
                             @endif
                         </div>
+
+                        <div class="col-md-4 mt-3">
+                            <label for="category" class="form-label">Article Language</label>
+                            <select name="language" class="form-select form-control" aria-label="Default select example" autofocus>
+                                <option value="" disabled selected>Select article language</option>
+
+                                <option value="english" {{ old('premium') == "premium" ? 'selected' : '' }}>English</option>
+                                <option value="francais" {{ old('free') == "free" ? 'selected' : '' }}>Francais</option>
+
+                            </select>
+                            @if ($errors->has('language'))
+                                <div class="text-danger form-text">{{ $errors->first('language') }}</div>
+                            @endif
+                        </div>
+
+
                     </div>
 
                     <div>

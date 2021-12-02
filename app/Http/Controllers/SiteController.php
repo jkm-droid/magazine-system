@@ -48,7 +48,7 @@ class SiteController extends Controller
     }
 
     /**
-     * show the about us page
+     * show the faqs us page
      */
     public function show_faqs_page(){
 
@@ -57,6 +57,18 @@ class SiteController extends Controller
             ->with('all_categories', $this->get_all_categories())
             ->with('one_category', $this->get_one_category())
             ->with('leading_articles', $this->get_seven_leading_articles());
+    }
+
+/**
+     * show the faqs us page
+     */
+    public function show_french_page(){
+
+        return view('site.french')
+            ->with('categories', $this->get_categories())
+            ->with('all_categories', $this->get_all_categories())
+            ->with('one_category', $this->get_one_category())
+            ->with('leading_articles', $this->get_seven_leading_french_articles());
     }
 
 

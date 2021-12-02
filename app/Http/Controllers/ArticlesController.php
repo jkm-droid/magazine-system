@@ -70,6 +70,7 @@ class ArticlesController extends Controller
         $special_slug = str_replace($this->special_character, "", strtolower($article_info['title']));
         $article->slug = str_replace(' ', '_',$special_slug);
         $article->type = $article_info['type'];
+        $article->language = $article_info['language'];
         $article->body = $article_info['body'];
         $article->image = $imageName;
         $article->status = 0;
@@ -130,6 +131,7 @@ class ArticlesController extends Controller
         $special_slug = str_replace($this->special_character, "", strtolower($article_info['title']));
         $article->slug = str_replace(' ', '_',$special_slug);
         $article->type = $article_info['type'];
+        $article->language = $article_info['language'];
         $article->author = "Industrialising Africa";
 
         //update the article and pivot table

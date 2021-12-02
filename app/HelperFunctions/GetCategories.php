@@ -17,7 +17,7 @@ trait GetCategories{
      * Get seven categories for the carousel section
      */
     public function get_categories(){
-       return Category::with('articles')->inRandomOrder()->take(7)->get();
+        return Category::with('articles')->inRandomOrder()->take(7)->get();
     }
 
     /**
@@ -39,6 +39,13 @@ trait GetCategories{
      */
     public function get_seven_leading_articles(){
         return Article::where('type','premium')->where('status',1)->inRandomOrder()->get();
+    }
+
+    /**
+     * get 7 leading french articles
+     */
+    public function get_seven_leading_french_articles(){
+        return Article::where('type','premium')->where('language','francais')->where('status',1)->inRandomOrder()->get();
     }
 
 }

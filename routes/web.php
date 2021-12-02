@@ -29,6 +29,7 @@ Route::get('/industrialising-africa/success', [SiteController::class, 'show_succ
 Route::get('/industrialising-africa/archives', [SiteController::class, 'show_archives_page'])->name('site.archives.show');
 Route::get('/industrialising-africa/about', [SiteController::class, 'show_about_page'])->name('site.about.show');
 Route::get('/industrialising-africa/faqs', [SiteController::class, 'show_faqs_page'])->name('site.faqs.show');
+Route::get('/industrialising-africa/french', [SiteController::class, 'show_french_page'])->name('site.french.show');
 Route::get('/industrialising-africa/search', [SiteController::class, 'search_articles'])->name('site.articles.search');
 Route::get('/industrialising-africa/show/{slug}', [SiteController::class, 'show_full_article'])->name('site.article.full.show');
 Route::get('/industrialising-africa/category/{slug}', [SiteController::class, 'get_all_articles_per_category'])->name('site.category.all.articles.show');

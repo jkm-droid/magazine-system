@@ -264,6 +264,25 @@
         @endif
         <h5 class="mb-4 fw-light">Industrialising Africa Publication</h5>
     </div>
+
+    <script>
+        let items = document.querySelectorAll('.carousel .carousel-item')
+
+        items.forEach((el) => {
+            const minPerSlide = 4
+            let next = el.nextElementSibling
+            for (var i=1; i<minPerSlide; i++) {
+                if (!next) {
+                    // wrap carousel by using first child
+                    next = items[0]
+                }
+                let cloneChild = next.cloneNode(true)
+                el.appendChild(cloneChild.children[0])
+                next = next.nextElementSibling
+            }
+        })
+
+    </script>
     <!----end multi item carousel---->
 
     <!----magazine images section------>
@@ -411,3 +430,52 @@
         </div>
     </section>
     <!-----end magazine images section------>
+
+
+@else
+    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+        <a href="{{ route('show.register') }}">
+            <div class="icon-box">
+                <div class="icon text-center"><i class="bx bxs-factory"></i><i class="bx bxs-car-mechanic bx-lg"></i></div>
+                <h5 class="title text-white">Manufacturing & Assembly</h5>
+                <p class="description">Manufacturing activities boost the overall value generated in a given
+                    economy by catalysing more activity along value chains. </p>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+        <a href="{{ route('show.register') }}">
+            <div class="icon-box">
+                <div class="icon"><i class="bx bxs-ev-station"></i><i class="bx bxs-chip"></i></div>
+                <h5 class="title text-white">Energy & Technology</h5>
+
+                <p class="description">Energy is a critical component in the industrialisation process
+                    a key driver for Africa's industrialisation agenda.</p>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+        <a href="{{ route('show.register') }}">
+            <div class="icon-box">
+                <div class="icon"><i class="bx bxs-truck"></i><i class="bx bxs-plane-alt"></i></div>
+                <h5 class="title text-white">Logistics & Transport</h5>
+                <p class="description">The modernisation of African logistics is one of the most important
+                    areas of development on the continent today. </p>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+        <a href="{{ route('show.register') }}">
+            <div class="icon-box">
+                <div class="icon"><i class="bx bxs-coin-stack"></i><i class="bx bxs-business"></i></div>
+                <h5 class="title text-white">Corporate Finance & SME's</h5>
+                <p class="description">The Bank’s ambition is to help double the industrial GDP by 2025,
+                    and increase its industrial GDP to US $1.72 trillion.  </p>
+            </div>
+        </a>
+    </div>
+
+@endif

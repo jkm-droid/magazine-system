@@ -47,6 +47,8 @@
                         <tr>
                             <th>Title</th>
                             <th>Category</th>
+                            <th>Type</th>
+                            <th>Language</th>
                             <th>Image</th>
                             <th>Author</th>
                             <th>Creation Date</th>
@@ -66,11 +68,13 @@
                                         <td>{{ $category->title }}</td>
                                     @endforeach
                                 @endif
+                                <td>{{ $article->type }}</td>
+                                <td>{{ $article->language }}</td>
                                 <td>
                                     <img src="/article_covers/{{ $article->image }}" alt="" height="40" width="50">
                                 </td>
                                 <td>{{ $article->author }}</td>
-                                <td>{{ $article->created_at }}</td>
+                                <td>{{ \Carbon\Carbon::parse($article->created_at)->format('j M,Y') }}</td>
                                 @if($article->status  == 1)
                                     <td><i class="text-success fa fa-check-circle"></i></td>
                                 @else
