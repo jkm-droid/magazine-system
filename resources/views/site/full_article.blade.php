@@ -20,14 +20,25 @@
                     {!! $article->body !!}
                 </p>
                 <div class="text-center">
-                    <p class="put-red">For the complete article, please subscribe for a copy of the latest edition of Industrialising Africa Publication</p>
-                    <button class="btn put-gold" style="background-color: black; box-shadow: 0 0 30px goldenrod;">
-                        <a class="nav-link ml-4 put-gold text-uppercase" href="{{ route('show.register') }}">SUBSCRIBE</a>
-                    </button>
-                    <br>
-                    <button class="btn put-gold" style="background-color: black; box-shadow: 0 0 30px goldenrod; margin-top: 10px;">
-                        <a class="nav-link ml-4 put-gold text-uppercase" href="https://order.firstcodecorporation.com/user/">get hardcopy</a>
-                    </button>
+                    @if($article->language == "english")
+                        <p class="put-red">For the complete article, please subscribe for a copy of the latest edition of Industrialising Africa magazine</p>
+                        <button class="btn put-gold" style="background-color: black; box-shadow: 0 0 30px goldenrod;">
+                            <a class="nav-link ml-4 put-gold text-uppercase" href="{{ route('show.register') }}">SUBSCRIBE</a>
+                        </button>
+                        <br>
+                        <button class="btn put-gold" style="background-color: black; box-shadow: 0 0 30px goldenrod; margin-top: 10px;">
+                            <a class="nav-link ml-4 put-gold text-uppercase" href="https://order.firstcodecorporation.com/user/">get hardcopy</a>
+                        </button>
+                    @else
+                        <p class="put-red">Pour lire l’intégralité de l’article, veuillez vous abonner à la dernière édition du magazine Industrialising Africa.</p>
+                        <button class="btn put-gold" style="background-color: black; box-shadow: 0 0 30px goldenrod;">
+                            <a class="nav-link ml-4 put-gold text-uppercase" href="{{ route('show.register') }}">S'ABONNER</a>
+                        </button>
+                        <br>
+                        <button class="btn put-gold" style="background-color: black; box-shadow: 0 0 30px goldenrod; margin-top: 10px;">
+                            <a class="nav-link ml-4 put-gold text-uppercase" href="https://order.firstcodecorporation.com/user/">get hardcopy</a>
+                        </button>
+                    @endif
                 </div>
             @else
                 <p class="mt-3 mb-3 m-2">

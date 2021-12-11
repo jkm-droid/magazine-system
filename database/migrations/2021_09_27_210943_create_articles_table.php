@@ -20,6 +20,7 @@ class CreateArticlesTable extends Migration
             $table->string('slug');
             $table->string('author');
             $table->string('type');
+            $table->string('language')->default("english");
             $table->boolean('status')->default(0);
             $table->string('image_url')->default('0b0f077382bb1c7ce2b100cc28ca8e1a.png');
             $table->binary('image');
