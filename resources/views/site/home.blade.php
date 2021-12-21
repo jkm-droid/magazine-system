@@ -142,6 +142,159 @@
     </script>
     <br>
 
+    <!----multi item carousel--->
+    <div class="container text-center mt-4">
+        <h2 class="font-weight-light">
+            <strong class="put-gold">Publication</strong> <span style="color: black;">Section Stories</span>
+        </h2>
+        @if(!$categories->isEmpty())
+            <div class="row mx-auto mt-4 justify-content-center">
+                <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner multi-item-carousel" role="listbox">
+                        <div class="carousel-item active">
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <a href="">
+                                            <img src="{{ asset('site_images/factory.jpg') }}" class="img-fluid" alt="" style="opacity: 0.4;">
+                                        </a>
+                                    </div>
+                                    <div class="card-img-overlay"><h2>Assembly</h2></div>
+                                </div>
+                            </div>
+                        </div>
+                        @foreach($categories as $category)
+                            <div class="carousel-item">
+                                <div class="col-md-3" >
+                                    <a href=" {{ route('site.category.all.articles.show', $category->slug) }}">
+                                        <div class="card">
+                                            <div class="card-img">
+                                                <img src="category_covers/{{ $category->image }}" class="img-fluid" alt="" style="opacity: 0.4;">
+                                            </div>
+                                            <div class="card-img-overlay">
+                                                <h2>{{ $category->title }}</h2>
+                                                @foreach($category->articles as $cat_article)
+                                                    @if($loop->first)
+                                                        <h4>{{ $cat_article->title }}</h4>
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        @endforeach
+
+                    </div>
+                    <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </a>
+                    <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon text-danger" aria-hidden="true"></span>
+                    </a>
+                </div>
+            </div>
+        @else
+            <div class="row mx-auto mt-4 justify-content-center">
+                <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner multi-item-carousel" role="listbox">
+                        <div class="carousel-item active">
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <a href="">
+                                            <img src="{{ asset('site_images/factory.jpg') }}" class="img-fluid" alt="" >
+                                        </a>
+                                    </div>
+                                    <div class="card-img-overlay"><h2>Manufacturing</h2></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="col-md-3">
+                                <a href="#contacts">
+                                    <div class="card">
+                                        <div class="card-img">
+                                            <img src="{{ asset('site_images/download.jpeg') }}" class="img-fluid" alt="" >
+                                        </div>
+                                        <div class="card-img-overlay"><h2>Assembly</h2></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img src="{{ asset('site_images/green.jpg') }}" class="img-fluid" alt="" >
+                                    </div>
+                                    <div class="card-img-overlay"><h2>Green Energy</h2></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img src="{{ asset('site_images/logistics.jpeg') }}" class="img-fluid" alt="" >
+                                    </div>
+                                    <div class="card-img-overlay"><h2>Logistics</h2></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img src="{{ asset('site_images/transport.jpg') }}" class="img-fluid" alt="" >
+                                    </div>
+                                    <div class="card-img-overlay"><h2>Transport</h2></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img src="{{ asset('site_images/corporate-finance.jpg') }}" class="img-fluid" alt="" >
+                                    </div>
+                                    <div class="card-img-overlay"><h2>Corporate Finance</h2></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </a>
+                    <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </a>
+                </div>
+            </div>
+        @endif
+        <h5 class="mb-4 fw-light">Industrialising Africa Publication</h5>
+    </div>
+
+    <script>
+        let items = document.querySelectorAll('.carousel .carousel-item')
+
+        items.forEach((el) => {
+            const minPerSlide = 4
+            let next = el.nextElementSibling
+            for (var i=1; i<minPerSlide; i++) {
+                if (!next) {
+                    // wrap carousel by using first child
+                    next = items[0]
+                }
+                let cloneChild = next.cloneNode(true)
+                el.appendChild(cloneChild.children[0])
+                next = next.nextElementSibling
+            }
+        })
+
+    </script>
+    <!----end multi item carousel---->
+
     <!----About Section----->
     <section id="about" class="about">
         <div class="container">

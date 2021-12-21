@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 
 use App\HelperFunctions\AccessFirstCode;
+use App\Jobs\SubscriptionJob;
+use App\Models\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -167,6 +169,18 @@ class PaymentController extends Controller
         $user->payment_status = 1;
         $user->payment_date = $payment_date;
         $user->update();
+
+        //send details to admin for the subscription
+        $details = array([
+            'user_email'=>$user->email,
+            'user_name'=>$user->first_name.''.$user->last_name
+        ]);
+
+        //send the notification to every admin in the system
+        $admins = Admin::get();
+        foreach ($admins as $admin){
+            SubscriptionJob::dispatch($admin->email, $details);
+        }
     }
 
     /**
