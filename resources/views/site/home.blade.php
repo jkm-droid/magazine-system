@@ -30,18 +30,18 @@
                 </div>
 
                 <div class="col-xl-5 col-md-5 col-lg-3 introduction-image">
-                    <div class="row">
-                        <div class="col-xl-5 mx-auto" style="background-color: goldenrod; box-shadow: 0 0 30px goldenrod;">
+                    <div class="row m-2">
+                        <div class="col-sm-5 mb-2 mx-auto" style="background-color: goldenrod;">
                             <h3>Previous Issue</h3>
                             <h5>Apr/May 2021</h5>
                             <img class="img-fluid m-1" src="{{ asset('/site_images/apr2021.png') }}" alt="Previous issue">
                         </div>
-                        <div class="col-xl-5  mx-auto" style="background-color: goldenrod; box-shadow: 0 0 30px goldenrod;">
+                        <div class="col-sm-5 mb-2 mx-auto" style="background-color: goldenrod;">
                             <h3>Current Issue</h3>
                             <h5>Oct/Dec 2021</h5>
                             <img class="img-fluid m-1"   src="{{ asset('/site_images/first_page.jpeg') }}" alt="Current issue">
                         </div>
-                        <div class="col-xl-5  mx-auto" style="background-color: goldenrod; box-shadow: 0 0 30px goldenrod;">
+                        <div class="col-sm-5 mb-2 mx-auto" style="background-color: goldenrod;">
                             <h3>Next Issue</h3>
                             <h5>Feb/Apr 2022</h5>
                             <img class="img-fluid m-1"  src="{{ asset('/site_images/feb2022.jpeg') }}" alt="Next Issue">
