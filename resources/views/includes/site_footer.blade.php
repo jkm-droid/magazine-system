@@ -13,14 +13,13 @@
                 <a href="https://www.facebook.com/industrialisingafrica" class="facebook"><i class="bx bxl-facebook"></i></a>
                 <a href="https://www.instagram.com/industrialafrica/" class="instagram"><i class="bx bxl-instagram"></i></a>
                 <a href="https://www.linkedin.com/in/industrialising-africa-17b536211/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-                <a href="https://www.youtube.com/c/IndustrialisingAfrica"><i class="bx bxl-youtube"></i></a>
+                <a href="https://youtu.be/WqxXa4HTais"><i class="bx bxl-youtube"></i></a>
             </div>
         </div>
     </footer><!-- End Footer -->
 
 @else
     <footer id="footer">
-
         <div class="footer-top">
             <div class="container">
                 <div class="row">
