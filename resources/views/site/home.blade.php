@@ -11,7 +11,7 @@
                     <h1 class="text-dark">Industrialising <span  class="put-gold">Africa</span> Publication</h1>
                     <h3 class="text-danger quote-danger" style="font-style: italic;">
 
-                        "A dynamic information aggregation and dissemination ecosystem catalysing Industrialisation in Africa"
+                        The publication highlights the role of various industrial stakeholders in industrialising Africa...
 
                     </h3>
                     <h2 class="text-dark" id="text"></h2>
@@ -30,14 +30,29 @@
                 </div>
 
                 <div class="col-xl-5 col-md-5 col-lg-3 introduction-image">
-                    <img src="{{ asset('/site_images/magazine_cover.jpeg') }}" loading="lazy" class="img-fluid" alt="">
+                    <div class="row">
+                        <div class="col-xl-5 mx-auto" style="background-color: goldenrod; box-shadow: 0 0 30px goldenrod;">
+                            <h3>Previous Issue</h3>
+                            <h5>Apr/May 2021</h5>
+                            <img class="img-fluid m-1" src="{{ asset('/site_images/apr2021.png') }}" alt="Previous issue">
+                        </div>
+                        <div class="col-xl-5  mx-auto" style="background-color: goldenrod; box-shadow: 0 0 30px goldenrod;">
+                            <h3>Current Issue</h3>
+                            <h5>Oct/Dec 2021</h5>
+                            <img class="img-fluid m-1"   src="{{ asset('/site_images/first_page.jpeg') }}" alt="Current issue">
+                        </div>
+                        <div class="col-xl-5  mx-auto" style="background-color: goldenrod; box-shadow: 0 0 30px goldenrod;">
+                            <h3>Next Issue</h3>
+                            <h5>Feb/Apr 2022</h5>
+                            <img class="img-fluid m-1"  src="{{ asset('/site_images/feb2022.jpeg') }}" alt="Next Issue">
+                        </div>
+                    </div>
+                    <!-- <img src="{{ asset('/site_images/magazine_cover.jpeg') }}" loading="lazy" class="img-fluid" alt=""> -->
                 </div>
-
             </div>
 
             <div class="icon-boxes">
                 <h4 class="text-center"><strong class="put-gold">Lead</strong> Stories</h4>
-
                 @if($leading_articles)
                     <div class="row row-cols-1 row-cols-md-4 g-4 mt-3">
                         @foreach($leading_articles as $leading)
