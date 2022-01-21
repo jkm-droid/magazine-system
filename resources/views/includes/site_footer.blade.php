@@ -29,8 +29,6 @@
                         <p>
                             <strong>Phone:</strong> +254-722-666-747<br>
                             Nairobi, Kenya <br>
-                            <strong>Phone:</strong> +1(360)-669-4407<br>
-                            New York, USA<br>
                             <strong>Phone:</strong> +86-1367-1830-746<br>
                             Shanghai,China<br>
 

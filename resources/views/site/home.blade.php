@@ -398,7 +398,7 @@
                     Tel: +86 13671830746<br>
                     www.firstcodecorporation.com<br>
                     info@firstcodecorporation.com<br>
-                    Tel: +1 360 669 4407 New York<br>
+                    <!-- Tel: +1 360 669 4407 New York<br> -->
                     +33 651 99 88 20 France<br><br>
 
                     TATU CITY<br>
