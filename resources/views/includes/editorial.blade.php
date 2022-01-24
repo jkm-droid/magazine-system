@@ -1,4 +1,4 @@
-<section id="editorial-section">
+<section id="editorial-section" style="text-align: justify;">
     <div class="container">
 
         <h2 class="text-center">Industrialisation Renaissance in Africa, <strong class="put-gold">the hour has come.</strong></h2>

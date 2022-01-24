@@ -31,20 +31,20 @@
 
                 <div class="col-xl-5 col-md-5 col-lg-3 introduction-image">
                     <div class="row m-2">
-                        <div class="col-sm-5 mb-2 mx-auto" style="background-color: goldenrod;">
-                            <h3>Previous Issue</h3>
-                            <h5>Apr/May 2021</h5>
-                            <img class="img-fluid m-1" src="{{ asset('/site_images/apr2021.png') }}" alt="Previous issue">
+                        <div class="w-25 mb-2 mx-auto" style="background-color: goldenrod;">
+                            <h5><small>Upcoming Issue</small></h5>
+                            <h6><small>Feb/Apr 2022</small></h6>
+                            <img class="img-fluid m-1"  src="{{ asset('/site_images/feb2022.jpeg') }}" alt="Next Issue">
                         </div>
-                        <div class="col-sm-5 mb-2 mx-auto" style="background-color: goldenrod;">
-                            <h3>Current Issue</h3>
-                            <h5>Oct/Dec 2021</h5>
+                        <div class="w-25 mb-2 mx-auto" style="background-color: goldenrod;">
+                            <h5><small>Current Issue</small></5>
+                            <h6><small>Oct/Dec 2021</small></h6>
                             <img class="img-fluid m-1"   src="{{ asset('/site_images/first_page.jpeg') }}" alt="Current issue">
                         </div>
-                        <div class="col-sm-5 mb-2 mx-auto" style="background-color: goldenrod;">
-                            <h3>Next Issue</h3>
-                            <h5>Feb/Apr 2022</h5>
-                            <img class="img-fluid m-1"  src="{{ asset('/site_images/feb2022.jpeg') }}" alt="Next Issue">
+                        <div class="w-25 mb-2 mx-auto" style="background-color: goldenrod;">
+                            <h5><small>Previous Issue</small></h5>
+                            <h6><small>Apr/May 2021</small></h6>
+                            <img class="img-fluid m-1" src="{{ asset('/site_images/apr2021.png') }}" alt="Previous issue">
                         </div>
                     </div>
                     <!-- <img src="{{ asset('/site_images/magazine_cover.jpeg') }}" loading="lazy" class="img-fluid" alt=""> -->
@@ -317,7 +317,7 @@
                 <h2><span class="put-gold">About</span> <strong class="text-dark">Us</strong></h2>
             </div>
 
-            <p><strong class="text-dark">Industrialising Africa</strong> Publication, a publication of
+            <p style="text-align: justify;"><strong class="text-dark">Industrialising Africa</strong> Publication, a publication of
                 <strong class="text-danger">FirstCode</strong> <strong class="text-warning">Corporation</strong>
                 is a part of a compendium of interventions by the organisation to address
                 the information gap in the Pan-African industrial sector as a way of catalysing
@@ -326,7 +326,7 @@
                 in Africa to 130% by 2025 as envisaged or US$ 1.72 trillion and drive Africa’s overall GDP from US$ 2.2
                 trillion to US$ 4.6 trillion through synergistic industrialisation and trade within the continent.</p>
 
-            <p> The publication highlights the role of various industrial stakeholders in industrialising Africa and
+            <p style="text-align: justify;"> The publication highlights the role of various industrial stakeholders in industrialising Africa and
                 also showcases best practices and gold standard case studies on the continent. This information sharing
                 platform provided by the Industrialising Africa Publication is designed to catalyse and maintain the
                 industrialisation conversation on the African continent in this emergent Industrial Era of the 4th Industrial Revolution.</p>
