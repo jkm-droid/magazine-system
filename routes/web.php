@@ -1,5 +1,4 @@
 <?php
-
 use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\AdminController;
@@ -34,7 +33,7 @@ Route::get('/industrialising-africa/search', [SiteController::class, 'search_art
 Route::get('/industrialising-africa/show/{slug}', [SiteController::class, 'show_full_article'])->name('site.article.full.show');
 Route::get('/industrialising-africa/category/{slug}', [SiteController::class, 'get_all_articles_per_category'])->name('site.category.all.articles.show');
 Route::post('/industrialising-africa/subscribe', [SiteController::class, 'news_letter'])->name('site.newsletter');
-Route::get('/download',  [SiteController::class, 'download_magazine']);
+Route::get('/download',  [SiteController::class, 'download_magazine'])->name("magazine.download");
 
 /**
  * subscription page
@@ -49,6 +48,9 @@ Route::post('/subscribe/encryption', [PaymentController::class, 'checkoutEncrypt
  * */
 Route::get('user/login', [AuthController::class, 'show_login'])->name('show.login');
 Route::post('login', [AuthController::class, 'login'])->name('user.login');
+Route::get('user/newsletter', [AuthController::class, 'show_newsletter'])->name('show.newsletter');
+Route::post('newsletter', [AuthController::class, 'newsletter'])->name('user.newsletter');
+Route::get('user/download', [AuthController::class, 'start_download'])->name('user.download');
 Route::get('user/register', [AuthController::class, 'show_register'])->name('show.register');
 Route::post('register', [AuthController::class, 'register'])->name('user.register');
 Route::get('logout', [AuthController::class, 'logout'])->name('user.logout');

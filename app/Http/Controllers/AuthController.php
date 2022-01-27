@@ -19,6 +19,29 @@ class AuthController extends Controller
         $this->middleware('guest')->except('portal', 'logout');
     }
 
+    public function show_newsletter(){
+        return view('user.newsletter');
+    }
+
+    public function start_download(){
+        return view('user.download');
+    }
+
+    public function newsletter(Request $request){
+        $request->validate([
+            'email'=>'required|email',
+            'name'=>'required',
+        ]);
+
+        $email = $request->input('email');
+        $name = $request->input('name');
+
+        DB::insert("INSERT INTO download(name, email) VALUES(?, ?)", [$name, $email]);
+
+        return redirect()->route('user.download')
+            ->with('person', $name);
+    }
+
     /**
      * show the login page
      * */
