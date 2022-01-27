@@ -9,27 +9,34 @@
                 <div class="col-xl-7 col-md-7 col-lg-9 text-center">
                     <h2>Welcome to:</h2>
                     <h1 class="text-dark">Industrialising <span  class="put-gold">Africa</span> Publication</h1>
+                </div>
+                <div class="col-xl-5 col-md-5 col-lg-3">
+
+                    <div class="text-center introduction">
+                        <button class="btn btn-lg put-gold" style="background-color: black; box-shadow: 0 0 30px goldenrod;">
+                            <a class="nav-link ml-4 put-gold text-uppercase" href="https://order.industrialisingafrica.com/user/order.php">get hardcopy Edition</a>
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+            @include('premium_site.magazine_itself')
+
+            <div class="row">
+                <div class="col-xl-5 col-md-5 col-lg-3">         
                     <h3 class="text-danger quote-danger" style="font-style: italic;">
 
-                        The publication highlights the role of various industrial stakeholders in industrialising Africa...
+                    The publication highlights the role of various industrial stakeholders in industrialising Africa...
 
                     </h3>
                     <h2 class="text-dark" id="text"></h2>
 
                     <div id="cursor" ></div><br>
 
-                    <div class="text-center introduction">
-                        <!-- <button class="btn btn-lg put-gold" style="background-color: black; box-shadow: 0 0 30px goldenrod;">
-                            <a class="nav-link ml-4 put-gold text-uppercase" href="{{ route('show.register') }}">Read Current Edition</a>
-                        </button> -->
-                        <br><br>
-                        <button class="btn btn-lg put-gold" style="background-color: black; box-shadow: 0 0 30px goldenrod;">
-                            <a class="nav-link ml-4 put-gold text-uppercase" href="https://order.industrialisingafrica.com/user/order.php">get hardcopy Edition</a>
-                        </button>
-                    </div>
                 </div>
-
-                <div class="col-xl-5 col-md-5 col-lg-3 introduction-image">
+                <div class="col-xl-5 col-md-5 col-lg-3">
                     <div class="row m-2">
                         <div class="w-25 mb-2 mx-auto" style="background-color: goldenrod;">
                             <h5><small>Upcoming Issue</small></h5>
@@ -49,9 +56,7 @@
                     </div>
                     <!-- <img src="{{ asset('/site_images/magazine_cover.jpeg') }}" loading="lazy" class="img-fluid" alt=""> -->
                 </div>
-            </div>
-
-        @include('premium_site.magazine_itself')
+            </div>                    
             <div class="icon-boxes">
                 <h4 class="text-center"><strong class="put-gold">Lead</strong> Stories</h4>
                 @if($leading_articles)
