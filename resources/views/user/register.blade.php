@@ -56,6 +56,7 @@
                         <div class="col-md-6 mb-3">
                             <select name="country" class="form-select form-control" aria-label="Default select example" autofocus>
                                 <option value="" disabled selected>Select Country</option>
+                                    <option value="KE">Kenya</option>
                                 @foreach($countries as $country)
                                     <option value="{{ $country->id }}">{{ $country->name }}</option>
                                 @endforeach

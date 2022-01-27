@@ -4,6 +4,7 @@
     <!--    welcome area--->
     <section id="hero" class="d-flex align-items-center"  >
         <div class="container position-relative">
+        @include('premium_site.magazine_itself')
             <div class="row justify-content-center">
 
                 <div class="col-xl-7 col-md-7 col-lg-9 text-center">

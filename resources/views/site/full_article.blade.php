@@ -3,7 +3,7 @@
 @section('content')
     <section>
         <div class="container" style="margin-top: 40px;">
-            @if($article->categories )
+            @if($article->categories)
                 @foreach($article->categories as $article_cat)
                     <h6 class="text-gray-dark">{{ \Illuminate\Support\Str::upper($article_cat->title) }}</h6>
                 @endforeach
@@ -11,7 +11,7 @@
             <h3 class="put-black">{{ $article->title }}</h3>
             <p>
 {{--                by {{ \Illuminate\Support\Str::upper($article->author) }}--}}
-                Published: {{ date('d-m-Y', strtotime($article->created_at)) }}
+                Published: {{ date('d-m-Y', strtotime($article->created_at))}}
             </p>
             <img src="/article_covers/{{ $article->image }}" class="img-fluid col-md-12" alt="" style="max-height: 350px;">
             @if($article->type == "premium")
