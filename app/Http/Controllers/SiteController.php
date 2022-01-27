@@ -159,6 +159,18 @@ class SiteController extends Controller
             ->with('leading_articles', $this->get_seven_leading_articles());
     }
 
+    public function download_magazine()
+    {
+        //PDF file is stored under project/public/download/info.pdf
+        $file= public_path(). "/magazine_copies/Industrialising_Africa:_Manufacturing_in_Africa.pdf";
+
+        $headers = array(
+                'Content-Type: application/pdf',
+                );
+
+        return response()->download($file, 'Industrialising_Africa.pdf', $headers);
+    }
+
     /**
      * show the archives page, magazine issues
      */

@@ -34,6 +34,7 @@ Route::get('/industrialising-africa/search', [SiteController::class, 'search_art
 Route::get('/industrialising-africa/show/{slug}', [SiteController::class, 'show_full_article'])->name('site.article.full.show');
 Route::get('/industrialising-africa/category/{slug}', [SiteController::class, 'get_all_articles_per_category'])->name('site.category.all.articles.show');
 Route::post('/industrialising-africa/subscribe', [SiteController::class, 'news_letter'])->name('site.newsletter');
+Route::get('/download',  [SiteController::class, 'download_magazine']);
 
 /**
  * subscription page

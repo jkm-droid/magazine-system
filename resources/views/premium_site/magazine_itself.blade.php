@@ -1,5 +1,5 @@
     <section>
-        <div class="container"  style="margin-to: 40px;">
+        <div class="container">
             <div class="card pdf-container border-0" id="pdf-container">
                 <div class="top-bar text-center">
                     <nav aria-label="Page navigation example">

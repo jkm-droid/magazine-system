@@ -16,12 +16,12 @@
                         <button class="btn btn-lg put-gold" style="background-color: black; box-shadow: 0 0 30px goldenrod;">
                             <a class="nav-link ml-4 put-gold text-uppercase" href="https://order.industrialisingafrica.com/user/order.php">get hardcopy Edition</a>
                         </button>
+                        <h5 class="mt-5"> <a href="download">Download Digital Copy</a> </h5>
                     </div>
 
                 </div>
 
             </div>
-
             @include('premium_site.magazine_itself')
 
             <div class="row">
