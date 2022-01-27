@@ -1,4 +1,3 @@
-@section('content')
     <section>
         <div class="container"  style="margin-to: 40px;">
             <div class="card pdf-container border-0" id="pdf-container">
@@ -151,4 +150,3 @@
         document.querySelector('#next-page').addEventListener('click', showNextPage);
 
     </script>
-@endsection

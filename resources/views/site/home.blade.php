@@ -4,7 +4,6 @@
     <!--    welcome area--->
     <section id="hero" class="d-flex align-items-center"  >
         <div class="container position-relative">
-        @include('premium_site.magazine_itself')
             <div class="row justify-content-center">
 
                 <div class="col-xl-7 col-md-7 col-lg-9 text-center">
@@ -20,9 +19,9 @@
                     <div id="cursor" ></div><br>
 
                     <div class="text-center introduction">
-                        <button class="btn btn-lg put-gold" style="background-color: black; box-shadow: 0 0 30px goldenrod;">
+                        <!-- <button class="btn btn-lg put-gold" style="background-color: black; box-shadow: 0 0 30px goldenrod;">
                             <a class="nav-link ml-4 put-gold text-uppercase" href="{{ route('show.register') }}">Read Current Edition</a>
-                        </button>
+                        </button> -->
                         <br><br>
                         <button class="btn btn-lg put-gold" style="background-color: black; box-shadow: 0 0 30px goldenrod;">
                             <a class="nav-link ml-4 put-gold text-uppercase" href="https://order.industrialisingafrica.com/user/order.php">get hardcopy Edition</a>
@@ -52,6 +51,7 @@
                 </div>
             </div>
 
+        @include('premium_site.magazine_itself')
             <div class="icon-boxes">
                 <h4 class="text-center"><strong class="put-gold">Lead</strong> Stories</h4>
                 @if($leading_articles)
