@@ -92,6 +92,9 @@
                 loaded.push(val);
                 console.log(loaded);
             }});
+            $([document.documentElement, document.body]).animate({
+                scrollTop: $("#pdf-render"+num).offset().top
+            }, 2000);
         }
 
         // Check for pages rendering
