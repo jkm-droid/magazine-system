@@ -385,12 +385,11 @@
                     <ul class="put-black">
                         <li>Eng. Jorge N. Forester - Editor In-Chief</li>
                         <li>Sande Olocho  	-	Editor</li>
-                        <li>E.K. Wamaitha 	-	Finance Manager</li>
                         <li>Ruth Kimani  	-	Administrative Secretary</li>
                         <li>Fahreen Tharani -	Business Liaison Manager</li>
                         <li>Martin Khamala  -	ICT Systems Manager</li>
                         <li>Peter Gachuru 	-	Computer Systems Specialist</li>
-                        <li>Natasha Mugo 	 -	Communications Specialist</li>
+                        <li>Abijah Wanjiku 	 -	Communications Specialist</li>
                         <li>David Obiero  	-	Editorial Designer</li>
                         <li>Philip Kaunda  	-	Graphics Designer</li>
                         <li>Billy Mutai	- Editorial Photography</li>
